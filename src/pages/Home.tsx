@@ -71,57 +71,7 @@ export function Home() {
     navigate("/signup");
   };
 
-  // Redirect authenticated users to dashboard
-  if (isAuthenticated && user) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-        <Header username={user.username} email={user.email} />
-        
-        {/* Subjects Grid for authenticated users */}
-        <main className="container mx-auto px-4 py-12">
-          <h2 className="mb-8 text-2xl font-bold text-gray-900">Choose a subject</h2>
-          
-          {loading ? (
-            <div className="text-center text-gray-500">Loading subjects...</div>
-          ) : subjects.length === 0 ? (
-            <div className="text-center text-gray-500">No subjects available yet</div>
-          ) : (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {subjects.map((subject) => (
-                <Link
-                  key={subject.id}
-                  to={`/subject/${subject.slug}`}
-                  className="group"
-                >
-                  <Card className="h-full p-6 transition-all hover:shadow-lg hover:border-blue-300">
-                    <div className="mb-4 text-4xl">{subject.icon || '📚'}</div>
-                    <h3 className="mb-2 text-xl font-semibold text-gray-900 group-hover:text-blue-600">
-                      {subject.name}
-                    </h3>
-                    {subject.description && (
-                      <p className="text-sm text-gray-600">{subject.description}</p>
-                    )}
-                    <div className="mt-4">
-                      <Button
-                        variant="ghost"
-                        className="w-full hover:bg-blue-50"
-                        onClick={(e) => {
-                          e.preventDefault();
-                        }}
-                      >
-                        Explore →
-                      </Button>
-                    </div>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          )}
-        </main>
-      </div>
-    );
-  }
-
+  // Always show the landing page design on home route
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-400 via-teal-400 to-emerald-300 relative overflow-hidden">
       {/* Floating decorative elements - circles and rounded squares */}
