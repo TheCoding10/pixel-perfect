@@ -13,9 +13,10 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Checkbox } from '../components/ui/checkbox';
-import { Zap, BarChart3, BookOpen, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Zap, BarChart3, BookOpen, Mail, Lock, Eye, EyeOff, ChevronDown } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { Header } from '../components/Header';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../components/ui/collapsible';
 
 interface Subject {
   id: number;
@@ -41,6 +42,21 @@ export function Home() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [formLoading, setFormLoading] = useState(false);
+  
+  // Collapsible state for curriculum blocks
+  const [openSections, setOpenSections] = useState<{[key: string]: boolean}>({
+    math: true,
+    physics: false,
+    cs: false,
+    finance: false
+  });
+
+  const toggleSection = (section: string) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
 
   useEffect(() => {
     // Mock data - in real app would fetch from /api/subjects
@@ -368,6 +384,129 @@ export function Home() {
                   Privacy Policy
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Curriculum Blocks Section */}
+      <div className="relative z-10 bg-white py-16">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Mathematics */}
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                onClick={() => toggleSection('math')}
+                className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-white text-xl font-bold">
+                    🔢
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Mathematics</h3>
+                </div>
+                <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform ${openSections.math ? 'rotate-180' : ''}`} />
+              </button>
+              {openSections.math && (
+                <div className="px-6 pb-6 grid grid-cols-2 gap-x-8 gap-y-2">
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Pre-Algebra</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Algebra 1</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Geometry</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Algebra 2</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Trigonometry</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Precalculus</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Calculus I (Differential)</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Calculus II (Integral)</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Multivariable Calculus</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Differential Equations</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Linear Algebra</div>
+                </div>
+              )}
+            </div>
+
+            {/* Physics */}
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                onClick={() => toggleSection('physics')}
+                className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white text-xl font-bold">
+                    ⚛️
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Physics</h3>
+                </div>
+                <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform ${openSections.physics ? 'rotate-180' : ''}`} />
+              </button>
+              {openSections.physics && (
+                <div className="px-6 pb-6 grid grid-cols-2 gap-x-8 gap-y-2">
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Classical Mechanics</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Electricity & Magnetism</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Waves & Oscillations</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Thermodynamics</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Optics</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Modern Physics</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Quantum Mechanics</div>
+                </div>
+              )}
+            </div>
+
+            {/* Computer Science */}
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                onClick={() => toggleSection('cs')}
+                className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white text-xl font-bold">
+                    💻
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Computer Science</h3>
+                </div>
+                <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform ${openSections.cs ? 'rotate-180' : ''}`} />
+              </button>
+              {openSections.cs && (
+                <div className="px-6 pb-6 grid grid-cols-2 gap-x-8 gap-y-2">
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Intro to Programming</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">HTML/CSS</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">JavaScript Basics</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Python Foundations</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">JavaScript Algorithms</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Data Structures</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Object-Oriented Programming</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">AP CS Principles</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Basic Machine Learning</div>
+                </div>
+              )}
+            </div>
+
+            {/* Finance & Investing */}
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <button
+                onClick={() => toggleSection('finance')}
+                className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white text-xl font-bold">
+                    💰
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Finance & Investing</h3>
+                </div>
+                <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform ${openSections.finance ? 'rotate-180' : ''}`} />
+              </button>
+              {openSections.finance && (
+                <div className="px-6 pb-6 grid grid-cols-2 gap-x-8 gap-y-2">
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Finance Basics</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Accounting & Statements</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Money & Banking</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Microeconomics</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Macroeconomics</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Investing & Markets</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Stocks, ETFs & Index Funds</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Personal Finance & Budgeting</div>
+                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Behavioral Finance</div>
+                </div>
+              )}
             </div>
           </div>
         </div>
