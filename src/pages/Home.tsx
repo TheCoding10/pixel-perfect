@@ -7,16 +7,12 @@ const MOCK_SUBJECTS = [
 ];
 
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import { Checkbox } from '../components/ui/checkbox';
-import { Zap, BarChart3, BookOpen, Mail, Lock, Eye, EyeOff, ChevronDown } from 'lucide-react';
+import { Zap, BarChart3, BookOpen } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { Header } from '../components/Header';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../components/ui/collapsible';
 
 interface Subject {
   id: number;
@@ -29,34 +25,7 @@ interface Subject {
 export function Home() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(true);
-  const { isAuthenticated, user, login } = useAuth();
-  const navigate = useNavigate();
-  
-  // Login form state
-  const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
-  const [formLoading, setFormLoading] = useState(false);
-  
-  // Collapsible state for curriculum blocks
-  const [openSections, setOpenSections] = useState<{[key: string]: boolean}>({
-    math: true,
-    physics: false,
-    cs: false,
-    finance: false
-  });
-
-  const toggleSection = (section: string) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }));
-  };
+  const { isAuthenticated, user } = useAuth();
 
   useEffect(() => {
     // Mock data - in real app would fetch from /api/subjects
@@ -66,451 +35,103 @@ export function Home() {
     }, 300);
   }, []);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setFormLoading(true);
-
-    try {
-      await login(email, password);
-      navigate("/dashboard");
-    } catch {
-      setError("Invalid email or password");
-    } finally {
-      setFormLoading(false);
-    }
-  };
-
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // Redirect to signup page
-    navigate("/signup");
-  };
-
-  // Always show the landing page design on home route
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-400 via-teal-400 to-emerald-300 relative overflow-hidden">
-      {/* Floating decorative elements - circles and rounded squares */}
-      <div className="absolute top-12 left-8 w-24 h-24 bg-cyan-300/40 rounded-3xl"></div>
-      <div className="absolute top-8 left-32 w-16 h-16 bg-white/20 rounded-full"></div>
-      <div className="absolute top-32 left-12 w-20 h-20 bg-white/30 rounded-full"></div>
-      <div className="absolute top-20 left-4 w-12 h-12 bg-cyan-200/30 rounded-xl"></div>
-      
-      <div className="absolute top-4 right-96 w-8 h-8 bg-white/30 rounded-lg"></div>
-      <div className="absolute top-32 right-64 w-16 h-16 bg-white/20 rounded-full"></div>
-      
-      <div className="absolute bottom-32 left-32 w-32 h-32 bg-white/25 rounded-full"></div>
-      <div className="absolute bottom-20 left-12 w-20 h-20 bg-cyan-200/30 rounded-2xl"></div>
-      <div className="absolute bottom-48 left-48 w-12 h-12 bg-white/20 rounded-full"></div>
-      
-      <div className="absolute top-48 right-12 w-28 h-28 bg-white/20 rounded-full"></div>
-      <div className="absolute top-72 right-32 w-24 h-24 bg-cyan-200/25 rounded-3xl"></div>
-      <div className="absolute bottom-32 right-24 w-20 h-20 bg-yellow-200/30 rounded-full"></div>
-      <div className="absolute bottom-64 right-48 w-16 h-16 bg-white/25 rounded-2xl"></div>
-      
-      {/* Star shapes */}
-      <div className="absolute top-2 right-1/3 text-white text-4xl opacity-80">✦</div>
-      <div className="absolute top-16 left-48 text-white text-3xl opacity-70">✦</div>
-      <div className="absolute bottom-48 left-64 text-white text-2xl opacity-60">✦</div>
-      
-      {/* Header - kept exactly as is */}
-      <header className="border-b border-white/30 bg-white/20 backdrop-blur-sm relative z-10">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-3">
-              <img src="/assets/memolearning-logo.png" alt="MemoLearning" className="h-8 w-8" />
-              <h1 className="text-3xl font-bold text-gray-900">MemoLearning</h1>
-            </Link>
-            <div className="flex items-center gap-3">
-              <Link to="/login">
-                <Button variant="outline" className="border-gray-300 bg-white/50">Sign In</Button>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      {/* Header */}
+      {isAuthenticated && user ? (
+        <Header username={user.username} email={user.email} />
+      ) : (
+        <header className="border-b border-gray-200 bg-white">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex items-center justify-between">
+              <Link to="/" className="flex items-center gap-3">
+                <img src="/assets/memolearning-logo.png" alt="MemoLearning" className="h-8 w-8" />
+                <h1 className="text-3xl font-bold text-gray-900">MemoLearning</h1>
               </Link>
-              <Link to="/signup">
-                <Button className="bg-teal-500 hover:bg-teal-600 text-white">Sign Up</Button>
-              </Link>
+              <div className="flex items-center gap-3">
+                <Link to="/login">
+                  <Button variant="outline">Sign In</Button>
+                </Link>
+                <Link to="/signup">
+                  <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+                </Link>
+              </div>
+            </div>
+            <p className="mt-2 text-gray-600">Learn anything, anytime, at your own pace</p>
+          </div>
+        </header>
+      )}
+
+      {/* Hero Section */}
+      <div className="border-b border-gray-200 bg-white">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="flex gap-4">
+              <Zap className="h-8 w-8 text-orange-500 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Learn at your pace</h3>
+                <p className="text-sm text-gray-600">Progress through lessons at whatever speed works for you</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <BookOpen className="h-8 w-8 text-green-500 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Expert-created content</h3>
+                <p className="text-sm text-gray-600">Lessons developed by experienced educators</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <BarChart3 className="h-8 w-8 text-blue-500 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Track progress</h3>
+                <p className="text-sm text-gray-600">Monitor your learning journey with detailed analytics</p>
+              </div>
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
-      {/* Hero Section - Updated to match reference exactly */}
-      <div className="relative z-10 flex-1 flex items-center justify-center py-12 px-4">
-        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Side - Mascot and Branding */}
-          <div className="flex flex-col items-center lg:items-start justify-center space-y-6">
-            <img
-              src="/assets/mascot-logo.png"
-              alt="MemoLearning Mascot"
-              className="w-72 h-72 lg:w-96 lg:h-96 object-contain drop-shadow-2xl"
-            />
-            <div className="text-center lg:text-left">
-              <h1 className="text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-2">
-                Memo<br />Learning
-              </h1>
-              <p className="text-xl lg:text-2xl text-gray-800 font-medium">
-                Learn Smarter. Achieve More.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Side - Auth Card with Tabs */}
-          <div className="w-full max-w-md mx-auto lg:mx-0">
-            <div className="bg-[#FFFBF5] rounded-3xl shadow-2xl p-8 md:p-10">
-              {/* Tabs */}
-              <div className="flex gap-8 mb-8 border-b border-gray-200">
-                <button
-                  onClick={() => {
-                    setActiveTab("login");
-                    setError("");
-                  }}
-                  className={`pb-3 font-medium text-lg transition-colors relative ${
-                    activeTab === "login"
-                      ? "text-teal-600 font-semibold"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  Log in
-                  {activeTab === "login" && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-600"></div>
+      {/* Subjects Grid */}
+      <main className="container mx-auto px-4 py-12">
+        <h2 className="mb-8 text-2xl font-bold text-gray-900">Choose a subject</h2>
+        
+        {loading ? (
+          <div className="text-center text-gray-500">Loading subjects...</div>
+        ) : subjects.length === 0 ? (
+          <div className="text-center text-gray-500">No subjects available yet</div>
+        ) : (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {subjects.map((subject) => (
+              <Link
+                key={subject.id}
+                to={`/subject/${subject.slug}`}
+                className="group"
+              >
+                <Card className="h-full p-6 transition-all hover:shadow-lg hover:border-blue-300">
+                  <div className="mb-4 text-4xl">{subject.icon || '📚'}</div>
+                  <h3 className="mb-2 text-xl font-semibold text-gray-900 group-hover:text-blue-600">
+                    {subject.name}
+                  </h3>
+                  {subject.description && (
+                    <p className="text-sm text-gray-600">{subject.description}</p>
                   )}
-                </button>
-                <button
-                  onClick={() => {
-                    setActiveTab("signup");
-                    setError("");
-                  }}
-                  className={`pb-3 font-medium text-lg transition-colors relative ${
-                    activeTab === "signup"
-                      ? "text-teal-600 font-semibold"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  Sign up
-                  {activeTab === "signup" && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-600"></div>
-                  )}
-                </button>
-              </div>
-
-              {/* Content */}
-              {activeTab === "login" ? (
-                <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                    Welcome back
-                  </h2>
-
-                  {/* Social Login Buttons */}
-                  <div className="space-y-3 mb-6">
-                    <button className="w-full border border-gray-300 rounded-xl py-3 px-4 flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors bg-white">
-                      <img
-                        src="https://www.gstatic.com/firebaseapp/v8.10.1/images/firebaseui/idp_logos/google.png"
-                        alt="Google"
-                        className="w-5 h-5"
-                      />
-                      <span className="text-gray-900 font-medium">
-                        Continue with Google
-                      </span>
-                    </button>
-                    <button className="w-full border border-gray-300 rounded-xl py-3 px-4 flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors bg-white">
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M17.05 13.5c-.91 0-1.74.46-2.25 1.13.97 1.5 1.54 3.28 1.54 5.12 0 .24-.02.48-.04.72 1.1-.7 1.8-1.9 1.8-3.25 0-2.2-1.8-4-4-4zm-12-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm12 0c-.3 0-.58.08-.85.17 1.92 1.13 3.85 3.12 3.85 6.33v2h7v-2c0-2.2-1.8-4-4-4z" />
-                      </svg>
-                      <span className="text-gray-900 font-medium">
-                        Continue with Apple
-                      </span>
-                    </button>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="relative mb-6">
-                    <div className="absolute inset-0 flex items-center">
-                      <div className="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div className="relative flex justify-center text-sm">
-                      <span className="px-2 bg-[#FFFBF5] text-gray-600">Or</span>
-                    </div>
-                  </div>
-
-                  {/* Error Message */}
-                  {error && (
-                    <div className="mb-4 p-3 rounded-lg bg-red-50 text-red-600 text-sm">
-                      {error}
-                    </div>
-                  )}
-
-                  {/* Login Form */}
-                  <form onSubmit={handleLogin} className="space-y-5">
-                    <div>
-                      <Label htmlFor="login-email" className="text-gray-900 font-medium text-sm mb-2 block">
-                        Email address
-                      </Label>
-                      <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <Input
-                          id="login-email"
-                          type="email"
-                          placeholder="Enter your email address"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          disabled={formLoading}
-                          className="pl-12 py-3 rounded-xl border-gray-300 bg-white"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="login-password" className="text-gray-900 font-medium text-sm mb-2 block">
-                        Password
-                      </Label>
-                      <div className="relative">
-                        <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <Input
-                          id="login-password"
-                          type={showPassword ? "text" : "password"}
-                          placeholder="Your password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          disabled={formLoading}
-                          className="pl-12 pr-12 py-3 rounded-xl border-gray-300 bg-white"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                        >
-                          {showPassword ? (
-                            <EyeOff className="w-5 h-5" />
-                          ) : (
-                            <Eye className="w-5 h-5" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Checkbox
-                          id="remember"
-                          checked={rememberMe}
-                          onCheckedChange={(checked) =>
-                            setRememberMe(checked as boolean)
-                          }
-                        />
-                        <Label htmlFor="remember" className="text-gray-700 cursor-pointer text-sm">
-                          Remember me
-                        </Label>
-                      </div>
-                      <button
-                        type="button"
-                        className="text-gray-700 hover:text-gray-900 text-sm"
-                      >
-                        Forgot password?
-                      </button>
-                    </div>
-
+                  <div className="mt-4">
                     <Button
-                      type="submit"
-                      disabled={formLoading}
-                      className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-semibold text-lg shadow-lg"
+                      variant="ghost"
+                      className="w-full hover:bg-blue-50"
+                      onClick={(e) => {
+                        e.preventDefault();
+                      }}
                     >
-                      {formLoading ? "Logging in..." : "Log in"}
+                      Explore →
                     </Button>
-                  </form>
-                </div>
-              ) : (
-                <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                    Create your account
-                  </h2>
-
-                  {/* Social Login Buttons */}
-                  <div className="space-y-3 mb-6">
-                    <button className="w-full border border-gray-300 rounded-xl py-3 px-4 flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors bg-white">
-                      <img
-                        src="https://www.gstatic.com/firebaseapp/v8.10.1/images/firebaseui/idp_logos/google.png"
-                        alt="Google"
-                        className="w-5 h-5"
-                      />
-                      <span className="text-gray-900 font-medium">
-                        Continue with Google
-                      </span>
-                    </button>
-                    <button className="w-full border border-gray-300 rounded-xl py-3 px-4 flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors bg-white">
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M17.05 13.5c-.91 0-1.74.46-2.25 1.13.97 1.5 1.54 3.28 1.54 5.12 0 .24-.02.48-.04.72 1.1-.7 1.8-1.9 1.8-3.25 0-2.2-1.8-4-4-4zm-12-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm12 0c-.3 0-.58.08-.85.17 1.92 1.13 3.85 3.12 3.85 6.33v2h7v-2c0-2.2-1.8-4-4-4z" />
-                      </svg>
-                      <span className="text-gray-900 font-medium">
-                        Continue with Apple
-                      </span>
-                    </button>
                   </div>
-
-                  {/* Divider */}
-                  <div className="relative mb-6">
-                    <div className="absolute inset-0 flex items-center">
-                      <div className="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div className="relative flex justify-center text-sm">
-                      <span className="px-2 bg-[#FFFBF5] text-gray-600">Or</span>
-                    </div>
-                  </div>
-
-                  {/* Signup redirect button */}
-                  <Button
-                    onClick={() => navigate("/signup")}
-                    className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-semibold text-lg shadow-lg"
-                  >
-                    Create account
-                  </Button>
-                </div>
-              )}
-
-              {/* Footer */}
-              <div className="mt-8 text-center text-sm text-gray-600">
-                By continuing, you agree to our{" "}
-                <a href="#" className="text-teal-600 hover:text-teal-700 font-medium">
-                  Terms of Service
-                </a>{" "}
-                ·{" "}
-                <a href="#" className="text-teal-600 hover:text-teal-700 font-medium">
-                  Privacy Policy
-                </a>
-              </div>
-            </div>
+                </Card>
+              </Link>
+            ))}
           </div>
-        </div>
-      </div>
-
-      {/* Curriculum Blocks Section */}
-      <div className="relative z-10 bg-white py-16">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Mathematics */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => toggleSection('math')}
-                className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-white text-xl font-bold">
-                    🔢
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Mathematics</h3>
-                </div>
-                <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform ${openSections.math ? 'rotate-180' : ''}`} />
-              </button>
-              {openSections.math && (
-                <div className="px-6 pb-6 grid grid-cols-2 gap-x-8 gap-y-2">
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Pre-Algebra</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Algebra 1</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Geometry</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Algebra 2</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Trigonometry</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Precalculus</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Calculus I (Differential)</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Calculus II (Integral)</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Multivariable Calculus</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Differential Equations</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Linear Algebra</div>
-                </div>
-              )}
-            </div>
-
-            {/* Physics */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => toggleSection('physics')}
-                className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white text-xl font-bold">
-                    ⚛️
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Physics</h3>
-                </div>
-                <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform ${openSections.physics ? 'rotate-180' : ''}`} />
-              </button>
-              {openSections.physics && (
-                <div className="px-6 pb-6 grid grid-cols-2 gap-x-8 gap-y-2">
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Classical Mechanics</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Electricity & Magnetism</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Waves & Oscillations</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Thermodynamics</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Optics</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Modern Physics</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Quantum Mechanics</div>
-                </div>
-              )}
-            </div>
-
-            {/* Computer Science */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => toggleSection('cs')}
-                className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white text-xl font-bold">
-                    💻
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Computer Science</h3>
-                </div>
-                <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform ${openSections.cs ? 'rotate-180' : ''}`} />
-              </button>
-              {openSections.cs && (
-                <div className="px-6 pb-6 grid grid-cols-2 gap-x-8 gap-y-2">
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Intro to Programming</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">HTML/CSS</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">JavaScript Basics</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Python Foundations</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">JavaScript Algorithms</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Data Structures</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Object-Oriented Programming</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">AP CS Principles</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Basic Machine Learning</div>
-                </div>
-              )}
-            </div>
-
-            {/* Finance & Investing */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => toggleSection('finance')}
-                className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white text-xl font-bold">
-                    💰
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Finance & Investing</h3>
-                </div>
-                <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform ${openSections.finance ? 'rotate-180' : ''}`} />
-              </button>
-              {openSections.finance && (
-                <div className="px-6 pb-6 grid grid-cols-2 gap-x-8 gap-y-2">
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Finance Basics</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Accounting & Statements</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Money & Banking</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Microeconomics</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Macroeconomics</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Investing & Markets</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Stocks, ETFs & Index Funds</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Personal Finance & Budgeting</div>
-                  <div className="text-gray-700 hover:text-teal-600 cursor-pointer">Behavioral Finance</div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+        )}
+      </main>
     </div>
   );
 }
