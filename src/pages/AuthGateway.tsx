@@ -162,7 +162,7 @@ export function AuthGateway() {
                     <img
                       src="/assets/apple-logo.png"
                       alt="Apple"
-                      className="w-5 h-5"
+                      className="w-5 h-5 object-contain"
                     />
                     <span className="text-gray-900 font-medium">
                       Continue with Apple
@@ -288,7 +288,7 @@ export function AuthGateway() {
                     <img
                       src="/assets/apple-logo.png"
                       alt="Apple"
-                      className="w-5 h-5"
+                      className="w-5 h-5 object-contain"
                     />
                     <span className="text-gray-900 font-medium">
                       Continue with Apple
