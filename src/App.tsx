@@ -11,6 +11,7 @@ import { CoursePage } from './pages/Course';
 import { LessonPage } from './pages/Lesson';
 import { DashboardPage } from './pages/Dashboard';
 import { SettingsPage } from './pages/Settings';
+import { CoursesPage } from './pages/Courses';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +26,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<AuthGateway />} />
+            <Route path="/courses" element={<CoursesPage />} />
             <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
             <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
             <Route path="/subject/:slug" element={<SubjectPage />} />
