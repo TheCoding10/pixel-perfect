@@ -150,7 +150,7 @@ export function AuthGateway() {
                 <div className="space-y-3 mb-8">
                   <button className="w-full border border-gray-300 rounded-xl py-3 px-4 flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
                     <img
-                      src="https://www.gstatic.com/firebaseapp/v8.10.1/images/firebaseui/idp_logos/google.png"
+                      src="/assets/google-logo.png"
                       alt="Google"
                       className="w-5 h-5"
                     />
@@ -159,13 +159,11 @@ export function AuthGateway() {
                     </span>
                   </button>
                   <button className="w-full border border-gray-300 rounded-xl py-3 px-4 flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
-                    <svg
+                    <img
+                      src="/assets/apple-logo.png"
+                      alt="Apple"
                       className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M17.05 13.5c-.91 0-1.74.46-2.25 1.13.97 1.5 1.54 3.28 1.54 5.12 0 .24-.02.48-.04.72 1.1-.7 1.8-1.9 1.8-3.25 0-2.2-1.8-4-4-4zm-12-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm12 0c-.3 0-.58.08-.85.17 1.92 1.13 3.85 3.12 3.85 6.33v2h7v-2c0-2.2-1.8-4-4-4z" />
-                    </svg>
+                    />
                     <span className="text-gray-900 font-medium">
                       Continue with Apple
                     </span>
@@ -278,7 +276,7 @@ export function AuthGateway() {
                 <div className="space-y-3 mb-8">
                   <button className="w-full border border-gray-300 rounded-xl py-3 px-4 flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
                     <img
-                      src="https://www.gstatic.com/firebaseapp/v8.10.1/images/firebaseui/idp_logos/google.png"
+                      src="/assets/google-logo.png"
                       alt="Google"
                       className="w-5 h-5"
                     />
@@ -287,13 +285,11 @@ export function AuthGateway() {
                     </span>
                   </button>
                   <button className="w-full border border-gray-300 rounded-xl py-3 px-4 flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
-                    <svg
+                    <img
+                      src="/assets/apple-logo.png"
+                      alt="Apple"
                       className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M17.05 13.5c-.91 0-1.74.46-2.25 1.13.97 1.5 1.54 3.28 1.54 5.12 0 .24-.02.48-.04.72 1.1-.7 1.8-1.9 1.8-3.25 0-2.2-1.8-4-4-4zm-12-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm12 0c-.3 0-.58.08-.85.17 1.92 1.13 3.85 3.12 3.85 6.33v2h7v-2c0-2.2-1.8-4-4-4z" />
-                    </svg>
+                    />
                     <span className="text-gray-900 font-medium">
                       Continue with Apple
                     </span>
