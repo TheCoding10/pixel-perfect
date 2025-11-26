@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Search, ChevronDown } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
 
@@ -95,6 +95,14 @@ export function AuthNavbar() {
               </div>
             )}
           </div>
+
+          {/* Courses Link */}
+          <Link
+            to="/courses"
+            className="text-lg font-semibold text-gray-700 hover:text-teal-600 transition-colors"
+          >
+            Courses
+          </Link>
 
           {/* Search Bar */}
           <div className="relative hidden md:block">
