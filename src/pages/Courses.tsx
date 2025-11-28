@@ -50,10 +50,13 @@ const subjects: Subject[] = [
     icon: <Atom className="w-6 h-6" />,
     color: "bg-purple-500",
     courses: [
-      { name: "Mechanics", slug: "mechanics" },
-      { name: "Electromagnetism", slug: "electromagnetism" },
-      { name: "Waves", slug: "waves" },
+      { name: "Classical Mechanics", slug: "classical-mechanics" },
+      { name: "Electricity & Magnetism", slug: "electricity-magnetism" },
+      { name: "Waves & Oscillations", slug: "waves-oscillations" },
       { name: "Thermodynamics", slug: "thermodynamics" },
+      { name: "Optics", slug: "optics" },
+      { name: "Modern Physics", slug: "modern-physics" },
+      { name: "Quantum Mechanics", slug: "quantum-mechanics" },
     ],
   },
   {
