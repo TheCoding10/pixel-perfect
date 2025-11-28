@@ -7,8 +7,15 @@ const MOCK_COURSES: Record<string, any> = {
     icon: "🔢",
     description: "Master fundamental to advanced math concepts",
     courses: [
-      { id: 1, subject_id: 1, title: "Algebra Fundamentals", slug: "algebra-fundamentals", description: "Learn the basics of algebraic expressions", thumbnail: null, duration_hours: 10, order_index: 1 },
-      { id: 2, subject_id: 1, title: "Calculus I", slug: "calculus-1", description: "Introduction to limits, derivatives, and integrals", thumbnail: null, duration_hours: 15, order_index: 2 },
+      { id: 1, subject_id: 1, title: "Algebra 1", slug: "algebra-1", description: "Foundation of algebraic concepts", thumbnail: null, duration_hours: 10, order_index: 1 },
+      { id: 2, subject_id: 1, title: "Geometry", slug: "geometry", description: "Shapes, angles, and spatial reasoning", thumbnail: null, duration_hours: 12, order_index: 2 },
+      { id: 3, subject_id: 1, title: "Algebra 2", slug: "algebra-2", description: "Advanced algebraic techniques", thumbnail: null, duration_hours: 12, order_index: 3 },
+      { id: 4, subject_id: 1, title: "Trigonometry", slug: "trigonometry", description: "Study of triangles and trigonometric functions", thumbnail: null, duration_hours: 10, order_index: 4 },
+      { id: 5, subject_id: 1, title: "Precalculus", slug: "precalculus", description: "Preparation for calculus concepts", thumbnail: null, duration_hours: 14, order_index: 5 },
+      { id: 6, subject_id: 1, title: "Calculus I", slug: "calculus-1", description: "Introduction to limits, derivatives, and integrals", thumbnail: null, duration_hours: 15, order_index: 6 },
+      { id: 7, subject_id: 1, title: "Calculus II", slug: "calculus-2", description: "Advanced integration and series", thumbnail: null, duration_hours: 15, order_index: 7 },
+      { id: 8, subject_id: 1, title: "Multivariable Calculus", slug: "multivariable-calculus", description: "Calculus in multiple dimensions", thumbnail: null, duration_hours: 16, order_index: 8 },
+      { id: 9, subject_id: 1, title: "Linear Algebra", slug: "linear-algebra", description: "Vectors, matrices, and linear transformations", thumbnail: null, duration_hours: 14, order_index: 9 },
     ]
   },
   "computer-science": {
