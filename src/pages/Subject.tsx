@@ -25,8 +25,20 @@ const MOCK_COURSES: Record<string, any> = {
     icon: "💻",
     description: "Learn programming and algorithms",
     courses: [
-      { id: 3, subject_id: 2, title: "Python Basics", slug: "python-basics", description: "Get started with Python programming", thumbnail: null, duration_hours: 8, order_index: 1 },
-      { id: 4, subject_id: 2, title: "Data Structures", slug: "data-structures", description: "Master essential data structures", thumbnail: null, duration_hours: 12, order_index: 2 },
+      { id: 10, subject_id: 2, title: "Intro to Computer Science", slug: "intro-to-computer-science", description: "Foundations of computing", thumbnail: null, duration_hours: 8, order_index: 1 },
+      { id: 11, subject_id: 2, title: "Intro to Programming", slug: "intro-to-programming", description: "Learn programming fundamentals", thumbnail: null, duration_hours: 10, order_index: 2 },
+      { id: 12, subject_id: 2, title: "Python", slug: "python", description: "Master Python programming", thumbnail: null, duration_hours: 12, order_index: 3 },
+      { id: 13, subject_id: 2, title: "JavaScript", slug: "javascript", description: "Web development with JavaScript", thumbnail: null, duration_hours: 12, order_index: 4 },
+      { id: 14, subject_id: 2, title: "Object-Oriented Programming (OOP)", slug: "object-oriented-programming", description: "Design patterns and OOP principles", thumbnail: null, duration_hours: 10, order_index: 5 },
+      { id: 15, subject_id: 2, title: "Data Structures", slug: "data-structures", description: "Essential data structures", thumbnail: null, duration_hours: 14, order_index: 6 },
+      { id: 16, subject_id: 2, title: "Algorithms", slug: "algorithms", description: "Algorithm design and analysis", thumbnail: null, duration_hours: 14, order_index: 7 },
+      { id: 17, subject_id: 2, title: "Computer Systems & Architecture", slug: "computer-systems-architecture", description: "How computers work", thumbnail: null, duration_hours: 12, order_index: 8 },
+      { id: 18, subject_id: 2, title: "Operating Systems", slug: "operating-systems", description: "OS concepts and design", thumbnail: null, duration_hours: 14, order_index: 9 },
+      { id: 19, subject_id: 2, title: "Databases", slug: "databases", description: "Database design and SQL", thumbnail: null, duration_hours: 12, order_index: 10 },
+      { id: 20, subject_id: 2, title: "Computer Networks", slug: "computer-networks", description: "Networking fundamentals", thumbnail: null, duration_hours: 12, order_index: 11 },
+      { id: 21, subject_id: 2, title: "Software Engineering", slug: "software-engineering", description: "Building quality software", thumbnail: null, duration_hours: 14, order_index: 12 },
+      { id: 22, subject_id: 2, title: "Programming Languages & Compilers", slug: "programming-languages-compilers", description: "Language design and compilation", thumbnail: null, duration_hours: 14, order_index: 13 },
+      { id: 23, subject_id: 2, title: "Theory of Computation", slug: "theory-of-computation", description: "Computational theory fundamentals", thumbnail: null, duration_hours: 12, order_index: 14 },
     ]
   },
   "finance-investing": {
