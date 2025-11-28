@@ -85,6 +85,7 @@ const subjects: Subject[] = [
     icon: <TrendingUp className="w-6 h-6" />,
     color: "bg-emerald-500",
     courses: [
+      { name: "Personal Finance", slug: "personal-finance" },
       { name: "Financial Literacy & Budgeting", slug: "financial-literacy-budgeting" },
       { name: "Behavioral Finance", slug: "behavioral-finance" },
       { name: "Stock Market Basics", slug: "stock-market-basics" },
