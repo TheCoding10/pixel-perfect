@@ -48,7 +48,18 @@ const MOCK_COURSES: Record<string, any> = {
     icon: "💰",
     description: "Understanding markets and investments",
     courses: [
-      { id: 5, subject_id: 3, title: "Stock Market Basics", slug: "stock-market-basics", description: "Learn how the stock market works", thumbnail: null, duration_hours: 6, order_index: 1 },
+      { id: 24, subject_id: 3, title: "Personal Finance", slug: "personal-finance", description: "Manage your money effectively", thumbnail: null, duration_hours: 6, order_index: 1 },
+      { id: 25, subject_id: 3, title: "Financial Literacy & Budgeting", slug: "financial-literacy-budgeting", description: "Build strong financial foundations", thumbnail: null, duration_hours: 6, order_index: 2 },
+      { id: 26, subject_id: 3, title: "Behavioral Finance", slug: "behavioral-finance", description: "Psychology of financial decisions", thumbnail: null, duration_hours: 8, order_index: 3 },
+      { id: 27, subject_id: 3, title: "Stock Market Basics", slug: "stock-market-basics", description: "Learn how the stock market works", thumbnail: null, duration_hours: 6, order_index: 4 },
+      { id: 28, subject_id: 3, title: "Investing Foundations", slug: "investing-foundations", description: "Core investing principles", thumbnail: null, duration_hours: 8, order_index: 5 },
+      { id: 29, subject_id: 3, title: "ETFs & Index Funds", slug: "etfs-index-funds", description: "Passive investing strategies", thumbnail: null, duration_hours: 6, order_index: 6 },
+      { id: 30, subject_id: 3, title: "Bonds & Fixed Income", slug: "bonds-fixed-income", description: "Understanding fixed income securities", thumbnail: null, duration_hours: 8, order_index: 7 },
+      { id: 31, subject_id: 3, title: "Portfolio Building & Risk Management", slug: "portfolio-building-risk-management", description: "Build and manage investment portfolios", thumbnail: null, duration_hours: 10, order_index: 8 },
+      { id: 32, subject_id: 3, title: "Financial Markets & Institutions", slug: "financial-markets-institutions", description: "How financial markets operate", thumbnail: null, duration_hours: 10, order_index: 9 },
+      { id: 33, subject_id: 3, title: "Banking & Financial Institutions", slug: "banking-financial-institutions", description: "Understanding the banking system", thumbnail: null, duration_hours: 8, order_index: 10 },
+      { id: 34, subject_id: 3, title: "Real Estate Investing", slug: "real-estate-investing", description: "Investing in property and REITs", thumbnail: null, duration_hours: 8, order_index: 11 },
+      { id: 35, subject_id: 3, title: "Crypto & Digital Assets", slug: "crypto-digital-assets", description: "Cryptocurrency and blockchain investing", thumbnail: null, duration_hours: 8, order_index: 12 },
     ]
   },
   "physics": {
