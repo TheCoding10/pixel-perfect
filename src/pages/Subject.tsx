@@ -69,7 +69,13 @@ const MOCK_COURSES: Record<string, any> = {
     icon: "⚛️",
     description: "Explore the laws of nature",
     courses: [
-      { id: 6, subject_id: 4, title: "Classical Mechanics", slug: "classical-mechanics", description: "Understanding motion and forces", thumbnail: null, duration_hours: 14, order_index: 1 },
+      { id: 36, subject_id: 4, title: "Classical Mechanics", slug: "classical-mechanics", description: "Understanding motion and forces", thumbnail: null, duration_hours: 14, order_index: 1 },
+      { id: 37, subject_id: 4, title: "Electricity & Magnetism", slug: "electricity-magnetism", description: "Electric and magnetic phenomena", thumbnail: null, duration_hours: 14, order_index: 2 },
+      { id: 38, subject_id: 4, title: "Waves & Oscillations", slug: "waves-oscillations", description: "Study of wave behavior and motion", thumbnail: null, duration_hours: 10, order_index: 3 },
+      { id: 39, subject_id: 4, title: "Thermodynamics", slug: "thermodynamics", description: "Heat, energy, and entropy", thumbnail: null, duration_hours: 12, order_index: 4 },
+      { id: 40, subject_id: 4, title: "Optics", slug: "optics", description: "Light and optical phenomena", thumbnail: null, duration_hours: 10, order_index: 5 },
+      { id: 41, subject_id: 4, title: "Modern Physics", slug: "modern-physics", description: "Relativity and atomic physics", thumbnail: null, duration_hours: 12, order_index: 6 },
+      { id: 42, subject_id: 4, title: "Quantum Mechanics", slug: "quantum-mechanics", description: "Quantum theory fundamentals", thumbnail: null, duration_hours: 14, order_index: 7 },
     ]
   },
 };
