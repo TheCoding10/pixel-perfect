@@ -1,40 +1,141 @@
 // Mock lesson data
 const MOCK_LESSONS: Record<string, any> = {
-  "algebra-fundamentals": {
+  "algebra-1": {
     id: 1,
     course_id: 1,
-    title: "Algebra Fundamentals",
-    slug: "algebra-fundamentals",
-    description: "Master the fundamentals of algebra",
+    title: "Algebra 1",
+    slug: "algebra-1",
+    description: "Foundation of algebraic concepts",
     thumbnail: null,
     duration_hours: 10,
     lessons: [
-      { id: 1, course_id: 1, title: "Variables and Expressions", slug: "variables-expressions", description: "Learn about variables", video_url: null, duration_seconds: 1800, order_index: 1 },
-      { id: 2, course_id: 1, title: "Solving Equations", slug: "solving-equations", description: "Master equation solving", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 1, course_id: 1, title: "Variables and Expressions", slug: "variables-expressions", description: "Learn about variables and expressions", video_url: null, duration_seconds: 1800, order_index: 1 },
+      { id: 2, course_id: 1, title: "Solving Linear Equations", slug: "solving-linear-equations", description: "Master solving linear equations", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 3, course_id: 1, title: "Inequalities", slug: "inequalities", description: "Understanding inequalities", video_url: null, duration_seconds: 2000, order_index: 3 },
+    ]
+  },
+  "geometry": {
+    id: 2,
+    course_id: 2,
+    title: "Geometry",
+    slug: "geometry",
+    description: "Shapes, angles, and spatial reasoning",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 4, course_id: 2, title: "Points, Lines, and Planes", slug: "points-lines-planes", description: "Fundamental geometric concepts", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 5, course_id: 2, title: "Angles and Triangles", slug: "angles-triangles", description: "Properties of angles and triangles", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 6, course_id: 2, title: "Circles", slug: "circles", description: "Circle properties and theorems", video_url: null, duration_seconds: 2200, order_index: 3 },
+    ]
+  },
+  "algebra-2": {
+    id: 3,
+    course_id: 3,
+    title: "Algebra 2",
+    slug: "algebra-2",
+    description: "Advanced algebraic techniques",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 7, course_id: 3, title: "Polynomials", slug: "polynomials", description: "Working with polynomials", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 8, course_id: 3, title: "Quadratic Functions", slug: "quadratic-functions", description: "Understanding quadratic functions", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 9, course_id: 3, title: "Exponential and Logarithmic Functions", slug: "exponential-logarithmic", description: "Exponential and log functions", video_url: null, duration_seconds: 3000, order_index: 3 },
+    ]
+  },
+  "trigonometry": {
+    id: 4,
+    course_id: 4,
+    title: "Trigonometry",
+    slug: "trigonometry",
+    description: "Study of triangles and trigonometric functions",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 10, course_id: 4, title: "Trigonometric Ratios", slug: "trig-ratios", description: "Sine, cosine, and tangent", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 11, course_id: 4, title: "Unit Circle", slug: "unit-circle", description: "Understanding the unit circle", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 12, course_id: 4, title: "Trigonometric Identities", slug: "trig-identities", description: "Key trigonometric identities", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "precalculus": {
+    id: 5,
+    course_id: 5,
+    title: "Precalculus",
+    slug: "precalculus",
+    description: "Preparation for calculus concepts",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 13, course_id: 5, title: "Functions and Graphs", slug: "functions-graphs", description: "Understanding functions and their graphs", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 14, course_id: 5, title: "Sequences and Series", slug: "sequences-series", description: "Arithmetic and geometric sequences", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 15, course_id: 5, title: "Introduction to Limits", slug: "intro-limits", description: "Preparing for calculus limits", video_url: null, duration_seconds: 3000, order_index: 3 },
     ]
   },
   "calculus-1": {
-    id: 2,
-    course_id: 2,
+    id: 6,
+    course_id: 6,
     title: "Calculus I",
     slug: "calculus-1",
-    description: "Introduction to calculus",
+    description: "Introduction to limits, derivatives, and integrals",
     thumbnail: null,
     duration_hours: 15,
     lessons: [
-      { id: 3, course_id: 2, title: "Limits", slug: "limits", description: "Understanding limits", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 16, course_id: 6, title: "Limits", slug: "limits", description: "Understanding limits", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 17, course_id: 6, title: "Derivatives", slug: "derivatives", description: "Introduction to derivatives", video_url: null, duration_seconds: 3300, order_index: 2 },
+      { id: 18, course_id: 6, title: "Integrals", slug: "integrals", description: "Introduction to integrals", video_url: null, duration_seconds: 3600, order_index: 3 },
+    ]
+  },
+  "calculus-2": {
+    id: 7,
+    course_id: 7,
+    title: "Calculus II",
+    slug: "calculus-2",
+    description: "Advanced integration and series",
+    thumbnail: null,
+    duration_hours: 15,
+    lessons: [
+      { id: 19, course_id: 7, title: "Integration Techniques", slug: "integration-techniques", description: "Advanced integration methods", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 20, course_id: 7, title: "Infinite Series", slug: "infinite-series", description: "Convergence and divergence", video_url: null, duration_seconds: 3300, order_index: 2 },
+      { id: 21, course_id: 7, title: "Taylor Series", slug: "taylor-series", description: "Taylor and Maclaurin series", video_url: null, duration_seconds: 3000, order_index: 3 },
+    ]
+  },
+  "multivariable-calculus": {
+    id: 8,
+    course_id: 8,
+    title: "Multivariable Calculus",
+    slug: "multivariable-calculus",
+    description: "Calculus in multiple dimensions",
+    thumbnail: null,
+    duration_hours: 16,
+    lessons: [
+      { id: 22, course_id: 8, title: "Partial Derivatives", slug: "partial-derivatives", description: "Derivatives of multivariable functions", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 23, course_id: 8, title: "Multiple Integrals", slug: "multiple-integrals", description: "Double and triple integrals", video_url: null, duration_seconds: 3600, order_index: 2 },
+      { id: 24, course_id: 8, title: "Vector Calculus", slug: "vector-calculus", description: "Line and surface integrals", video_url: null, duration_seconds: 3300, order_index: 3 },
+    ]
+  },
+  "linear-algebra": {
+    id: 9,
+    course_id: 9,
+    title: "Linear Algebra",
+    slug: "linear-algebra",
+    description: "Vectors, matrices, and linear transformations",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 25, course_id: 9, title: "Vectors and Matrices", slug: "vectors-matrices", description: "Introduction to vectors and matrices", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 26, course_id: 9, title: "Systems of Linear Equations", slug: "linear-systems", description: "Solving systems of equations", video_url: null, duration_seconds: 3000, order_index: 2 },
+      { id: 27, course_id: 9, title: "Eigenvalues and Eigenvectors", slug: "eigenvalues", description: "Understanding eigenvalues", video_url: null, duration_seconds: 3300, order_index: 3 },
     ]
   },
   "python-basics": {
-    id: 3,
-    course_id: 3,
+    id: 10,
+    course_id: 10,
     title: "Python Basics",
     slug: "python-basics",
     description: "Get started with Python",
     thumbnail: null,
     duration_hours: 8,
     lessons: [
-      { id: 4, course_id: 3, title: "Python Syntax", slug: "python-syntax", description: "Learn Python syntax", video_url: null, duration_seconds: 2000, order_index: 1 },
+      { id: 28, course_id: 10, title: "Python Syntax", slug: "python-syntax", description: "Learn Python syntax", video_url: null, duration_seconds: 2000, order_index: 1 },
     ]
   },
 };
