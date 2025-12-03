@@ -138,6 +138,104 @@ const MOCK_LESSONS: Record<string, any> = {
       { id: 28, course_id: 10, title: "Python Syntax", slug: "python-syntax", description: "Learn Python syntax", video_url: null, duration_seconds: 2000, order_index: 1 },
     ]
   },
+  "classical-mechanics": {
+    id: 11,
+    course_id: 11,
+    title: "Classical Mechanics",
+    slug: "classical-mechanics",
+    description: "Understanding motion and forces",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 29, course_id: 11, title: "Kinematics", slug: "kinematics", description: "Motion in one and two dimensions", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 30, course_id: 11, title: "Newton's Laws", slug: "newtons-laws", description: "Forces and motion", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 31, course_id: 11, title: "Work, Energy, and Power", slug: "work-energy-power", description: "Energy conservation and work", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "electricity-magnetism": {
+    id: 12,
+    course_id: 12,
+    title: "Electricity & Magnetism",
+    slug: "electricity-magnetism",
+    description: "Electric and magnetic phenomena",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 32, course_id: 12, title: "Electric Charges and Fields", slug: "electric-charges-fields", description: "Coulomb's law and electric fields", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 33, course_id: 12, title: "Electric Circuits", slug: "electric-circuits", description: "Current, resistance, and Ohm's law", video_url: null, duration_seconds: 3000, order_index: 2 },
+      { id: 34, course_id: 12, title: "Magnetism", slug: "magnetism", description: "Magnetic fields and forces", video_url: null, duration_seconds: 2700, order_index: 3 },
+    ]
+  },
+  "waves-oscillations": {
+    id: 13,
+    course_id: 13,
+    title: "Waves & Oscillations",
+    slug: "waves-oscillations",
+    description: "Study of wave behavior and motion",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 35, course_id: 13, title: "Simple Harmonic Motion", slug: "simple-harmonic-motion", description: "Oscillatory motion fundamentals", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 36, course_id: 13, title: "Wave Properties", slug: "wave-properties", description: "Wavelength, frequency, and amplitude", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 37, course_id: 13, title: "Sound Waves", slug: "sound-waves", description: "Properties of sound", video_url: null, duration_seconds: 2100, order_index: 3 },
+    ]
+  },
+  "thermodynamics": {
+    id: 14,
+    course_id: 14,
+    title: "Thermodynamics",
+    slug: "thermodynamics",
+    description: "Heat, energy, and entropy",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 38, course_id: 14, title: "Temperature and Heat", slug: "temperature-heat", description: "Thermal energy fundamentals", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 39, course_id: 14, title: "Laws of Thermodynamics", slug: "laws-thermodynamics", description: "First and second laws", video_url: null, duration_seconds: 3000, order_index: 2 },
+      { id: 40, course_id: 14, title: "Heat Engines and Entropy", slug: "heat-engines-entropy", description: "Efficiency and disorder", video_url: null, duration_seconds: 2700, order_index: 3 },
+    ]
+  },
+  "optics": {
+    id: 15,
+    course_id: 15,
+    title: "Optics",
+    slug: "optics",
+    description: "Light and optical phenomena",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 41, course_id: 15, title: "Reflection and Refraction", slug: "reflection-refraction", description: "Light behavior at boundaries", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 42, course_id: 15, title: "Lenses and Mirrors", slug: "lenses-mirrors", description: "Image formation", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 43, course_id: 15, title: "Wave Optics", slug: "wave-optics", description: "Interference and diffraction", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "modern-physics": {
+    id: 16,
+    course_id: 16,
+    title: "Modern Physics",
+    slug: "modern-physics",
+    description: "Relativity and atomic physics",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 44, course_id: 16, title: "Special Relativity", slug: "special-relativity", description: "Time dilation and length contraction", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 45, course_id: 16, title: "Photoelectric Effect", slug: "photoelectric-effect", description: "Light as particles", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 46, course_id: 16, title: "Atomic Structure", slug: "atomic-structure", description: "Bohr model and beyond", video_url: null, duration_seconds: 2700, order_index: 3 },
+    ]
+  },
+  "quantum-mechanics": {
+    id: 17,
+    course_id: 17,
+    title: "Quantum Mechanics",
+    slug: "quantum-mechanics",
+    description: "Quantum theory fundamentals",
+    thumbnail: null,
+    duration_hours: 16,
+    lessons: [
+      { id: 47, course_id: 17, title: "Wave-Particle Duality", slug: "wave-particle-duality", description: "The dual nature of matter", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 48, course_id: 17, title: "Schrödinger Equation", slug: "schrodinger-equation", description: "The fundamental equation", video_url: null, duration_seconds: 3300, order_index: 2 },
+      { id: 49, course_id: 17, title: "Quantum States and Operators", slug: "quantum-states-operators", description: "Mathematical framework", video_url: null, duration_seconds: 3000, order_index: 3 },
+    ]
+  },
 };
 
 import { useEffect, useState } from 'react';
