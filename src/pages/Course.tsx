@@ -126,16 +126,200 @@ const MOCK_LESSONS: Record<string, any> = {
       { id: 27, course_id: 9, title: "Eigenvalues and Eigenvectors", slug: "eigenvalues", description: "Understanding eigenvalues", video_url: null, duration_seconds: 3300, order_index: 3 },
     ]
   },
-  "python-basics": {
+  "intro-to-computer-science": {
     id: 10,
     course_id: 10,
-    title: "Python Basics",
-    slug: "python-basics",
-    description: "Get started with Python",
+    title: "Intro to Computer Science",
+    slug: "intro-to-computer-science",
+    description: "Foundations of computing",
     thumbnail: null,
     duration_hours: 8,
     lessons: [
-      { id: 28, course_id: 10, title: "Python Syntax", slug: "python-syntax", description: "Learn Python syntax", video_url: null, duration_seconds: 2000, order_index: 1 },
+      { id: 50, course_id: 10, title: "What is Computer Science?", slug: "what-is-cs", description: "Overview of the field", video_url: null, duration_seconds: 1800, order_index: 1 },
+      { id: 51, course_id: 10, title: "Binary and Data Representation", slug: "binary-data", description: "How computers store information", video_url: null, duration_seconds: 2100, order_index: 2 },
+      { id: 52, course_id: 10, title: "Introduction to Algorithms", slug: "intro-algorithms", description: "Basic algorithmic thinking", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "intro-to-programming": {
+    id: 11,
+    course_id: 11,
+    title: "Intro to Programming",
+    slug: "intro-to-programming",
+    description: "Learn programming fundamentals",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 53, course_id: 11, title: "Variables and Data Types", slug: "variables-data-types", description: "Storing and manipulating data", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 54, course_id: 11, title: "Control Flow", slug: "control-flow", description: "If statements and loops", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 55, course_id: 11, title: "Functions", slug: "functions", description: "Writing reusable code", video_url: null, duration_seconds: 2700, order_index: 3 },
+    ]
+  },
+  "python": {
+    id: 12,
+    course_id: 12,
+    title: "Python",
+    slug: "python",
+    description: "Master Python programming",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 56, course_id: 12, title: "Python Syntax", slug: "python-syntax", description: "Learn Python syntax", video_url: null, duration_seconds: 2000, order_index: 1 },
+      { id: 57, course_id: 12, title: "Lists and Dictionaries", slug: "lists-dictionaries", description: "Python data structures", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 58, course_id: 12, title: "File Handling", slug: "file-handling", description: "Reading and writing files", video_url: null, duration_seconds: 2100, order_index: 3 },
+    ]
+  },
+  "javascript": {
+    id: 13,
+    course_id: 13,
+    title: "JavaScript",
+    slug: "javascript",
+    description: "Web development with JavaScript",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 59, course_id: 13, title: "JavaScript Basics", slug: "js-basics", description: "Variables, types, and operators", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 60, course_id: 13, title: "DOM Manipulation", slug: "dom-manipulation", description: "Interacting with web pages", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 61, course_id: 13, title: "Async JavaScript", slug: "async-js", description: "Promises and async/await", video_url: null, duration_seconds: 3000, order_index: 3 },
+    ]
+  },
+  "object-oriented-programming": {
+    id: 14,
+    course_id: 14,
+    title: "Object-Oriented Programming (OOP)",
+    slug: "object-oriented-programming",
+    description: "Design patterns and OOP principles",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 62, course_id: 14, title: "Classes and Objects", slug: "classes-objects", description: "Creating and using classes", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 63, course_id: 14, title: "Inheritance", slug: "inheritance", description: "Extending classes", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 64, course_id: 14, title: "Polymorphism and Encapsulation", slug: "polymorphism-encapsulation", description: "OOP principles", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "data-structures": {
+    id: 15,
+    course_id: 15,
+    title: "Data Structures",
+    slug: "data-structures",
+    description: "Essential data structures",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 65, course_id: 15, title: "Arrays and Linked Lists", slug: "arrays-linked-lists", description: "Linear data structures", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 66, course_id: 15, title: "Stacks and Queues", slug: "stacks-queues", description: "LIFO and FIFO structures", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 67, course_id: 15, title: "Trees and Graphs", slug: "trees-graphs", description: "Non-linear data structures", video_url: null, duration_seconds: 3000, order_index: 3 },
+    ]
+  },
+  "algorithms": {
+    id: 16,
+    course_id: 16,
+    title: "Algorithms",
+    slug: "algorithms",
+    description: "Algorithm design and analysis",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 68, course_id: 16, title: "Sorting Algorithms", slug: "sorting-algorithms", description: "Bubble, merge, quick sort", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 69, course_id: 16, title: "Searching Algorithms", slug: "searching-algorithms", description: "Binary search and more", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 70, course_id: 16, title: "Dynamic Programming", slug: "dynamic-programming", description: "Optimization techniques", video_url: null, duration_seconds: 3300, order_index: 3 },
+    ]
+  },
+  "computer-systems-architecture": {
+    id: 17,
+    course_id: 17,
+    title: "Computer Systems & Architecture",
+    slug: "computer-systems-architecture",
+    description: "How computers work",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 71, course_id: 17, title: "CPU Architecture", slug: "cpu-architecture", description: "How processors work", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 72, course_id: 17, title: "Memory Hierarchy", slug: "memory-hierarchy", description: "Cache, RAM, and storage", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 73, course_id: 17, title: "Assembly Language", slug: "assembly-language", description: "Low-level programming", video_url: null, duration_seconds: 3000, order_index: 3 },
+    ]
+  },
+  "operating-systems": {
+    id: 18,
+    course_id: 18,
+    title: "Operating Systems",
+    slug: "operating-systems",
+    description: "OS concepts and design",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 74, course_id: 18, title: "Process Management", slug: "process-management", description: "Processes and threads", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 75, course_id: 18, title: "Memory Management", slug: "memory-management", description: "Virtual memory and paging", video_url: null, duration_seconds: 3000, order_index: 2 },
+      { id: 76, course_id: 18, title: "File Systems", slug: "file-systems", description: "Storage organization", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "databases": {
+    id: 19,
+    course_id: 19,
+    title: "Databases",
+    slug: "databases",
+    description: "Database design and SQL",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 77, course_id: 19, title: "Relational Databases", slug: "relational-databases", description: "Tables, keys, and relations", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 78, course_id: 19, title: "SQL Fundamentals", slug: "sql-fundamentals", description: "Queries and commands", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 79, course_id: 19, title: "Database Design", slug: "database-design", description: "Normalization and modeling", video_url: null, duration_seconds: 3000, order_index: 3 },
+    ]
+  },
+  "computer-networks": {
+    id: 20,
+    course_id: 20,
+    title: "Computer Networks",
+    slug: "computer-networks",
+    description: "Networking fundamentals",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 80, course_id: 20, title: "Network Layers", slug: "network-layers", description: "OSI and TCP/IP models", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 81, course_id: 20, title: "Protocols", slug: "protocols", description: "HTTP, TCP, UDP, and more", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 82, course_id: 20, title: "Network Security", slug: "network-security", description: "Encryption and firewalls", video_url: null, duration_seconds: 3000, order_index: 3 },
+    ]
+  },
+  "software-engineering": {
+    id: 21,
+    course_id: 21,
+    title: "Software Engineering",
+    slug: "software-engineering",
+    description: "Building quality software",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 83, course_id: 21, title: "Software Development Life Cycle", slug: "sdlc", description: "Planning and methodology", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 84, course_id: 21, title: "Version Control", slug: "version-control", description: "Git and collaboration", video_url: null, duration_seconds: 2100, order_index: 2 },
+      { id: 85, course_id: 21, title: "Testing and QA", slug: "testing-qa", description: "Unit and integration testing", video_url: null, duration_seconds: 2700, order_index: 3 },
+    ]
+  },
+  "programming-languages-compilers": {
+    id: 22,
+    course_id: 22,
+    title: "Programming Languages & Compilers",
+    slug: "programming-languages-compilers",
+    description: "Language design and compilation",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 86, course_id: 22, title: "Lexical Analysis", slug: "lexical-analysis", description: "Tokenization and scanning", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 87, course_id: 22, title: "Parsing", slug: "parsing", description: "Syntax analysis", video_url: null, duration_seconds: 3000, order_index: 2 },
+      { id: 88, course_id: 22, title: "Code Generation", slug: "code-generation", description: "From AST to machine code", video_url: null, duration_seconds: 3300, order_index: 3 },
+    ]
+  },
+  "theory-of-computation": {
+    id: 23,
+    course_id: 23,
+    title: "Theory of Computation",
+    slug: "theory-of-computation",
+    description: "Computational theory fundamentals",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 89, course_id: 23, title: "Automata Theory", slug: "automata-theory", description: "Finite automata and languages", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 90, course_id: 23, title: "Turing Machines", slug: "turing-machines", description: "Computability theory", video_url: null, duration_seconds: 3000, order_index: 2 },
+      { id: 91, course_id: 23, title: "Complexity Theory", slug: "complexity-theory", description: "P vs NP and beyond", video_url: null, duration_seconds: 2700, order_index: 3 },
     ]
   },
   "classical-mechanics": {
