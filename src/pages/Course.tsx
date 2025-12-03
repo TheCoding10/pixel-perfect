@@ -420,6 +420,132 @@ const MOCK_LESSONS: Record<string, any> = {
       { id: 49, course_id: 17, title: "Quantum States and Operators", slug: "quantum-states-operators", description: "Mathematical framework", video_url: null, duration_seconds: 3000, order_index: 3 },
     ]
   },
+  "personal-finance": {
+    id: 24,
+    course_id: 24,
+    title: "Personal Finance",
+    slug: "personal-finance",
+    description: "Manage your money effectively",
+    thumbnail: null,
+    duration_hours: 8,
+    lessons: [
+      { id: 100, course_id: 24, title: "Income and Expenses", slug: "income-expenses", description: "Understanding cash flow", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 101, course_id: 24, title: "Savings Strategies", slug: "savings-strategies", description: "Building an emergency fund", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 102, course_id: 24, title: "Managing Debt", slug: "managing-debt", description: "Debt reduction strategies", video_url: null, duration_seconds: 2100, order_index: 3 },
+    ]
+  },
+  "financial-literacy-budgeting": {
+    id: 25,
+    course_id: 25,
+    title: "Financial Literacy & Budgeting",
+    slug: "financial-literacy-budgeting",
+    description: "Build strong financial foundations",
+    thumbnail: null,
+    duration_hours: 8,
+    lessons: [
+      { id: 103, course_id: 25, title: "Creating a Budget", slug: "creating-budget", description: "Budgeting basics", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 104, course_id: 25, title: "Tracking Spending", slug: "tracking-spending", description: "Monitor your expenses", video_url: null, duration_seconds: 1800, order_index: 2 },
+      { id: 105, course_id: 25, title: "Financial Goals", slug: "financial-goals", description: "Setting and achieving goals", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "behavioral-finance": {
+    id: 26,
+    course_id: 26,
+    title: "Behavioral Finance",
+    slug: "behavioral-finance",
+    description: "Psychology of financial decisions",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 106, course_id: 26, title: "Cognitive Biases", slug: "cognitive-biases", description: "Common thinking errors", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 107, course_id: 26, title: "Emotional Investing", slug: "emotional-investing", description: "Fear and greed in markets", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 108, course_id: 26, title: "Rational Decision Making", slug: "rational-decision-making", description: "Overcoming biases", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "stock-market-basics": {
+    id: 27,
+    course_id: 27,
+    title: "Stock Market Basics",
+    slug: "stock-market-basics",
+    description: "Learn how the stock market works",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 109, course_id: 27, title: "What Are Stocks?", slug: "what-are-stocks", description: "Understanding equity ownership", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 110, course_id: 27, title: "How Markets Work", slug: "how-markets-work", description: "Exchanges and trading", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 111, course_id: 27, title: "Reading Stock Quotes", slug: "reading-stock-quotes", description: "Price, volume, and metrics", video_url: null, duration_seconds: 2100, order_index: 3 },
+    ]
+  },
+  "investing-foundations": {
+    id: 28,
+    course_id: 28,
+    title: "Investing Foundations",
+    slug: "investing-foundations",
+    description: "Core investing principles",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 112, course_id: 28, title: "Risk and Return", slug: "risk-return", description: "Understanding the trade-off", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 113, course_id: 28, title: "Asset Classes", slug: "asset-classes", description: "Stocks, bonds, and alternatives", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 114, course_id: 28, title: "Compound Interest", slug: "compound-interest", description: "The power of compounding", video_url: null, duration_seconds: 2100, order_index: 3 },
+    ]
+  },
+  "etfs-index-funds": {
+    id: 29,
+    course_id: 29,
+    title: "ETFs & Index Funds",
+    slug: "etfs-index-funds",
+    description: "Passive investing strategies",
+    thumbnail: null,
+    duration_hours: 8,
+    lessons: [
+      { id: 115, course_id: 29, title: "What Are ETFs?", slug: "what-are-etfs", description: "Exchange-traded funds explained", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 116, course_id: 29, title: "Index Investing", slug: "index-investing", description: "Tracking market indices", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 117, course_id: 29, title: "Choosing Funds", slug: "choosing-funds", description: "Expense ratios and selection", video_url: null, duration_seconds: 2100, order_index: 3 },
+    ]
+  },
+  "bonds-fixed-income": {
+    id: 30,
+    course_id: 30,
+    title: "Bonds & Fixed Income",
+    slug: "bonds-fixed-income",
+    description: "Understanding fixed income securities",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 118, course_id: 30, title: "Bond Basics", slug: "bond-basics", description: "How bonds work", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 119, course_id: 30, title: "Bond Pricing", slug: "bond-pricing", description: "Yields and interest rates", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 120, course_id: 30, title: "Types of Bonds", slug: "types-of-bonds", description: "Government, corporate, and municipal", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
+  "portfolio-building-risk-management": {
+    id: 31,
+    course_id: 31,
+    title: "Portfolio Building & Risk Management",
+    slug: "portfolio-building-risk-management",
+    description: "Build and manage investment portfolios",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 121, course_id: 31, title: "Diversification", slug: "diversification", description: "Spreading risk effectively", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 122, course_id: 31, title: "Asset Allocation", slug: "asset-allocation", description: "Balancing your portfolio", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 123, course_id: 31, title: "Rebalancing", slug: "rebalancing", description: "Maintaining target allocations", video_url: null, duration_seconds: 2100, order_index: 3 },
+    ]
+  },
+  "financial-markets-institutions": {
+    id: 32,
+    course_id: 32,
+    title: "Financial Markets & Institutions",
+    slug: "financial-markets-institutions",
+    description: "How financial markets operate",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 124, course_id: 32, title: "Types of Financial Markets", slug: "types-financial-markets", description: "Capital, money, and derivatives markets", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 125, course_id: 32, title: "Financial Intermediaries", slug: "financial-intermediaries", description: "Banks, brokers, and funds", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 126, course_id: 32, title: "Market Regulation", slug: "market-regulation", description: "SEC and regulatory bodies", video_url: null, duration_seconds: 2400, order_index: 3 },
+    ]
+  },
 };
 
 import { useEffect, useState } from 'react';
