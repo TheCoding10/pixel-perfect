@@ -24,10 +24,10 @@ const MOCK_LESSON_DATA: Record<string, any> = {
       }
     ]
   },
-  // Calculus I - Limits lesson (ID: 10 from Course.tsx)
-  "10": {
-    id: 10,
-    course_id: 5,
+  // Calculus I - Limits lesson (ID: 16 from Course.tsx)
+  "16": {
+    id: 16,
+    course_id: 6,
     title: "Limits",
     slug: "limits",
     description: "Understanding limits and continuity - the foundation of calculus",
@@ -72,7 +72,7 @@ const MOCK_LESSON_DATA: Record<string, any> = {
     exercises: [
       {
         id: 101,
-        lesson_id: 10,
+        lesson_id: 16,
         question: "What does lim(x→a) f(x) = L mean?",
         question_type: "multiple_choice",
         points: 10,
@@ -86,7 +86,7 @@ const MOCK_LESSON_DATA: Record<string, any> = {
       },
       {
         id: 102,
-        lesson_id: 10,
+        lesson_id: 16,
         question: "What type of discontinuity occurs when a function has a 'hole' at a point?",
         question_type: "multiple_choice",
         points: 10,
