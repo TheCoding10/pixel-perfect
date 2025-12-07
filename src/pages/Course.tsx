@@ -597,7 +597,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
-import { ArrowLeft, Play, CheckCircle, Clock } from 'lucide-react';
+import { ArrowLeft, Play, CheckCircle } from 'lucide-react';
 
 interface Lesson {
   id: number;
@@ -704,18 +704,12 @@ export function CoursePage() {
                     {lesson.description && (
                       <p className="text-sm text-gray-600">{lesson.description}</p>
                     )}
-                    <div className="mt-2 flex items-center gap-4 text-sm text-gray-500">
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span>{formatDuration(lesson.duration_seconds)}</span>
+                    {progress[lesson.id] && (
+                      <div className="mt-2 flex items-center gap-1 text-sm text-green-600">
+                        <CheckCircle className="h-4 w-4" />
+                        <span>Completed</span>
                       </div>
-                      {progress[lesson.id] && (
-                        <div className="flex items-center gap-1 text-green-600">
-                          <CheckCircle className="h-4 w-4" />
-                          <span>Completed</span>
-                        </div>
-                      )}
-                    </div>
+                    )}
                   </div>
                   <div className="flex-shrink-0">
                     <Link to={`/lesson/${lesson.id}`}>
