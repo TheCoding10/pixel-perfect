@@ -546,6 +546,51 @@ const MOCK_LESSONS: Record<string, any> = {
       { id: 126, course_id: 32, title: "Market Regulation", slug: "market-regulation", description: "SEC and regulatory bodies", video_url: null, duration_seconds: 2400, order_index: 3 },
     ]
   },
+  "banking-financial-institutions": {
+    id: 33,
+    course_id: 33,
+    title: "Banking & Financial Institutions",
+    slug: "banking-financial-institutions",
+    description: "Understanding banking systems",
+    thumbnail: null,
+    duration_hours: 10,
+    lessons: [
+      { id: 127, course_id: 33, title: "Commercial Banking", slug: "commercial-banking", description: "How banks operate and make money", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 128, course_id: 33, title: "Central Banks", slug: "central-banks", description: "Monetary policy and the Fed", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 129, course_id: 33, title: "Investment Banking", slug: "investment-banking", description: "IPOs, M&A, and capital markets", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 130, course_id: 33, title: "Banking Regulations", slug: "banking-regulations", description: "Basel accords and compliance", video_url: null, duration_seconds: 2100, order_index: 4 },
+    ]
+  },
+  "real-estate-investing": {
+    id: 34,
+    course_id: 34,
+    title: "Real Estate Investing",
+    slug: "real-estate-investing",
+    description: "Build wealth through real estate",
+    thumbnail: null,
+    duration_hours: 14,
+    lessons: [
+      { id: 131, course_id: 34, title: "Real Estate Fundamentals", slug: "real-estate-fundamentals", description: "Types of real estate investments", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 132, course_id: 34, title: "Rental Properties", slug: "rental-properties", description: "Cash flow and property management", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 133, course_id: 34, title: "REITs", slug: "reits", description: "Real Estate Investment Trusts", video_url: null, duration_seconds: 2100, order_index: 3 },
+      { id: 134, course_id: 34, title: "Real Estate Analysis", slug: "real-estate-analysis", description: "Cap rates, NOI, and valuation", video_url: null, duration_seconds: 2700, order_index: 4 },
+    ]
+  },
+  "crypto-digital-assets": {
+    id: 35,
+    course_id: 35,
+    title: "Crypto & Digital Assets",
+    slug: "crypto-digital-assets",
+    description: "Navigate the world of cryptocurrency",
+    thumbnail: null,
+    duration_hours: 12,
+    lessons: [
+      { id: 135, course_id: 35, title: "Blockchain Basics", slug: "blockchain-basics", description: "How blockchain technology works", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 136, course_id: 35, title: "Bitcoin & Ethereum", slug: "bitcoin-ethereum", description: "Major cryptocurrencies explained", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 137, course_id: 35, title: "DeFi & NFTs", slug: "defi-nfts", description: "Decentralized finance and digital assets", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 138, course_id: 35, title: "Crypto Security", slug: "crypto-security", description: "Wallets, keys, and safe practices", video_url: null, duration_seconds: 2100, order_index: 4 },
+    ]
+  },
 };
 
 import { useEffect, useState } from 'react';
