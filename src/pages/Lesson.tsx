@@ -1,4 +1,4 @@
-// Mock lesson with exercises
+// Mock lesson with exercises and sub-lessons
 const MOCK_LESSON_DATA: Record<string, any> = {
   "1": {
     id: 1,
@@ -24,13 +24,89 @@ const MOCK_LESSON_DATA: Record<string, any> = {
       }
     ]
   },
+  // Calculus I - Limits lesson (ID: 10 from Course.tsx)
+  "10": {
+    id: 10,
+    course_id: 5,
+    title: "Limits",
+    slug: "limits",
+    description: "Understanding limits and continuity - the foundation of calculus",
+    video_url: null,
+    duration_seconds: 3000,
+    unitTitle: "UNIT 1 — Limits & Continuity",
+    subLessons: [
+      {
+        title: "Intro to Limits",
+        topics: [
+          { id: "limit-1-1", title: "What is a limit?", completed: false },
+          { id: "limit-1-2", title: "Estimating limits from graphs", completed: false },
+          { id: "limit-1-3", title: "Estimating limits from tables", completed: false },
+          { id: "limit-1-4", title: "Limits using algebra", completed: false },
+        ]
+      },
+      {
+        title: "Properties of Limits",
+        topics: [
+          { id: "limit-2-1", title: "Limit laws", completed: false },
+          { id: "limit-2-2", title: "Limits of combined functions", completed: false },
+        ]
+      },
+      {
+        title: "One-Sided & Infinite Limits",
+        topics: [
+          { id: "limit-3-1", title: "Left-hand & right-hand limits", completed: false },
+          { id: "limit-3-2", title: "Infinite limits (vertical asymptotes)", completed: false },
+          { id: "limit-3-3", title: "Limits at infinity (horizontal asymptotes)", completed: false },
+        ]
+      },
+      {
+        title: "Continuity",
+        topics: [
+          { id: "limit-4-1", title: "Definition of continuity", completed: false },
+          { id: "limit-4-2", title: "Types of discontinuities", completed: false },
+          { id: "limit-4-3", title: "Continuity and limit connection", completed: false },
+          { id: "limit-4-4", title: "Intermediate Value Theorem", completed: false },
+        ]
+      }
+    ],
+    exercises: [
+      {
+        id: 101,
+        lesson_id: 10,
+        question: "What does lim(x→a) f(x) = L mean?",
+        question_type: "multiple_choice",
+        points: 10,
+        order_index: 1,
+        options: [
+          { id: 101, exercise_id: 101, text: "f(a) equals L", is_correct: 0, order_index: 1 },
+          { id: 102, exercise_id: 101, text: "As x approaches a, f(x) approaches L", is_correct: 1, order_index: 2 },
+          { id: 103, exercise_id: 101, text: "x equals a when f(x) = L", is_correct: 0, order_index: 3 },
+          { id: 104, exercise_id: 101, text: "The function is undefined at a", is_correct: 0, order_index: 4 },
+        ]
+      },
+      {
+        id: 102,
+        lesson_id: 10,
+        question: "What type of discontinuity occurs when a function has a 'hole' at a point?",
+        question_type: "multiple_choice",
+        points: 10,
+        order_index: 2,
+        options: [
+          { id: 105, exercise_id: 102, text: "Jump discontinuity", is_correct: 0, order_index: 1 },
+          { id: 106, exercise_id: 102, text: "Removable discontinuity", is_correct: 1, order_index: 2 },
+          { id: 107, exercise_id: 102, text: "Infinite discontinuity", is_correct: 0, order_index: 3 },
+          { id: 108, exercise_id: 102, text: "Essential discontinuity", is_correct: 0, order_index: 4 },
+        ]
+      }
+    ]
+  },
 };
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
-import { ArrowLeft, CheckCircle, XCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Circle, PlayCircle } from 'lucide-react';
 import { Label } from '../components/ui/label';
 
 interface ExerciseOption {
@@ -51,6 +127,17 @@ interface Exercise {
   options: ExerciseOption[];
 }
 
+interface SubLessonTopic {
+  id: string;
+  title: string;
+  completed: boolean;
+}
+
+interface SubLesson {
+  title: string;
+  topics: SubLessonTopic[];
+}
+
 interface Lesson {
   id: number;
   course_id: number;
@@ -59,6 +146,8 @@ interface Lesson {
   description: string | null;
   video_url: string | null;
   duration_seconds: number;
+  unitTitle?: string;
+  subLessons?: SubLesson[];
   exercises: Exercise[];
 }
 
@@ -69,6 +158,8 @@ export function LessonPage() {
   const [answers, setAnswers] = useState<Record<number, number | string>>({});
   const [submitted, setSubmitted] = useState<Record<number, boolean>>({});
   const [results, setResults] = useState<Record<number, boolean>>({});
+  const [completedTopics, setCompletedTopics] = useState<Set<string>>(new Set());
+  const [activeTopic, setActiveTopic] = useState<string | null>(null);
 
   useEffect(() => {
     // Mock data - in real app would fetch from /api/lessons/${id}
@@ -112,6 +203,11 @@ export function LessonPage() {
   const handleCompleteLesson = () => {
     alert('Lesson completed! Great job!');
     window.history.back();
+  };
+
+  const handleTopicClick = (topicId: string) => {
+    setActiveTopic(topicId);
+    setCompletedTopics(prev => new Set([...prev, topicId]));
   };
 
   if (loading) {
@@ -161,16 +257,65 @@ export function LessonPage() {
           </Card>
         )}
 
-        {/* Lesson Content */}
-        <Card className="mb-8 p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Lesson Content</h2>
-          <div className="prose max-w-none">
-            <p className="text-gray-700">
-              This lesson covers the fundamentals of {lesson.title.toLowerCase()}. 
-              Practice the exercises below to test your understanding.
-            </p>
-          </div>
-        </Card>
+        {/* Sub-Lessons Structure for Limits */}
+        {lesson.subLessons && lesson.subLessons.length > 0 && (
+          <Card className="mb-8 p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">{lesson.unitTitle || "Lesson Content"}</h2>
+            <div className="space-y-6">
+              {lesson.subLessons.map((subLesson, subIndex) => (
+                <div key={subIndex}>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                    Lesson: {subLesson.title}
+                  </h3>
+                  <ul className="space-y-2 ml-4">
+                    {subLesson.topics.map((topic) => (
+                      <li key={topic.id} className="flex items-center gap-3">
+                        <button
+                          onClick={() => handleTopicClick(topic.id)}
+                          className={`flex items-center gap-3 w-full text-left py-2 px-3 rounded-lg transition-colors ${
+                            activeTopic === topic.id
+                              ? 'bg-blue-50 text-blue-700'
+                              : 'hover:bg-gray-50'
+                          }`}
+                        >
+                          {completedTopics.has(topic.id) ? (
+                            <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                          ) : activeTopic === topic.id ? (
+                            <PlayCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                          ) : (
+                            <Circle className="h-5 w-5 text-gray-300 flex-shrink-0" />
+                          )}
+                          <span className={`${
+                            completedTopics.has(topic.id) 
+                              ? 'text-green-700' 
+                              : activeTopic === topic.id 
+                                ? 'text-blue-700 font-medium' 
+                                : 'text-blue-600 hover:text-blue-700'
+                          }`}>
+                            {topic.title}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
+
+        {/* Generic Lesson Content (for lessons without sub-lessons) */}
+        {(!lesson.subLessons || lesson.subLessons.length === 0) && (
+          <Card className="mb-8 p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Lesson Content</h2>
+            <div className="prose max-w-none">
+              <p className="text-gray-700">
+                This lesson covers the fundamentals of {lesson.title.toLowerCase()}. 
+                Practice the exercises below to test your understanding.
+              </p>
+            </div>
+          </Card>
+        )}
 
         {/* Exercises */}
         {lesson.exercises && lesson.exercises.length > 0 && (
