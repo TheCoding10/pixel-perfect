@@ -87,9 +87,10 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 15,
     lessons: [
-      { id: 16, course_id: 6, title: "Limits", slug: "limits", description: "Understanding limits", video_url: null, duration_seconds: 3000, order_index: 1 },
-      { id: 17, course_id: 6, title: "Derivatives", slug: "derivatives", description: "Introduction to derivatives", video_url: null, duration_seconds: 3300, order_index: 2 },
-      { id: 18, course_id: 6, title: "Integrals", slug: "integrals", description: "Introduction to integrals", video_url: null, duration_seconds: 3600, order_index: 3 },
+      { id: 16, course_id: 6, title: "Limits & Continuity", slug: "limits-continuity", description: "Understanding limits and continuity", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 17, course_id: 6, title: "The Derivative", slug: "the-derivative", description: "Introduction to derivatives", video_url: null, duration_seconds: 3300, order_index: 2 },
+      { id: 18, course_id: 6, title: "Applications of Derivatives", slug: "applications-derivatives", description: "Real-world applications of derivatives", video_url: null, duration_seconds: 3600, order_index: 3 },
+      { id: 19, course_id: 6, title: "Integrals", slug: "integrals", description: "Introduction to integrals", video_url: null, duration_seconds: 3600, order_index: 4 },
     ]
   },
   "calculus-2": {
