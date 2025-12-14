@@ -128,9 +128,14 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 16,
     lessons: [
-      { id: 22, course_id: 8, title: "Partial Derivatives", slug: "partial-derivatives", description: "Derivatives of multivariable functions", video_url: null, duration_seconds: 3000, order_index: 1 },
-      { id: 23, course_id: 8, title: "Multiple Integrals", slug: "multiple-integrals", description: "Double and triple integrals", video_url: null, duration_seconds: 3600, order_index: 2 },
-      { id: 24, course_id: 8, title: "Vector Calculus", slug: "vector-calculus", description: "Line and surface integrals", video_url: null, duration_seconds: 3300, order_index: 3 },
+      { id: 22, course_id: 8, title: "Vectors and Geometry of Space", slug: "vectors-geometry-space", description: "Fundamentals of 3D coordinate systems, vectors, dot and cross products, lines, planes, and quadric surfaces", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 23, course_id: 8, title: "Multivariable Functions", slug: "multivariable-functions", description: "Functions of several variables, limits, continuity, level curves, and level surfaces", video_url: null, duration_seconds: 2800, order_index: 2 },
+      { id: 24, course_id: 8, title: "Partial Derivatives", slug: "partial-derivatives", description: "Partial derivatives, directional derivatives, gradient vector, tangent planes, chain rule, and optimization with Lagrange multipliers", video_url: null, duration_seconds: 3200, order_index: 3 },
+      { id: 25, course_id: 8, title: "Multiple Integrals", slug: "multiple-integrals", description: "Double and triple integrals over various regions, polar/cylindrical/spherical coordinates, and applications", video_url: null, duration_seconds: 3600, order_index: 4 },
+      { id: 26, course_id: 8, title: "Vector Fields", slug: "vector-fields", description: "Understanding vector fields, divergence, curl, and potential functions", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 27, course_id: 8, title: "Line Integrals", slug: "line-integrals", description: "Scalar and vector line integrals, conservative fields, path independence, and the fundamental theorem for line integrals", video_url: null, duration_seconds: 3000, order_index: 6 },
+      { id: 28, course_id: 8, title: "Surface Integrals", slug: "surface-integrals", description: "Parametric surfaces, surface area, surface integrals for scalar and vector fields, and flux", video_url: null, duration_seconds: 3300, order_index: 7 },
+      { id: 29, course_id: 8, title: "Integral Theorems", slug: "integral-theorems", description: "Green's Theorem, Stokes' Theorem, and the Divergence Theorem", video_url: null, duration_seconds: 3000, order_index: 8 },
     ]
   },
   "linear-algebra": {
