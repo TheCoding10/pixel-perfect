@@ -8,12 +8,13 @@ import { Header } from '../components/Header';
 import mathMascot from '@/assets/math-mascot.png';
 import csMascot from '@/assets/cs-mascot.png';
 import physicsMascot from '@/assets/physics-mascot.png';
+import financeMascot from '@/assets/finance-mascot.png';
 
 // Mock data for subjects
 const MOCK_SUBJECTS = [
   { id: 1, name: "Mathematics", slug: "mathematics", description: "Master fundamental to advanced math concepts", icon: "math-mascot" },
   { id: 2, name: "Computer Science", slug: "computer-science", description: "Learn programming and algorithms", icon: "cs-mascot" },
-  { id: 3, name: "Finance & Investing", slug: "finance-investing", description: "Understanding markets and investments", icon: "💰" },
+  { id: 3, name: "Finance & Investing", slug: "finance-investing", description: "Understanding markets and investments", icon: "finance-mascot" },
   { id: 4, name: "Physics", slug: "physics", description: "Explore the laws of nature", icon: "physics-mascot" },
 ];
 
@@ -118,6 +119,8 @@ export function Home() {
                       <img src={csMascot} alt="Computer Science" className="h-12 w-12" />
                     ) : subject.icon === 'physics-mascot' ? (
                       <img src={physicsMascot} alt="Physics" className="h-12 w-12" />
+                    ) : subject.icon === 'finance-mascot' ? (
+                      <img src={financeMascot} alt="Finance & Investing" className="h-12 w-12" />
                     ) : (
                       subject.icon || '📚'
                     )}
