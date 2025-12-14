@@ -147,9 +147,15 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 14,
     lessons: [
-      { id: 25, course_id: 9, title: "Vectors and Matrices", slug: "vectors-matrices", description: "Introduction to vectors and matrices", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 26, course_id: 9, title: "Systems of Linear Equations", slug: "linear-systems", description: "Solving systems of equations", video_url: null, duration_seconds: 3000, order_index: 2 },
-      { id: 27, course_id: 9, title: "Eigenvalues and Eigenvectors", slug: "eigenvalues", description: "Understanding eigenvalues", video_url: null, duration_seconds: 3300, order_index: 3 },
+      { id: 30, course_id: 9, title: "Vectors and Matrices", slug: "vectors-matrices", description: "Introduction to vectors, matrices, matrix operations, and vector spaces", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 31, course_id: 9, title: "Systems of Linear Equations", slug: "linear-systems", description: "Gaussian elimination, row-reduction, echelon forms, and solution types", video_url: null, duration_seconds: 3000, order_index: 2 },
+      { id: 32, course_id: 9, title: "Determinants", slug: "determinants", description: "Properties of determinants, cofactor expansion, and applications", video_url: null, duration_seconds: 2800, order_index: 3 },
+      { id: 33, course_id: 9, title: "Vector Spaces", slug: "vector-spaces", description: "Subspaces, span, linear independence, basis, dimension, and null/column spaces", video_url: null, duration_seconds: 3200, order_index: 4 },
+      { id: 34, course_id: 9, title: "Linear Transformations", slug: "linear-transformations", description: "Mappings between vector spaces, kernels, ranges, and matrix representations", video_url: null, duration_seconds: 3000, order_index: 5 },
+      { id: 35, course_id: 9, title: "Eigenvalues and Eigenvectors", slug: "eigenvalues-eigenvectors", description: "Understanding eigenvalues, eigenvectors, diagonalization, and applications", video_url: null, duration_seconds: 3300, order_index: 6 },
+      { id: 36, course_id: 9, title: "Orthogonality and Least Squares", slug: "orthogonality-least-squares", description: "Inner products, orthogonal sets, Gram–Schmidt, QR factorization, and least squares problems", video_url: null, duration_seconds: 3100, order_index: 7 },
+      { id: 37, course_id: 9, title: "Diagonalization & Spectral Theory", slug: "diagonalization-spectral-theory", description: "Diagonalization criteria, spectral theorem for symmetric matrices", video_url: null, duration_seconds: 2900, order_index: 8 },
+      { id: 38, course_id: 9, title: "Applications of Linear Algebra", slug: "applications-linear-algebra", description: "Markov chains, differential equations, computer graphics, machine learning, and more", video_url: null, duration_seconds: 3000, order_index: 9 },
     ]
   },
   "intro-to-computer-science": {
