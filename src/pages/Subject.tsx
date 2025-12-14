@@ -6,6 +6,7 @@ import { ArrowLeft, Clock } from 'lucide-react';
 import mathMascot from '@/assets/math-mascot.png';
 import csMascot from '@/assets/cs-mascot.png';
 import physicsMascot from '@/assets/physics-mascot.png';
+import financeMascot from '@/assets/finance-mascot.png';
 
 // Mock course data  
 const MOCK_COURSES: Record<string, any> = {
@@ -54,7 +55,7 @@ const MOCK_COURSES: Record<string, any> = {
     id: 3,
     name: "Finance & Investing",
     slug: "finance-investing",
-    icon: "💰",
+    icon: "finance-mascot",
     description: "Understanding markets and investments",
     courses: [
       { id: 24, subject_id: 3, title: "Personal Finance", slug: "personal-finance", description: "Manage your money effectively", thumbnail: null, duration_hours: 6, order_index: 1 },
@@ -162,6 +163,8 @@ export function SubjectPage() {
               <img src={csMascot} alt="Computer Science" className="h-12 w-12" />
             ) : subject.icon === 'physics-mascot' ? (
               <img src={physicsMascot} alt="Physics" className="h-12 w-12" />
+            ) : subject.icon === 'finance-mascot' ? (
+              <img src={financeMascot} alt="Finance & Investing" className="h-12 w-12" />
             ) : (
               <span className="text-4xl">{subject.icon || '📚'}</span>
             )}
