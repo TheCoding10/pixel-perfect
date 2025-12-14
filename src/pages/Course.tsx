@@ -111,9 +111,12 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 15,
     lessons: [
-      { id: 19, course_id: 7, title: "Integration Techniques", slug: "integration-techniques", description: "Advanced integration methods", video_url: null, duration_seconds: 3000, order_index: 1 },
-      { id: 20, course_id: 7, title: "Infinite Series", slug: "infinite-series", description: "Convergence and divergence", video_url: null, duration_seconds: 3300, order_index: 2 },
-      { id: 21, course_id: 7, title: "Taylor Series", slug: "taylor-series", description: "Taylor and Maclaurin series", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 19, course_id: 7, title: "Advanced Integration Techniques", slug: "advanced-integration-techniques", description: "Advanced integration methods", video_url: null, duration_seconds: 3000, order_index: 1 },
+      { id: 20, course_id: 7, title: "Applications of Integration", slug: "applications-integration", description: "Real-world applications of integration", video_url: null, duration_seconds: 3200, order_index: 2 },
+      { id: 21, course_id: 7, title: "Sequences", slug: "sequences", description: "Understanding sequences", video_url: null, duration_seconds: 2800, order_index: 3 },
+      { id: 22, course_id: 7, title: "Infinite Series", slug: "infinite-series", description: "Convergence and divergence", video_url: null, duration_seconds: 3300, order_index: 4 },
+      { id: 23, course_id: 7, title: "Power Series", slug: "power-series", description: "Working with power series", video_url: null, duration_seconds: 3000, order_index: 5 },
+      { id: 24, course_id: 7, title: "Taylor & Maclaurin Series", slug: "taylor-maclaurin-series", description: "Taylor and Maclaurin series", video_url: null, duration_seconds: 3000, order_index: 6 },
     ]
   },
   "multivariable-calculus": {
