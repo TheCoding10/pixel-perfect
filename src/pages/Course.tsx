@@ -9,9 +9,17 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 10,
     lessons: [
-      { id: 1, course_id: 1, title: "Variables and Expressions", slug: "variables-expressions", description: "Learn about variables and expressions", video_url: null, duration_seconds: 1800, order_index: 1 },
+      { id: 1, course_id: 1, title: "Foundations", slug: "foundations", description: "Building blocks of algebra", video_url: null, duration_seconds: 1800, order_index: 1 },
       { id: 2, course_id: 1, title: "Solving Linear Equations", slug: "solving-linear-equations", description: "Master solving linear equations", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 3, course_id: 1, title: "Inequalities", slug: "inequalities", description: "Understanding inequalities", video_url: null, duration_seconds: 2000, order_index: 3 },
+      { id: 3, course_id: 1, title: "Solving and Graphing Linear Inequalities", slug: "linear-inequalities", description: "Understanding and graphing inequalities", video_url: null, duration_seconds: 2000, order_index: 3 },
+      { id: 4, course_id: 1, title: "Linear Functions", slug: "linear-functions", description: "Explore linear functions and their graphs", video_url: null, duration_seconds: 2200, order_index: 4 },
+      { id: 5, course_id: 1, title: "Systems of Linear Equations & Inequalities", slug: "systems-linear", description: "Solving systems of equations and inequalities", video_url: null, duration_seconds: 2400, order_index: 5 },
+      { id: 6, course_id: 1, title: "Exponents & Exponential Functions", slug: "exponents", description: "Understanding exponents and exponential functions", video_url: null, duration_seconds: 2100, order_index: 6 },
+      { id: 7, course_id: 1, title: "Polynomials", slug: "polynomials", description: "Working with polynomial expressions", video_url: null, duration_seconds: 2300, order_index: 7 },
+      { id: 8, course_id: 1, title: "Factoring", slug: "factoring", description: "Factoring techniques and applications", video_url: null, duration_seconds: 2200, order_index: 8 },
+      { id: 9, course_id: 1, title: "Quadratic Functions & Equations", slug: "quadratics", description: "Understanding quadratic functions and equations", video_url: null, duration_seconds: 2500, order_index: 9 },
+      { id: 10, course_id: 1, title: "Rational Expressions & Equations", slug: "rational-expressions", description: "Working with rational expressions", video_url: null, duration_seconds: 2400, order_index: 10 },
+      { id: 11, course_id: 1, title: "Radicals & Radical Functions", slug: "radicals", description: "Understanding radicals and radical functions", video_url: null, duration_seconds: 2300, order_index: 11 },
     ]
   },
   "geometry": {
