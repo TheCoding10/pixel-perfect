@@ -31,9 +31,18 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 4, course_id: 2, title: "Points, Lines, and Planes", slug: "points-lines-planes", description: "Fundamental geometric concepts", video_url: null, duration_seconds: 2100, order_index: 1 },
-      { id: 5, course_id: 2, title: "Angles and Triangles", slug: "angles-triangles", description: "Properties of angles and triangles", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 6, course_id: 2, title: "Circles", slug: "circles", description: "Circle properties and theorems", video_url: null, duration_seconds: 2200, order_index: 3 },
+      { id: 4, course_id: 2, title: "Foundations of Geometry", slug: "foundations-geometry", description: "Fundamental geometric concepts", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 5, course_id: 2, title: "Logic & Proof", slug: "logic-proof", description: "Mathematical reasoning and proofs", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 6, course_id: 2, title: "Parallel & Perpendicular Lines", slug: "parallel-perpendicular-lines", description: "Properties of parallel and perpendicular lines", video_url: null, duration_seconds: 2200, order_index: 3 },
+      { id: 7, course_id: 2, title: "Triangle Geometry", slug: "triangle-geometry", description: "Properties and theorems of triangles", video_url: null, duration_seconds: 2400, order_index: 4 },
+      { id: 8, course_id: 2, title: "Coordinate Geometry", slug: "coordinate-geometry", description: "Geometry on the coordinate plane", video_url: null, duration_seconds: 2300, order_index: 5 },
+      { id: 9, course_id: 2, title: "Quadrilaterals & Polygons", slug: "quadrilaterals-polygons", description: "Properties of quadrilaterals and polygons", video_url: null, duration_seconds: 2200, order_index: 6 },
+      { id: 10, course_id: 2, title: "Similarity", slug: "similarity", description: "Similar figures and proportions", video_url: null, duration_seconds: 2100, order_index: 7 },
+      { id: 11, course_id: 2, title: "Trigonometry (Basic)", slug: "basic-trigonometry", description: "Introduction to trigonometry", video_url: null, duration_seconds: 2400, order_index: 8 },
+      { id: 12, course_id: 2, title: "Circles", slug: "circles", description: "Circle properties and theorems", video_url: null, duration_seconds: 2200, order_index: 9 },
+      { id: 13, course_id: 2, title: "Area & Perimeter", slug: "area-perimeter", description: "Calculating area and perimeter", video_url: null, duration_seconds: 2000, order_index: 10 },
+      { id: 14, course_id: 2, title: "Volume", slug: "volume", description: "Calculating volume of 3D shapes", video_url: null, duration_seconds: 2100, order_index: 11 },
+      { id: 15, course_id: 2, title: "Transformations", slug: "transformations", description: "Geometric transformations", video_url: null, duration_seconds: 2200, order_index: 12 },
     ]
   },
   "algebra-2": {
