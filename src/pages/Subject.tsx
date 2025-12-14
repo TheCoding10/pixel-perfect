@@ -4,6 +4,7 @@ import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { ArrowLeft, Clock } from 'lucide-react';
 import mathMascot from '@/assets/math-mascot.png';
+import csMascot from '@/assets/cs-mascot.png';
 
 // Mock course data  
 const MOCK_COURSES: Record<string, any> = {
@@ -29,7 +30,7 @@ const MOCK_COURSES: Record<string, any> = {
     id: 2,
     name: "Computer Science",
     slug: "computer-science",
-    icon: "💻",
+    icon: "cs-mascot",
     description: "Learn programming and algorithms",
     courses: [
       { id: 10, subject_id: 2, title: "Intro to Computer Science", slug: "intro-to-computer-science", description: "Foundations of computing", thumbnail: null, duration_hours: 8, order_index: 1 },
@@ -156,6 +157,8 @@ export function SubjectPage() {
           <div className="flex items-center gap-4">
             {subject.icon === 'math-mascot' ? (
               <img src={mathMascot} alt="Mathematics" className="h-12 w-12" />
+            ) : subject.icon === 'cs-mascot' ? (
+              <img src={csMascot} alt="Computer Science" className="h-12 w-12" />
             ) : (
               <span className="text-4xl">{subject.icon || '📚'}</span>
             )}

@@ -6,11 +6,12 @@ import { Zap, BarChart3, BookOpen } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { Header } from '../components/Header';
 import mathMascot from '@/assets/math-mascot.png';
+import csMascot from '@/assets/cs-mascot.png';
 
 // Mock data for subjects
 const MOCK_SUBJECTS = [
   { id: 1, name: "Mathematics", slug: "mathematics", description: "Master fundamental to advanced math concepts", icon: "math-mascot" },
-  { id: 2, name: "Computer Science", slug: "computer-science", description: "Learn programming and algorithms", icon: "💻" },
+  { id: 2, name: "Computer Science", slug: "computer-science", description: "Learn programming and algorithms", icon: "cs-mascot" },
   { id: 3, name: "Finance & Investing", slug: "finance-investing", description: "Understanding markets and investments", icon: "💰" },
   { id: 4, name: "Physics", slug: "physics", description: "Explore the laws of nature", icon: "⚛️" },
 ];
@@ -112,6 +113,8 @@ export function Home() {
                   <div className="mb-4 text-4xl">
                     {subject.icon === 'math-mascot' ? (
                       <img src={mathMascot} alt="Mathematics" className="h-12 w-12" />
+                    ) : subject.icon === 'cs-mascot' ? (
+                      <img src={csMascot} alt="Computer Science" className="h-12 w-12" />
                     ) : (
                       subject.icon || '📚'
                     )}
