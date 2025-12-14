@@ -1,10 +1,17 @@
+import { useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Card } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+import { ArrowLeft, Clock } from 'lucide-react';
+import mathMascot from '@/assets/math-mascot.png';
+
 // Mock course data  
 const MOCK_COURSES: Record<string, any> = {
   "mathematics": {
     id: 1,
     name: "Mathematics",
     slug: "mathematics",
-    icon: "🔢",
+    icon: "math-mascot",
     description: "Master fundamental to advanced math concepts",
     courses: [
       { id: 1, subject_id: 1, title: "Algebra 1", slug: "algebra-1", description: "Foundation of algebraic concepts", thumbnail: null, duration_hours: 10, order_index: 1 },
@@ -80,12 +87,6 @@ const MOCK_COURSES: Record<string, any> = {
   },
 };
 
-import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Card } from '../components/ui/card';
-import { Button } from '../components/ui/button';
-import { ArrowLeft, Clock } from 'lucide-react';
-
 interface Course {
   id: number;
   subject_id: number;
@@ -153,7 +154,11 @@ export function SubjectPage() {
               Back
             </button>
           <div className="flex items-center gap-4">
-            <span className="text-4xl">{subject.icon || '📚'}</span>
+            {subject.icon === 'math-mascot' ? (
+              <img src={mathMascot} alt="Mathematics" className="h-12 w-12" />
+            ) : (
+              <span className="text-4xl">{subject.icon || '📚'}</span>
+            )}
             <div>
               <h1 className="text-3xl font-bold text-gray-900">{subject.name}</h1>
               {subject.description && (
