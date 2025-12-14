@@ -1,11 +1,3 @@
-// Mock data for subjects
-const MOCK_SUBJECTS = [
-  { id: 1, name: "Mathematics", slug: "mathematics", description: "Master fundamental to advanced math concepts", icon: "🔢" },
-  { id: 2, name: "Computer Science", slug: "computer-science", description: "Learn programming and algorithms", icon: "💻" },
-  { id: 3, name: "Finance & Investing", slug: "finance-investing", description: "Understanding markets and investments", icon: "💰" },
-  { id: 4, name: "Physics", slug: "physics", description: "Explore the laws of nature", icon: "⚛️" },
-];
-
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from '../components/ui/card';
@@ -13,6 +5,15 @@ import { Button } from '../components/ui/button';
 import { Zap, BarChart3, BookOpen } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { Header } from '../components/Header';
+import mathMascot from '@/assets/math-mascot.png';
+
+// Mock data for subjects
+const MOCK_SUBJECTS = [
+  { id: 1, name: "Mathematics", slug: "mathematics", description: "Master fundamental to advanced math concepts", icon: "math-mascot" },
+  { id: 2, name: "Computer Science", slug: "computer-science", description: "Learn programming and algorithms", icon: "💻" },
+  { id: 3, name: "Finance & Investing", slug: "finance-investing", description: "Understanding markets and investments", icon: "💰" },
+  { id: 4, name: "Physics", slug: "physics", description: "Explore the laws of nature", icon: "⚛️" },
+];
 
 interface Subject {
   id: number;
@@ -108,7 +109,13 @@ export function Home() {
                 className="group"
               >
                 <Card className="h-full p-6 transition-all hover:shadow-lg hover:border-blue-300">
-                  <div className="mb-4 text-4xl">{subject.icon || '📚'}</div>
+                  <div className="mb-4 text-4xl">
+                    {subject.icon === 'math-mascot' ? (
+                      <img src={mathMascot} alt="Mathematics" className="h-12 w-12" />
+                    ) : (
+                      subject.icon || '📚'
+                    )}
+                  </div>
                   <h3 className="mb-2 text-xl font-semibold text-gray-900 group-hover:text-blue-600">
                     {subject.name}
                   </h3>
