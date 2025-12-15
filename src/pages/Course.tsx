@@ -77,6 +77,14 @@ const MOCK_LESSONS: Record<string, any> = {
     lessons: [
       { id: 10, course_id: 4, title: "Trigonometric Ratios", slug: "trig-ratios", description: "Sine, cosine, tangent; right-triangle definitions; solving right triangles", video_url: null, duration_seconds: 2400, order_index: 1 },
       { id: 11, course_id: 4, title: "Unit Circle", slug: "unit-circle", description: "Radians, unit circle values, reference angles, and quadrants", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 12, course_id: 4, title: "Trigonometric Identities", slug: "trig-identities", description: "Pythagorean identities, reciprocal identities, quotient identities, and simplifying expressions", video_url: null, duration_seconds: 2500, order_index: 3 },
+      { id: 13, course_id: 4, title: "Graphs of Trigonometric Functions", slug: "trig-graphs", description: "Sine, cosine, tangent graphs; amplitude, period, phase shift, vertical shift", video_url: null, duration_seconds: 2800, order_index: 4 },
+      { id: 14, course_id: 4, title: "Inverse Trigonometric Functions", slug: "inverse-trig", description: "Arcsin, arccos, arctan; domains, ranges, and solving equations", video_url: null, duration_seconds: 2600, order_index: 5 },
+      { id: 15, course_id: 4, title: "Trigonometric Equations", slug: "trig-equations", description: "Solving basic and advanced trig equations; general solutions; restricted solutions", video_url: null, duration_seconds: 2700, order_index: 6 },
+      { id: 16, course_id: 4, title: "Law of Sines and Law of Cosines", slug: "law-sines-cosines", description: "Solving non-right triangles; ambiguous case (SSA)", video_url: null, duration_seconds: 2500, order_index: 7 },
+      { id: 17, course_id: 4, title: "Trigonometric Applications", slug: "trig-applications", description: "Modeling periodic behavior, harmonic motion, bearings, heights & distances", video_url: null, duration_seconds: 2800, order_index: 8 },
+      { id: 18, course_id: 4, title: "Polar Coordinates & Complex Numbers (Trig Form)", slug: "polar-complex", description: "Plotting in polar form, converting between forms, De Moivre's Theorem", video_url: null, duration_seconds: 3000, order_index: 9 },
+      { id: 19, course_id: 4, title: "Advanced Trigonometric Identities", slug: "advanced-trig-identities", description: "Sum & difference formulas, double-angle, half-angle, product-to-sum", video_url: null, duration_seconds: 2900, order_index: 10 },
     ]
   },
   "precalculus": {
