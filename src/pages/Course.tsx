@@ -213,9 +213,13 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 10,
     lessons: [
-      { id: 53, course_id: 11, title: "Variables and Data Types", slug: "variables-data-types", description: "Storing and manipulating data", video_url: null, duration_seconds: 2100, order_index: 1 },
-      { id: 54, course_id: 11, title: "Control Flow", slug: "control-flow", description: "If statements and loops", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 55, course_id: 11, title: "Functions", slug: "functions", description: "Writing reusable code", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 60, course_id: 11, title: "Variables & Data Types", slug: "variables-data-types", description: "Storing and manipulating data", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 61, course_id: 11, title: "Control Flow", slug: "control-flow", description: "If statements and loops", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 62, course_id: 11, title: "Functions", slug: "functions", description: "Writing reusable code", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 63, course_id: 11, title: "Lists & Arrays", slug: "lists-arrays", description: "Working with collections of data", video_url: null, duration_seconds: 2300, order_index: 4 },
+      { id: 64, course_id: 11, title: "Strings & Text Processing", slug: "strings-text", description: "Handling text data", video_url: null, duration_seconds: 2200, order_index: 5 },
+      { id: 65, course_id: 11, title: "Debugging & Error Handling", slug: "debugging-errors", description: "How to fix code", video_url: null, duration_seconds: 2500, order_index: 6 },
+      { id: 66, course_id: 11, title: "Program Design & Pseudocode", slug: "program-design", description: "Thinking like a programmer", video_url: null, duration_seconds: 2400, order_index: 7 },
     ]
   },
   "python": {
