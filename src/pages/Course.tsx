@@ -75,9 +75,8 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 10,
     lessons: [
-      { id: 10, course_id: 4, title: "Trigonometric Ratios", slug: "trig-ratios", description: "Sine, cosine, and tangent", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 11, course_id: 4, title: "Unit Circle", slug: "unit-circle", description: "Understanding the unit circle", video_url: null, duration_seconds: 2700, order_index: 2 },
-      { id: 12, course_id: 4, title: "Trigonometric Identities", slug: "trig-identities", description: "Key trigonometric identities", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 10, course_id: 4, title: "Trigonometric Ratios", slug: "trig-ratios", description: "Sine, cosine, tangent; right-triangle definitions; solving right triangles", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 11, course_id: 4, title: "Unit Circle", slug: "unit-circle", description: "Radians, unit circle values, reference angles, and quadrants", video_url: null, duration_seconds: 2700, order_index: 2 },
     ]
   },
   "precalculus": {
