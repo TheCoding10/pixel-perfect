@@ -54,9 +54,16 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 7, course_id: 3, title: "Polynomials", slug: "polynomials", description: "Working with polynomials", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 8, course_id: 3, title: "Quadratic Functions", slug: "quadratic-functions", description: "Understanding quadratic functions", video_url: null, duration_seconds: 2700, order_index: 2 },
-      { id: 9, course_id: 3, title: "Exponential and Logarithmic Functions", slug: "exponential-logarithmic", description: "Exponential and log functions", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 7, course_id: 3, title: "Foundations & Review", slug: "foundations-review", description: "Review of foundational algebra concepts and skills", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 8, course_id: 3, title: "Functions & Graphs", slug: "functions-graphs", description: "Understanding functions, their properties, and graphical representations", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 9, course_id: 3, title: "Polynomials", slug: "polynomials", description: "Operations with polynomials, factoring, and polynomial equations", video_url: null, duration_seconds: 2800, order_index: 3 },
+      { id: 10, course_id: 3, title: "Rational Expressions & Functions", slug: "rational-expressions", description: "Working with rational expressions, equations, and functions", video_url: null, duration_seconds: 2600, order_index: 4 },
+      { id: 11, course_id: 3, title: "Quadratic Functions", slug: "quadratic-functions", description: "Quadratic equations, graphs, and applications", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 12, course_id: 3, title: "Exponential & Logarithmic Functions", slug: "exponential-logarithmic", description: "Exponential and logarithmic functions, equations, and applications", video_url: null, duration_seconds: 3000, order_index: 6 },
+      { id: 13, course_id: 3, title: "Sequences & Series", slug: "sequences-series", description: "Arithmetic and geometric sequences and series", video_url: null, duration_seconds: 2500, order_index: 7 },
+      { id: 14, course_id: 3, title: "Radical Functions & Expressions", slug: "radical-functions", description: "Radical expressions, equations, and functions", video_url: null, duration_seconds: 2400, order_index: 8 },
+      { id: 15, course_id: 3, title: "Probability & Statistics (Algebra 2 Level)", slug: "probability-statistics", description: "Probability, data analysis, and statistical concepts", video_url: null, duration_seconds: 2600, order_index: 9 },
+      { id: 16, course_id: 3, title: "Trigonometry (Intro Level)", slug: "trigonometry-intro", description: "Introduction to trigonometric functions and their applications", video_url: null, duration_seconds: 2800, order_index: 10 },
     ]
   },
   "trigonometry": {
