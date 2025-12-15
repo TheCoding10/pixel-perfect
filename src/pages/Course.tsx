@@ -193,8 +193,15 @@ const MOCK_LESSONS: Record<string, any> = {
     duration_hours: 8,
     lessons: [
       { id: 50, course_id: 10, title: "What is Computer Science?", slug: "what-is-cs", description: "Overview of the field", video_url: null, duration_seconds: 1800, order_index: 1 },
-      { id: 51, course_id: 10, title: "Binary and Data Representation", slug: "binary-data", description: "How computers store information", video_url: null, duration_seconds: 2100, order_index: 2 },
+      { id: 51, course_id: 10, title: "Binary & Data Representation", slug: "binary-data", description: "How computers store information", video_url: null, duration_seconds: 2100, order_index: 2 },
       { id: 52, course_id: 10, title: "Introduction to Algorithms", slug: "intro-algorithms", description: "Basic algorithmic thinking", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 53, course_id: 10, title: "Hardware & Computer Architecture", slug: "hardware-architecture", description: "How computers work internally", video_url: null, duration_seconds: 2200, order_index: 4 },
+      { id: 54, course_id: 10, title: "Operating Systems & Software", slug: "operating-systems", description: "How your computer organizes and manages everything", video_url: null, duration_seconds: 2300, order_index: 5 },
+      { id: 55, course_id: 10, title: "Networking & the Internet", slug: "networking-internet", description: "How computers communicate", video_url: null, duration_seconds: 2400, order_index: 6 },
+      { id: 56, course_id: 10, title: "Databases & Information Storage", slug: "databases-storage", description: "How computers store and organize data", video_url: null, duration_seconds: 2200, order_index: 7 },
+      { id: 57, course_id: 10, title: "Cybersecurity Basics", slug: "cybersecurity-basics", description: "Staying safe and understanding digital threats", video_url: null, duration_seconds: 2100, order_index: 8 },
+      { id: 58, course_id: 10, title: "Artificial Intelligence (Overview)", slug: "ai-overview", description: "Introduction to AI & machine learning", video_url: null, duration_seconds: 2500, order_index: 9 },
+      { id: 59, course_id: 10, title: "Careers in Computer Science", slug: "careers-cs", description: "Explore different CS paths", video_url: null, duration_seconds: 2000, order_index: 10 },
     ]
   },
   "intro-to-programming": {
