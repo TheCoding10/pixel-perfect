@@ -231,9 +231,18 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 56, course_id: 12, title: "Python Syntax", slug: "python-syntax", description: "Learn Python syntax", video_url: null, duration_seconds: 2000, order_index: 1 },
-      { id: 57, course_id: 12, title: "Lists and Dictionaries", slug: "lists-dictionaries", description: "Python data structures", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 58, course_id: 12, title: "File Handling", slug: "file-handling", description: "Reading and writing files", video_url: null, duration_seconds: 2100, order_index: 3 },
+      { id: 70, course_id: 12, title: "Python Syntax", slug: "python-syntax", description: "Learn Python syntax basics", video_url: null, duration_seconds: 2000, order_index: 1 },
+      { id: 71, course_id: 12, title: "Lists and Dictionaries", slug: "lists-dictionaries", description: "Python data structures", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 72, course_id: 12, title: "File Handling", slug: "file-handling", description: "Reading and writing files", video_url: null, duration_seconds: 2100, order_index: 3 },
+      { id: 73, course_id: 12, title: "Control Flow", slug: "control-flow-python", description: "Conditionals and branching", video_url: null, duration_seconds: 2200, order_index: 4 },
+      { id: 74, course_id: 12, title: "Loops", slug: "loops-python", description: "For and while loops", video_url: null, duration_seconds: 2300, order_index: 5 },
+      { id: 75, course_id: 12, title: "Functions", slug: "functions-python", description: "Writing reusable code", video_url: null, duration_seconds: 2400, order_index: 6 },
+      { id: 76, course_id: 12, title: "Python Strings", slug: "python-strings", description: "String manipulation", video_url: null, duration_seconds: 2100, order_index: 7 },
+      { id: 77, course_id: 12, title: "Advanced Data Structures", slug: "advanced-data-structures", description: "Sets, tuples, and more", video_url: null, duration_seconds: 2500, order_index: 8 },
+      { id: 78, course_id: 12, title: "Error Handling & Debugging", slug: "error-handling-debugging", description: "Try/except and debugging", video_url: null, duration_seconds: 2300, order_index: 9 },
+      { id: 79, course_id: 12, title: "Object-Oriented Programming (OOP)", slug: "oop-python", description: "Classes and objects", video_url: null, duration_seconds: 2700, order_index: 10 },
+      { id: 80, course_id: 12, title: "Modules & Libraries", slug: "modules-libraries", description: "Using external packages", video_url: null, duration_seconds: 2200, order_index: 11 },
+      { id: 81, course_id: 12, title: "Python Projects", slug: "python-projects", description: "Build real projects", video_url: null, duration_seconds: 3000, order_index: 12 },
     ]
   },
   "javascript": {
