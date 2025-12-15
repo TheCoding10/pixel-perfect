@@ -96,9 +96,20 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 14,
     lessons: [
-      { id: 13, course_id: 5, title: "Functions and Graphs", slug: "functions-graphs", description: "Understanding functions and their graphs", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 14, course_id: 5, title: "Sequences and Series", slug: "sequences-series", description: "Arithmetic and geometric sequences", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 15, course_id: 5, title: "Introduction to Limits", slug: "intro-limits", description: "Preparing for calculus limits", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 13, course_id: 5, title: "Functions and Graphs", slug: "functions-graphs", description: "Understanding functions, transformations, domains, ranges, intercepts, and graph behavior", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 14, course_id: 5, title: "Sequences and Series", slug: "sequences-series", description: "Arithmetic and geometric sequences, sigma notation, partial sums", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 15, course_id: 5, title: "Introduction to Limits", slug: "intro-limits", description: "Concept of limits, one-sided limits, continuity, preparing for Calculus I", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 16, course_id: 5, title: "Polynomial Functions", slug: "polynomial-functions", description: "End behavior, zeros, factorization, graphing, multiplicity, division", video_url: null, duration_seconds: 2800, order_index: 4 },
+      { id: 17, course_id: 5, title: "Rational Functions", slug: "rational-functions", description: "Asymptotes, holes, intercepts, graphing techniques", video_url: null, duration_seconds: 2600, order_index: 5 },
+      { id: 18, course_id: 5, title: "Exponential & Logarithmic Functions", slug: "exp-log-functions", description: "Laws of logs, natural logarithm, exponential equations, applications to growth/decay", video_url: null, duration_seconds: 2900, order_index: 6 },
+      { id: 19, course_id: 5, title: "Trigonometric Functions", slug: "trig-functions", description: "Unit circle, radians, graphs of sine/cosine/tangent, identities", video_url: null, duration_seconds: 2700, order_index: 7 },
+      { id: 20, course_id: 5, title: "Inverse Trigonometric Functions", slug: "inverse-trig-functions", description: "Arcsin, arccos, arctan, solving equations involving inverse trig", video_url: null, duration_seconds: 2500, order_index: 8 },
+      { id: 21, course_id: 5, title: "Trigonometric Equations & Identities", slug: "trig-equations-identities", description: "Advanced identities, sum/difference, double-angle, solving trig equations", video_url: null, duration_seconds: 2800, order_index: 9 },
+      { id: 22, course_id: 5, title: "Systems of Equations & Inequalities", slug: "systems-equations", description: "Linear systems, substitution/elimination, nonlinear systems, inequalities", video_url: null, duration_seconds: 2600, order_index: 10 },
+      { id: 23, course_id: 5, title: "Matrices & Determinants", slug: "matrices-determinants", description: "Matrix operations, inverses, solving systems using matrices", video_url: null, duration_seconds: 2700, order_index: 11 },
+      { id: 24, course_id: 5, title: "Vectors in 2D and 3D", slug: "vectors-2d-3d", description: "Vector addition, scalar multiplication, dot product, direction angles", video_url: null, duration_seconds: 2500, order_index: 12 },
+      { id: 25, course_id: 5, title: "Parametric Equations", slug: "parametric-equations", description: "Parameterizing curves, converting between parametric and Cartesian forms", video_url: null, duration_seconds: 2400, order_index: 13 },
+      { id: 26, course_id: 5, title: "Polar Coordinates & Complex Numbers", slug: "polar-complex-numbers", description: "Plotting polar graphs, converting forms, Euler's formula, De Moivre's theorem", video_url: null, duration_seconds: 2800, order_index: 14 },
     ]
   },
   "calculus-1": {
