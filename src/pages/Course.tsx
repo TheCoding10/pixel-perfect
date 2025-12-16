@@ -408,9 +408,16 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 29, course_id: 11, title: "Kinematics", slug: "kinematics", description: "Motion in one and two dimensions", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 30, course_id: 11, title: "Newton's Laws", slug: "newtons-laws", description: "Forces and motion", video_url: null, duration_seconds: 2700, order_index: 2 },
-      { id: 31, course_id: 11, title: "Work, Energy, and Power", slug: "work-energy-power", description: "Energy conservation and work", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 82, course_id: 11, title: "Mathematical Foundations", slug: "mathematical-foundations", description: "Essential math for physics", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 83, course_id: 11, title: "Kinematics", slug: "kinematics", description: "Motion in one and two dimensions", video_url: null, duration_seconds: 2500, order_index: 2 },
+      { id: 84, course_id: 11, title: "Newtonian Dynamics", slug: "newtonian-dynamics", description: "Forces and motion", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 85, course_id: 11, title: "Work and Energy", slug: "work-and-energy", description: "Energy conservation and work", video_url: null, duration_seconds: 2600, order_index: 4 },
+      { id: 86, course_id: 11, title: "Momentum and Collisions", slug: "momentum-collisions", description: "Conservation of momentum", video_url: null, duration_seconds: 2500, order_index: 5 },
+      { id: 87, course_id: 11, title: "Rotational Motion", slug: "rotational-motion", description: "Angular kinematics and dynamics", video_url: null, duration_seconds: 2800, order_index: 6 },
+      { id: 88, course_id: 11, title: "Oscillations", slug: "oscillations", description: "Simple harmonic motion", video_url: null, duration_seconds: 2400, order_index: 7 },
+      { id: 89, course_id: 11, title: "Gravitation", slug: "gravitation", description: "Newton's law of gravitation", video_url: null, duration_seconds: 2500, order_index: 8 },
+      { id: 90, course_id: 11, title: "Non-Inertial Frames", slug: "non-inertial-frames", description: "Accelerating reference frames", video_url: null, duration_seconds: 2600, order_index: 9 },
+      { id: 91, course_id: 11, title: "Advanced Classical Mechanics", slug: "advanced-classical-mechanics", description: "Lagrangian and Hamiltonian mechanics", video_url: null, duration_seconds: 3000, order_index: 10 },
     ]
   },
   "electricity-magnetism": {
