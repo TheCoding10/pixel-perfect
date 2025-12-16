@@ -450,9 +450,19 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 10,
     lessons: [
-      { id: 35, course_id: 13, title: "Simple Harmonic Motion", slug: "simple-harmonic-motion", description: "Oscillatory motion fundamentals", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 36, course_id: 13, title: "Wave Properties", slug: "wave-properties", description: "Wavelength, frequency, and amplitude", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 37, course_id: 13, title: "Sound Waves", slug: "sound-waves", description: "Properties of sound", video_url: null, duration_seconds: 2100, order_index: 3 },
+      { id: 102, course_id: 13, title: "Oscillatory Motion", slug: "oscillatory-motion", description: "Introduction to oscillations", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 103, course_id: 13, title: "Simple Harmonic Motion", slug: "simple-harmonic-motion", description: "SHM fundamentals and equations", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 104, course_id: 13, title: "Physical Systems in SHM", slug: "physical-systems-shm", description: "Pendulums, springs, and more", video_url: null, duration_seconds: 2500, order_index: 3 },
+      { id: 105, course_id: 13, title: "Energy in Oscillations", slug: "energy-oscillations", description: "Kinetic and potential energy exchange", video_url: null, duration_seconds: 2400, order_index: 4 },
+      { id: 106, course_id: 13, title: "Damped and Driven Oscillations", slug: "damped-driven-oscillations", description: "Resonance and damping effects", video_url: null, duration_seconds: 2800, order_index: 5 },
+      { id: 107, course_id: 13, title: "Introduction to Waves", slug: "intro-waves", description: "Basic wave concepts", video_url: null, duration_seconds: 2400, order_index: 6 },
+      { id: 108, course_id: 13, title: "Wave Properties and Description", slug: "wave-properties-description", description: "Wavelength, frequency, and amplitude", video_url: null, duration_seconds: 2500, order_index: 7 },
+      { id: 109, course_id: 13, title: "Superposition and Interference", slug: "superposition-interference", description: "Wave combinations and patterns", video_url: null, duration_seconds: 2600, order_index: 8 },
+      { id: 110, course_id: 13, title: "Standing Waves", slug: "standing-waves", description: "Nodes, antinodes, and resonance", video_url: null, duration_seconds: 2500, order_index: 9 },
+      { id: 111, course_id: 13, title: "Waves in Physical Systems", slug: "waves-physical-systems", description: "Waves on strings and in air", video_url: null, duration_seconds: 2400, order_index: 10 },
+      { id: 112, course_id: 13, title: "Sound Waves", slug: "sound-waves", description: "Properties and behavior of sound", video_url: null, duration_seconds: 2700, order_index: 11 },
+      { id: 113, course_id: 13, title: "Sound Phenomena", slug: "sound-phenomena", description: "Beats, harmonics, and acoustics", video_url: null, duration_seconds: 2500, order_index: 12 },
+      { id: 114, course_id: 13, title: "Doppler Effect and Shock Waves", slug: "doppler-shock-waves", description: "Frequency shifts and sonic booms", video_url: null, duration_seconds: 2600, order_index: 13 },
     ]
   },
   "thermodynamics": {
