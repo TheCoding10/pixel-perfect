@@ -429,9 +429,16 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 14,
     lessons: [
-      { id: 32, course_id: 12, title: "Electric Charges and Fields", slug: "electric-charges-fields", description: "Coulomb's law and electric fields", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 33, course_id: 12, title: "Electric Circuits", slug: "electric-circuits", description: "Current, resistance, and Ohm's law", video_url: null, duration_seconds: 3000, order_index: 2 },
-      { id: 34, course_id: 12, title: "Magnetism", slug: "magnetism", description: "Magnetic fields and forces", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 92, course_id: 12, title: "Mathematical & Conceptual Foundations", slug: "math-conceptual-foundations", description: "Essential math and concepts for E&M", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 93, course_id: 12, title: "Electrostatics", slug: "electrostatics", description: "Charges, fields, and Coulomb's law", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 94, course_id: 12, title: "Electric Potential", slug: "electric-potential", description: "Voltage and potential energy", video_url: null, duration_seconds: 2500, order_index: 3 },
+      { id: 95, course_id: 12, title: "Electric Current & Circuits", slug: "electric-current-circuits", description: "Current, resistance, and Ohm's law", video_url: null, duration_seconds: 3000, order_index: 4 },
+      { id: 96, course_id: 12, title: "Magnetism", slug: "magnetism", description: "Magnetic fields and forces", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 97, course_id: 12, title: "Electromagnetic Induction", slug: "electromagnetic-induction", description: "Faraday's law and inductance", video_url: null, duration_seconds: 2800, order_index: 6 },
+      { id: 98, course_id: 12, title: "AC Circuits", slug: "ac-circuits", description: "Alternating current and impedance", video_url: null, duration_seconds: 2600, order_index: 7 },
+      { id: 99, course_id: 12, title: "Maxwell's Equations", slug: "maxwells-equations", description: "The laws of electromagnetism", video_url: null, duration_seconds: 3000, order_index: 8 },
+      { id: 100, course_id: 12, title: "Electromagnetic Waves", slug: "electromagnetic-waves", description: "Light and radiation", video_url: null, duration_seconds: 2700, order_index: 9 },
+      { id: 101, course_id: 12, title: "Advanced / Upper-Level Topics", slug: "advanced-upper-level", description: "Relativistic and advanced E&M", video_url: null, duration_seconds: 3000, order_index: 10 },
     ]
   },
   "waves-oscillations": {
