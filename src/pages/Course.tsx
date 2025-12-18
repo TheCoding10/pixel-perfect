@@ -474,9 +474,18 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 38, course_id: 14, title: "Temperature and Heat", slug: "temperature-heat", description: "Thermal energy fundamentals", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 39, course_id: 14, title: "Laws of Thermodynamics", slug: "laws-thermodynamics", description: "First and second laws", video_url: null, duration_seconds: 3000, order_index: 2 },
-      { id: 40, course_id: 14, title: "Heat Engines and Entropy", slug: "heat-engines-entropy", description: "Efficiency and disorder", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 115, course_id: 14, title: "Temperature and Thermal Properties", slug: "temperature-thermal-properties", description: "Temperature scales and thermal properties of matter", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 116, course_id: 14, title: "Heat and Thermal Energy", slug: "heat-thermal-energy", description: "Heat transfer and thermal energy concepts", video_url: null, duration_seconds: 2500, order_index: 2 },
+      { id: 117, course_id: 14, title: "Heat Transfer", slug: "heat-transfer", description: "Conduction, convection, and radiation", video_url: null, duration_seconds: 2600, order_index: 3 },
+      { id: 118, course_id: 14, title: "Ideal Gases and Kinetic Theory", slug: "ideal-gases-kinetic-theory", description: "Gas laws and molecular motion", video_url: null, duration_seconds: 2700, order_index: 4 },
+      { id: 119, course_id: 14, title: "The First Law of Thermodynamics", slug: "first-law-thermodynamics", description: "Energy conservation in thermodynamic systems", video_url: null, duration_seconds: 2800, order_index: 5 },
+      { id: 120, course_id: 14, title: "Thermodynamic Processes and Cycles", slug: "thermodynamic-processes-cycles", description: "Isothermal, adiabatic, and cyclic processes", video_url: null, duration_seconds: 2700, order_index: 6 },
+      { id: 121, course_id: 14, title: "Heat Engines", slug: "heat-engines", description: "Efficiency and Carnot cycle", video_url: null, duration_seconds: 2600, order_index: 7 },
+      { id: 122, course_id: 14, title: "Refrigerators and Heat Pumps", slug: "refrigerators-heat-pumps", description: "Cooling systems and coefficients of performance", video_url: null, duration_seconds: 2500, order_index: 8 },
+      { id: 123, course_id: 14, title: "The Second Law of Thermodynamics", slug: "second-law-thermodynamics", description: "Entropy and irreversibility", video_url: null, duration_seconds: 2800, order_index: 9 },
+      { id: 124, course_id: 14, title: "Entropy", slug: "entropy", description: "Statistical interpretation and calculations", video_url: null, duration_seconds: 2700, order_index: 10 },
+      { id: 125, course_id: 14, title: "Entropy and Energy Availability", slug: "entropy-energy-availability", description: "Free energy and available work", video_url: null, duration_seconds: 2600, order_index: 11 },
+      { id: 126, course_id: 14, title: "The Third Law of Thermodynamics", slug: "third-law-thermodynamics", description: "Absolute zero and entropy limits", video_url: null, duration_seconds: 2400, order_index: 12 },
     ]
   },
   "optics": {
