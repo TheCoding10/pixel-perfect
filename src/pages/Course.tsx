@@ -497,9 +497,19 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 10,
     lessons: [
-      { id: 41, course_id: 15, title: "Reflection and Refraction", slug: "reflection-refraction", description: "Light behavior at boundaries", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 42, course_id: 15, title: "Lenses and Mirrors", slug: "lenses-mirrors", description: "Image formation", video_url: null, duration_seconds: 2700, order_index: 2 },
-      { id: 43, course_id: 15, title: "Wave Optics", slug: "wave-optics", description: "Interference and diffraction", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 127, course_id: 15, title: "Nature of Light", slug: "nature-of-light", description: "Dual nature and properties of light", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 128, course_id: 15, title: "Reflection", slug: "reflection", description: "Laws of reflection and applications", video_url: null, duration_seconds: 2300, order_index: 2 },
+      { id: 129, course_id: 15, title: "Refraction", slug: "refraction", description: "Snell's law and light bending", video_url: null, duration_seconds: 2500, order_index: 3 },
+      { id: 130, course_id: 15, title: "Dispersion and Optical Materials", slug: "dispersion-optical-materials", description: "Prisms and material properties", video_url: null, duration_seconds: 2400, order_index: 4 },
+      { id: 131, course_id: 15, title: "Mirrors", slug: "mirrors", description: "Plane and curved mirror optics", video_url: null, duration_seconds: 2600, order_index: 5 },
+      { id: 132, course_id: 15, title: "Thin Lenses", slug: "thin-lenses", description: "Lens equations and image formation", video_url: null, duration_seconds: 2700, order_index: 6 },
+      { id: 133, course_id: 15, title: "Optical Instruments", slug: "optical-instruments", description: "Microscopes, telescopes, and cameras", video_url: null, duration_seconds: 2500, order_index: 7 },
+      { id: 134, course_id: 15, title: "Wave Nature of Light", slug: "wave-nature-of-light", description: "Light as electromagnetic waves", video_url: null, duration_seconds: 2400, order_index: 8 },
+      { id: 135, course_id: 15, title: "Interference", slug: "interference", description: "Young's experiment and constructive/destructive interference", video_url: null, duration_seconds: 2600, order_index: 9 },
+      { id: 136, course_id: 15, title: "Diffraction", slug: "diffraction", description: "Single slit and diffraction gratings", video_url: null, duration_seconds: 2500, order_index: 10 },
+      { id: 137, course_id: 15, title: "Polarization", slug: "polarization", description: "Polarized light and applications", video_url: null, duration_seconds: 2400, order_index: 11 },
+      { id: 138, course_id: 15, title: "Thin-Film Interference", slug: "thin-film-interference", description: "Interference in thin films and coatings", video_url: null, duration_seconds: 2300, order_index: 12 },
+      { id: 139, course_id: 15, title: "Resolution and Optical Limits", slug: "resolution-optical-limits", description: "Rayleigh criterion and diffraction limits", video_url: null, duration_seconds: 2400, order_index: 13 },
     ]
   },
   "modern-physics": {
