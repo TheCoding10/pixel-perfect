@@ -521,9 +521,16 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 14,
     lessons: [
-      { id: 44, course_id: 16, title: "Special Relativity", slug: "special-relativity", description: "Time dilation and length contraction", video_url: null, duration_seconds: 3000, order_index: 1 },
-      { id: 45, course_id: 16, title: "Photoelectric Effect", slug: "photoelectric-effect", description: "Light as particles", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 46, course_id: 16, title: "Atomic Structure", slug: "atomic-structure", description: "Bohr model and beyond", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 140, course_id: 16, title: "Why Classical Physics Failed", slug: "why-classical-physics-failed", description: "Limitations of classical mechanics and electromagnetism", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 141, course_id: 16, title: "Foundations of Special Relativity", slug: "foundations-of-special-relativity", description: "Einstein's postulates and the Lorentz transformation", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 142, course_id: 16, title: "Relativistic Effects", slug: "relativistic-effects", description: "Time dilation and length contraction", video_url: null, duration_seconds: 2600, order_index: 3 },
+      { id: 143, course_id: 16, title: "Energy, Momentum, and Mass–Energy Equivalence", slug: "energy-momentum-mass-energy", description: "E=mc² and relativistic dynamics", video_url: null, duration_seconds: 2800, order_index: 4 },
+      { id: 144, course_id: 16, title: "Quantization of Light", slug: "quantization-of-light", description: "Planck's hypothesis and blackbody radiation", video_url: null, duration_seconds: 2500, order_index: 5 },
+      { id: 145, course_id: 16, title: "Photoelectric Effect and Photons", slug: "photoelectric-effect-photons", description: "Einstein's explanation of light as particles", video_url: null, duration_seconds: 2600, order_index: 6 },
+      { id: 146, course_id: 16, title: "Wave–Particle Duality", slug: "wave-particle-duality", description: "de Broglie wavelength and matter waves", video_url: null, duration_seconds: 2400, order_index: 7 },
+      { id: 147, course_id: 16, title: "Atomic Structure", slug: "atomic-structure", description: "Bohr model and spectral lines", video_url: null, duration_seconds: 2700, order_index: 8 },
+      { id: 148, course_id: 16, title: "Introduction to Quantum Mechanics", slug: "intro-quantum-mechanics", description: "Wave functions and the Schrödinger equation", video_url: null, duration_seconds: 2800, order_index: 9 },
+      { id: 149, course_id: 16, title: "Nuclear and Particle Physics", slug: "nuclear-particle-physics", description: "Radioactivity, fission, fusion, and fundamental particles", video_url: null, duration_seconds: 3000, order_index: 10 },
     ]
   },
   "quantum-mechanics": {
