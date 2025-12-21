@@ -542,9 +542,19 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 16,
     lessons: [
-      { id: 47, course_id: 17, title: "Wave-Particle Duality", slug: "wave-particle-duality", description: "The dual nature of matter", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 48, course_id: 17, title: "Schrödinger Equation", slug: "schrodinger-equation", description: "The fundamental equation", video_url: null, duration_seconds: 3300, order_index: 2 },
-      { id: 49, course_id: 17, title: "Quantum States and Operators", slug: "quantum-states-operators", description: "Mathematical framework", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 47, course_id: 17, title: "Foundations of Quantum Theory", slug: "foundations-quantum-theory", description: "Historical development and key experiments", video_url: null, duration_seconds: 2700, order_index: 1 },
+      { id: 48, course_id: 17, title: "Mathematical Foundations", slug: "mathematical-foundations", description: "Linear algebra and Hilbert spaces", video_url: null, duration_seconds: 3000, order_index: 2 },
+      { id: 49, course_id: 17, title: "Quantum States & Measurement", slug: "quantum-states-measurement", description: "State vectors and observables", video_url: null, duration_seconds: 2800, order_index: 3 },
+      { id: 50, course_id: 17, title: "Schrödinger Equation", slug: "schrodinger-equation", description: "The fundamental equation of quantum mechanics", video_url: null, duration_seconds: 3300, order_index: 4 },
+      { id: 51, course_id: 17, title: "Exactly Solvable Systems", slug: "exactly-solvable-systems", description: "Particle in a box, harmonic oscillator", video_url: null, duration_seconds: 3200, order_index: 5 },
+      { id: 52, course_id: 17, title: "Quantum Tunneling & Scattering", slug: "quantum-tunneling-scattering", description: "Barrier penetration and scattering theory", video_url: null, duration_seconds: 2900, order_index: 6 },
+      { id: 53, course_id: 17, title: "Uncertainty & Quantum Limits", slug: "uncertainty-quantum-limits", description: "Heisenberg uncertainty principle", video_url: null, duration_seconds: 2600, order_index: 7 },
+      { id: 54, course_id: 17, title: "Spin & Angular Momentum", slug: "spin-angular-momentum", description: "Intrinsic spin and orbital angular momentum", video_url: null, duration_seconds: 3100, order_index: 8 },
+      { id: 55, course_id: 17, title: "Hydrogen Atom", slug: "hydrogen-atom", description: "Solving the hydrogen atom problem", video_url: null, duration_seconds: 3400, order_index: 9 },
+      { id: 56, course_id: 17, title: "Approximation Methods", slug: "approximation-methods", description: "Perturbation theory and variational methods", video_url: null, duration_seconds: 3200, order_index: 10 },
+      { id: 57, course_id: 17, title: "Identical Particles", slug: "identical-particles", description: "Fermions, bosons, and exchange symmetry", video_url: null, duration_seconds: 2800, order_index: 11 },
+      { id: 58, course_id: 17, title: "Quantum Entanglement & Foundations", slug: "quantum-entanglement-foundations", description: "EPR paradox and Bell inequalities", video_url: null, duration_seconds: 3000, order_index: 12 },
+      { id: 59, course_id: 17, title: "Advanced & Modern Topics", slug: "advanced-modern-topics", description: "Quantum computing and quantum information", video_url: null, duration_seconds: 3300, order_index: 13 },
     ]
   },
   "personal-finance": {
