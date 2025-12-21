@@ -65,8 +65,8 @@ export function AuthNavbar() {
           </button>
         </div>
 
-        {/* Right Section - Auth Buttons */}
-        <div className="flex items-center gap-4">
+        {/* Right Section - Auth Buttons - Hidden on mobile */}
+        <div className="hidden md:flex items-center gap-4">
           {!isAuthenticated && (
             <>
               <button
