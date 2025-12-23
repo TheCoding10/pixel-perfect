@@ -496,7 +496,7 @@ export function AuthGateway() {
                 Understand money, markets, and investing strategies with clear explanations and real-world applications.
               </p>
               <Button 
-                onClick={() => navigate("/subject/finance")}
+                onClick={() => navigate("/subject/finance-investing")}
                 className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
               >
                 Start Learning
