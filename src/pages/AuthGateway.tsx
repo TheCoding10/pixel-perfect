@@ -7,7 +7,10 @@ import { Checkbox } from "../components/ui/checkbox";
 import { useAuth } from "../hooks/useAuth";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { AuthNavbar } from "../components/AuthNavbar";
-
+import mathMascot from "@/assets/math-mascot.png";
+import physicsMascot from "@/assets/physics-mascot.png";
+import csMascot from "@/assets/cs-mascot.png";
+import financeMascot from "@/assets/finance-mascot.png";
 export function AuthGateway() {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
@@ -423,6 +426,85 @@ export function AuthGateway() {
         </div>
       </div>
       </div>
+
+      {/* Courses Section */}
+      <section className="bg-white py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-bold text-center text-gray-900 mb-12" style={{ fontFamily: 'serif' }}>
+            Courses
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Mathematics Card */}
+            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center">
+              <img src={mathMascot} alt="Mathematics mascot" className="w-32 h-32 object-contain mb-4" />
+              <h3 className="text-orange-500 font-bold text-lg uppercase tracking-wide mb-3">
+                Mathematics
+              </h3>
+              <p className="text-gray-700 text-sm mb-6">
+                Master math from fundamentals to advanced topics with step-by-step lessons, practice problems, and instant feedback.
+              </p>
+              <Button 
+                onClick={() => navigate("/subject/mathematics")}
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
+              >
+                Start Learning
+              </Button>
+            </div>
+
+            {/* Physics Card */}
+            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center">
+              <img src={physicsMascot} alt="Physics mascot" className="w-32 h-32 object-contain mb-4" />
+              <h3 className="text-orange-500 font-bold text-lg uppercase tracking-wide mb-3">
+                Physics
+              </h3>
+              <p className="text-gray-700 text-sm mb-6">
+                Learn physics intuitively through visual explanations, real-world examples, and guided problem solving.
+              </p>
+              <Button 
+                onClick={() => navigate("/subject/physics")}
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
+              >
+                Start Learning
+              </Button>
+            </div>
+
+            {/* Computer Science Card */}
+            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center">
+              <img src={csMascot} alt="Computer Science mascot" className="w-32 h-32 object-contain mb-4" />
+              <h3 className="text-orange-500 font-bold text-lg uppercase tracking-wide mb-3">
+                Computer Science
+              </h3>
+              <p className="text-gray-700 text-sm mb-6">
+                Build strong programming and computer science foundations through interactive lessons, projects, and challenges.
+              </p>
+              <Button 
+                onClick={() => navigate("/subject/computer-science")}
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
+              >
+                Start Learning
+              </Button>
+            </div>
+
+            {/* Finance & Investing Card */}
+            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center">
+              <img src={financeMascot} alt="Finance mascot" className="w-32 h-32 object-contain mb-4" />
+              <h3 className="text-orange-500 font-bold text-lg uppercase tracking-wide mb-3">
+                Finance & Investing
+              </h3>
+              <p className="text-gray-700 text-sm mb-6">
+                Understand money, markets, and investing strategies with clear explanations and real-world applications.
+              </p>
+              <Button 
+                onClick={() => navigate("/subject/finance")}
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
+              >
+                Start Learning
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
