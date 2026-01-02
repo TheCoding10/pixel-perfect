@@ -420,9 +420,9 @@ export function AuthGateway() {
                 Terms of Service
               </Link>{" "}
               ·{" "}
-              <a href="#" className="text-teal-600 hover:text-teal-700 font-medium">
+              <Link to="/privacy" className="text-teal-600 hover:text-teal-700 font-medium">
                 Privacy Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>
