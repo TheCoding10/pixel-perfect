@@ -11,6 +11,8 @@ import mathMascot from "@/assets/math-mascot.png";
 import physicsMascot from "@/assets/physics-mascot.png";
 import csMascot from "@/assets/cs-mascot.png";
 import financeMascot from "@/assets/finance-mascot.png";
+import learnSmarterMascot from "@/assets/learn-smarter-mascot.png";
+import { ArrowRight } from "lucide-react";
 export function AuthGateway() {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
@@ -501,6 +503,51 @@ export function AuthGateway() {
               >
                 Start Learning
               </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Learn Smarter Section */}
+      <section className="bg-white py-20 px-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Text Content */}
+            <div className="space-y-6">
+              <h2 className="text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="text-gray-800">Learn smarter.</span>
+                <br />
+                <span className="text-teal-500">Achieve more.</span>
+              </h2>
+              
+              <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
+                MemoLearning makes learning easy and fun. Master any subject with personalized lessons, interactive exercises, and instant feedback that helps you improve faster.
+              </p>
+              
+              <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
+                Join thousands of learners who are achieving their goals with our proven learning system.
+              </p>
+              
+              <button className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold text-lg group transition-colors">
+                Built on learning science
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            {/* Right Column - Illustration */}
+            <div className="relative flex justify-center lg:justify-end">
+              {/* Decorative floating elements */}
+              <div className="absolute -top-8 right-1/4 w-4 h-4 bg-teal-200 rounded-full opacity-60 animate-pulse"></div>
+              <div className="absolute top-1/4 -right-4 w-6 h-6 bg-yellow-300 rounded-full opacity-70"></div>
+              <div className="absolute bottom-1/4 left-8 w-3 h-3 bg-blue-300 rounded-full opacity-60"></div>
+              <div className="absolute top-1/2 left-0 w-5 h-5 bg-green-200 rounded-full opacity-50"></div>
+              
+              {/* Main mascot illustration */}
+              <img 
+                src={learnSmarterMascot} 
+                alt="MemoLearning mascot with dashboard" 
+                className="w-full max-w-lg lg:max-w-xl object-contain relative z-10"
+              />
             </div>
           </div>
         </div>
