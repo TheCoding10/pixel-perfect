@@ -15,6 +15,7 @@ import { CoursesPage } from './pages/Courses';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import NotFound from "./pages/NotFound";
 import { TermsOfServicePage } from './pages/TermsOfService';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicy';
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/lesson/:id" element={<ProtectedRoute><LessonPage /></ProtectedRoute>} />
             <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
             <Route path="/terms" element={<TermsOfServicePage />} />
+            <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
