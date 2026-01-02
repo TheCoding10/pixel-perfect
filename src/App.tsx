@@ -14,6 +14,7 @@ import { SettingsPage } from './pages/Settings';
 import { CoursesPage } from './pages/Courses';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import NotFound from "./pages/NotFound";
+import { TermsOfServicePage } from './pages/TermsOfService';
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/course/:slug" element={<CoursePage />} />
             <Route path="/lesson/:id" element={<ProtectedRoute><LessonPage /></ProtectedRoute>} />
             <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/terms" element={<TermsOfServicePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
