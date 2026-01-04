@@ -552,6 +552,77 @@ export function AuthGateway() {
           </div>
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer className="bg-gradient-to-r from-teal-400 to-cyan-400 py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+            {/* Logo */}
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-2">
+                <img 
+                  src="/assets/mascot-logo.png" 
+                  alt="MemoLearning" 
+                  className="w-10 h-10 object-contain"
+                />
+                <span className="text-white font-bold text-xl">MemoLearning</span>
+              </div>
+            </div>
+
+            {/* About us */}
+            <div>
+              <h4 className="text-white font-semibold mb-4">About us</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Courses</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Mission</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Approach</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Efficacy</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Team</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Contact us</a></li>
+              </ul>
+            </div>
+
+            {/* Apps */}
+            <div>
+              <h4 className="text-white font-semibold mb-4">Apps</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">MemoLearning for Android</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">MemoLearning for iOS</a></li>
+              </ul>
+            </div>
+
+            {/* Privacy and terms */}
+            <div>
+              <h4 className="text-white font-semibold mb-4">Privacy and terms</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Community guidelines</a></li>
+                <li><Link to="/terms" className="text-teal-100 hover:text-white transition-colors">Terms</Link></li>
+                <li><Link to="/privacy" className="text-teal-100 hover:text-white transition-colors">Privacy</Link></li>
+              </ul>
+            </div>
+
+            {/* Social */}
+            <div>
+              <h4 className="text-white font-semibold mb-4">Social</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Instagram</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">TikTok</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Twitter</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">YouTube</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Discord</a></li>
+                <li><a href="#" className="text-teal-100 hover:text-white transition-colors">Facebook</a></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-teal-300/50 pt-6">
+            <p className="text-teal-100 text-sm">
+              © 2026 MemoLearning. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
