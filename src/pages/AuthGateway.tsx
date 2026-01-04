@@ -529,7 +529,7 @@ export function AuthGateway() {
               </p>
               
               <button className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold text-lg group transition-colors">
-                Built on learning science
+                Mission Statement
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
