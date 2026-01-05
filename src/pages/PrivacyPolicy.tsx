@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 export function PrivacyPolicyPage() {
   useEffect(() => {
+    // Scroll to top on page load
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    
     // Simple scrollspy logic
     const handleScroll = () => {
       const sections = document.querySelectorAll('section');
