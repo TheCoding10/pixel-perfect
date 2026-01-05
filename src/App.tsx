@@ -16,6 +16,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import NotFound from "./pages/NotFound";
 import { TermsOfServicePage } from './pages/TermsOfService';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicy';
+import { MissionPage } from './pages/Mission';
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
             <Route path="/terms" element={<TermsOfServicePage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
+            <Route path="/mission" element={<MissionPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

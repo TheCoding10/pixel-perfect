@@ -528,10 +528,13 @@ export function AuthGateway() {
                 Join thousands of learners who are achieving their goals with our proven learning system.
               </p>
               
-              <button className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold text-lg group transition-colors">
+              <Link 
+                to="/mission#mission" 
+                className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold text-lg group transition-colors"
+              >
                 Mission Statement
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </div>
 
             {/* Right Column - Illustration */}
