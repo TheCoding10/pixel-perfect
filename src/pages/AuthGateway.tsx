@@ -438,68 +438,68 @@ export function AuthGateway() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Mathematics Card */}
-            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center h-full">
               <img src={mathMascot} alt="Mathematics mascot" className="w-32 h-32 object-contain mb-4" />
               <h3 className="text-orange-500 font-bold text-lg uppercase tracking-wide mb-3">
                 Mathematics
               </h3>
-              <p className="text-gray-700 text-sm mb-6">
+              <p className="text-gray-700 text-sm flex-1">
                 Master math from fundamentals to advanced topics with step-by-step lessons, practice problems, and instant feedback.
               </p>
               <Button 
                 onClick={() => navigate("/subject/mathematics")}
-                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm mt-6"
               >
                 Start Learning
               </Button>
             </div>
 
             {/* Physics Card */}
-            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center h-full">
               <img src={physicsMascot} alt="Physics mascot" className="w-32 h-32 object-contain mb-4" />
               <h3 className="text-orange-500 font-bold text-lg uppercase tracking-wide mb-3">
                 Physics
               </h3>
-              <p className="text-gray-700 text-sm mb-6">
+              <p className="text-gray-700 text-sm flex-1">
                 Learn physics intuitively through visual explanations, real-world examples, and guided problem solving.
               </p>
               <Button 
                 onClick={() => navigate("/subject/physics")}
-                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm mt-6"
               >
                 Start Learning
               </Button>
             </div>
 
             {/* Computer Science Card */}
-            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center h-full">
               <img src={csMascot} alt="Computer Science mascot" className="w-32 h-32 object-contain mb-4" />
               <h3 className="text-orange-500 font-bold text-lg uppercase tracking-wide mb-3">
                 Computer Science
               </h3>
-              <p className="text-gray-700 text-sm mb-6">
+              <p className="text-gray-700 text-sm flex-1">
                 Build strong programming and computer science foundations through interactive lessons, projects, and challenges.
               </p>
               <Button 
                 onClick={() => navigate("/subject/computer-science")}
-                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm mt-6"
               >
                 Start Learning
               </Button>
             </div>
 
             {/* Finance & Investing Card */}
-            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center">
+            <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center h-full">
               <img src={financeMascot} alt="Finance mascot" className="w-32 h-32 object-contain mb-4" />
               <h3 className="text-orange-500 font-bold text-lg uppercase tracking-wide mb-3">
                 Finance & Investing
               </h3>
-              <p className="text-gray-700 text-sm mb-6">
+              <p className="text-gray-700 text-sm flex-1">
                 Understand money, markets, and investing strategies with clear explanations and real-world applications.
               </p>
               <Button 
                 onClick={() => navigate("/subject/finance-investing")}
-                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm"
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-lg uppercase text-sm mt-6"
               >
                 Start Learning
               </Button>
