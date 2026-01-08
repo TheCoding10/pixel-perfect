@@ -1,3 +1,8 @@
+// Lessons with embedded HTML content
+const HTML_LESSONS: Record<string, string> = {
+  "100": "/lessons/what-is-personal-finance.html", // What Is Personal Finance?
+};
+
 // Mock lesson with exercises and sub-lessons
 const MOCK_LESSON_DATA: Record<string, any> = {
   "1": {
@@ -161,7 +166,16 @@ export function LessonPage() {
   const [completedTopics, setCompletedTopics] = useState<Set<string>>(new Set());
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
 
+  // Check if this lesson has an embedded HTML page
+  const htmlLessonUrl = id ? HTML_LESSONS[id] : null;
+
   useEffect(() => {
+    // If HTML lesson, skip loading mock data
+    if (htmlLessonUrl) {
+      setLoading(false);
+      return;
+    }
+    
     // Mock data - in real app would fetch from /api/lessons/${id}
     setTimeout(() => {
       const data = MOCK_LESSON_DATA[id || ''];
@@ -170,7 +184,7 @@ export function LessonPage() {
       }
       setLoading(false);
     }, 300);
-  }, [id]);
+  }, [id, htmlLessonUrl]);
 
   const handleAnswerChange = (exerciseId: number, value: number | string) => {
     setAnswers((prev) => ({
@@ -216,6 +230,19 @@ export function LessonPage() {
         <div className="container mx-auto">
           <div className="text-center text-gray-500">Loading...</div>
         </div>
+      </div>
+    );
+  }
+
+  // If this is an HTML-based lesson, render it in an iframe
+  if (htmlLessonUrl) {
+    return (
+      <div className="h-screen w-full">
+        <iframe
+          src={htmlLessonUrl}
+          className="w-full h-full border-0"
+          title="Lesson Content"
+        />
       </div>
     );
   }
