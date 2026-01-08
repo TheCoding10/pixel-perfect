@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
-import { Zap, BarChart3, BookOpen } from 'lucide-react';
+import { Zap, BarChart3, BookOpen, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { Header } from '../components/Header';
 import mathMascot from '@/assets/math-mascot.png';
@@ -30,6 +30,7 @@ export function Home() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(true);
   const { isAuthenticated, user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Mock data - in real app would fetch from /api/subjects
@@ -97,6 +98,16 @@ export function Home() {
 
       {/* Subjects Grid */}
       <main className="container mx-auto px-4 py-12">
+        {isAuthenticated && (
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/dashboard')}
+            className="mb-6 text-gray-600 hover:text-gray-900"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Dashboard
+          </Button>
+        )}
         <h2 className="mb-8 text-2xl font-bold text-gray-900">Choose a subject</h2>
         
         {loading ? (
