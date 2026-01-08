@@ -1,0 +1,4291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Learning Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f4f6f9;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 20px;
+            height: calc(100vh - 40px);
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow-y: auto;
+            border: 1px solid #e5e7eb;
+        }
+
+        .coin-display {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+        }
+
+        .token-display {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+        }
+
+        .token-icon {
+            font-size: 24px;
+        }
+
+        .token-amount {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .heart-display {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .heart-display:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+
+        .hearts-container {
+            display: flex;
+            gap: 4px;
+        }
+
+        .heart {
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .heart.lost {
+            opacity: 0.3;
+            filter: grayscale(100%);
+        }
+
+        .heart.shake {
+            animation: heartShake 0.5s ease;
+        }
+
+        @keyframes heartShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-5deg); }
+            75% { transform: translateX(5px) rotate(5deg); }
+        }
+
+        .heart-label {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .coin-icon {
+            font-size: 24px;
+        }
+
+        .coin-amount {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            color: #1f2937;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9fafb;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .topic-item:hover:not(.locked) {
+            background: #f3f4f6;
+            border-color: #e5e7eb;
+        }
+
+        .topic-item.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .topic-item.completed {
+            background: #f0fdf4;
+            border-color: #d1fae5;
+        }
+
+        .topic-item.completed .topic-number {
+            background: #10b981;
+            color: white;
+        }
+
+        .topic-item.completed .topic-title {
+            color: #374151;
+        }
+
+        .topic-item.locked {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .topic-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #3b82f6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            margin-right: 12px;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .topic-item.active .topic-number {
+            background: white;
+            color: #3b82f6;
+        }
+
+        .topic-title {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .check-icon {
+            margin-left: auto;
+            color: #10b981;
+            font-size: 16px;
+        }
+
+        .lock-icon {
+            margin-left: auto;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #e5e7eb;
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e5e7eb;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #3b82f6;
+            transition: width 0.4s ease;
+            border-radius: 12px 0 0 0;
+        }
+
+        .breadcrumb {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .back-button {
+            background: white;
+            border: 2px solid #e5e7eb;
+            color: #3b82f6;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 12px 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .back-button:hover {
+            background: #eff6ff;
+            border-color: #3b82f6;
+            color: #2563eb;
+        }
+
+        .breadcrumb a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .content-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .icon {
+            font-size: 36px;
+            margin-right: 12px;
+        }
+
+        h1 {
+            color: #111827;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .intro-text {
+            color: #374151;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section h2 {
+            color: #111827;
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .section p {
+            color: #374151;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .tip-box {
+            background: #fffbeb;
+            border-left: 3px solid #f59e0b;
+            padding: 16px 20px;
+            border-radius: 6px;
+            margin: 24px 0;
+        }
+
+        .tip-box strong {
+            color: #92400e;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .tip-box strong::before {
+            content: "💡";
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .tip-box p {
+            color: #78350f;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .course-structure {
+            background: #f9fafb;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            border: 1px solid #e5e7eb;
+        }
+
+        .course-structure h3 {
+            color: #111827;
+            font-size: 18px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .structure-item {
+            padding: 10px 0;
+            color: #374151;
+            font-size: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .structure-item strong {
+            color: #3b82f6;
+            margin-right: 8px;
+            min-width: 22px;
+            font-weight: 500;
+        }
+
+        .lesson-content {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Quiz Styles */
+        .quiz-container {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quiz-header {
+            margin-bottom: 32px;
+        }
+
+        .quiz-subtitle {
+            color: #6b7280;
+            font-size: 16px;
+            margin-top: 8px;
+        }
+
+        .question-counter {
+            color: #3b82f6;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            color: #111827;
+            font-weight: 500;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .answer-option {
+            background: white;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: 2px solid #e5e7eb;
+            font-size: 15px;
+            color: #374151;
+        }
+
+        .answer-option:hover:not(.disabled) {
+            border-color: #d1d5db;
+            background: #f9fafb;
+        }
+
+        .answer-option.selected {
+            background: #eff6ff;
+            border-color: #3b82f6;
+        }
+
+        .answer-option.correct {
+            background: #f0fdf4;
+            border-color: #10b981;
+        }
+
+        .answer-option.incorrect {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .answer-option.disabled {
+            cursor: not-allowed;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #2563eb;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+            border: 1px solid #e5e7eb;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-icon {
+            font-size: 72px;
+            margin-bottom: 16px;
+        }
+
+        .result-title {
+            font-size: 28px;
+            color: #111827;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .result-score {
+            font-size: 42px;
+            font-weight: 600;
+            color: #3b82f6;
+            margin: 16px 0;
+        }
+
+        .result-message {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .completion-badge {
+            background: #3b82f6;
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 32px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .completion-badge h2 {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .completion-badge p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+
+        /* Coin Popup Animation */
+        .coin-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+            animation: popupAppear 0.3s ease;
+        }
+
+        @keyframes popupAppear {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .coin-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .coin-popup h2 {
+            color: #111827;
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .coin-animation-container {
+            margin: 24px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+        }
+
+        .floating-coin {
+            position: absolute;
+            font-size: 24px;
+            animation: floatUp 2s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        .coin-earned {
+            font-size: 48px;
+            animation: coinBounce 0.6s ease;
+        }
+
+        @keyframes coinBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(10deg); }
+            50% { transform: translateY(0) rotate(-10deg); }
+            75% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .coin-amount-earned {
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: scaleIn 0.5s ease 0.2s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .coin-popup-message {
+            color: #6b7280;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .coin-popup-btn {
+            background: #3b82f6;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .coin-popup-btn:hover {
+            background: #2563eb;
+        }
+
+        /* Heart Lockout Screen */
+        .lockout-screen {
+            text-align: center;
+            padding: 60px 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .lockout-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+            opacity: 0.5;
+        }
+
+        .lockout-title {
+            font-size: 28px;
+            color: #111827;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .lockout-message {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .lockout-timer {
+            background: white;
+            padding: 32px 40px;
+            border-radius: 12px;
+            margin: 32px auto;
+            max-width: 350px;
+            border: 2px solid #f3f4f6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .timer-label {
+            color: #9ca3af;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .timer-value {
+            font-size: 64px;
+            font-weight: 700;
+            color: #ef4444;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 4px;
+            line-height: 1;
+        }
+
+        .lockout-hearts {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 24px 0;
+            font-size: 32px;
+            opacity: 0.3;
+        }
+
+        .buy-heart-container {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .buy-heart-button {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .buy-heart-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(251, 191, 36, 0.4);
+        }
+
+        .buy-heart-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .buy-heart-info {
+            margin-top: 16px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .token-cost {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        /* Heart Shop Modal */
+        .heart-shop-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            min-width: 400px;
+            animation: popupAppear 0.3s ease;
+        }
+
+        .heart-shop-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .heart-shop-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .heart-shop-header h2 {
+            color: #111827;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .heart-shop-header p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .heart-shop-stats {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .stat-value.hearts {
+            color: #ef4444;
+        }
+
+        .stat-value.coins {
+            color: #f59e0b;
+        }
+
+        .heart-shop-pricing {
+            background: #fffbeb;
+            border: 2px solid #fbbf24;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .heart-shop-pricing .price {
+            font-size: 18px;
+            font-weight: 600;
+            color: #92400e;
+        }
+
+        .heart-purchase-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .heart-quantity-btn {
+            flex: 1;
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .heart-quantity-btn:hover:not(:disabled) {
+            border-color: #fbbf24;
+            background: #fffbeb;
+        }
+
+        .heart-quantity-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .heart-quantity-btn.selected {
+            border-color: #fbbf24;
+            background: #fffbeb;
+        }
+
+        .heart-shop-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .heart-shop-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .heart-shop-btn.buy {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+        }
+
+        .heart-shop-btn.buy:hover:not(:disabled) {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            transform: translateY(-2px);
+        }
+
+        .heart-shop-btn.buy:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .heart-shop-btn.cancel {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .heart-shop-btn.cancel:hover {
+            background: #e5e7eb;
+        }
+
+        .heart-shop-message {
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .heart-shop-message.success {
+            color: #10b981;
+        }
+
+        .heart-shop-message.error {
+            color: #ef4444;
+        }
+
+        /* Mastery Check Popup */
+        .mastery-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-width: 500px;
+            width: 90%;
+            animation: popupAppear 0.3s ease;
+        }
+
+        .mastery-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .mastery-popup h2 {
+            color: #111827;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .mastery-popup-body {
+            color: #374151;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .mastery-popup-body p {
+            margin-bottom: 16px;
+        }
+
+        .mastery-popup-body strong {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .mastery-prerequisites {
+            background: #f9fafb;
+            border-left: 3px solid #3b82f6;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .mastery-prerequisites h3 {
+            color: #111827;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mastery-prerequisites ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mastery-prerequisites li {
+            color: #4b5563;
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .mastery-prerequisites li:before {
+            content: "•";
+            color: #3b82f6;
+            font-weight: bold;
+            position: absolute;
+            left: 8px;
+        }
+
+        .mastery-info-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .mastery-info-box p {
+            margin: 0;
+            color: #1e40af;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .mastery-reward {
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .mastery-reward p {
+            margin: 0;
+            color: #92400e;
+            font-weight: 600;
+        }
+
+        .mastery-popup-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .mastery-popup-btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mastery-popup-btn.primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+
+        .mastery-popup-btn.primary:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        .mastery-popup-btn.secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .mastery-popup-btn.secondary:hover {
+            background: #e5e7eb;
+        }
+
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, #5b7cfa 0%, #4a5fd9 100%);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .slideshow-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 102;
+        }
+
+        .slideshow-progress-bar {
+            height: 100%;
+            background: white;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .slideshow-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        .slideshow-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 101;
+        }
+
+        .slide {
+            max-width: 600px;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
+        }
+
+        .slide.exit-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .slide-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .slide-title {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .slide-text {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .slide-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .slide-cta {
+            margin-top: 40px;
+        }
+
+        .slide-cta-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .slide-cta-button {
+            background: white;
+            color: #667eea;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .slideshow-nav {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            cursor: pointer;
+            z-index: 102;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .slideshow-nav:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .slideshow-nav.left {
+            left: 0;
+        }
+
+        .slideshow-nav.right {
+            right: 0;
+        }
+
+        .slideshow-nav-icon {
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+        }
+
+        .slideshow-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 103;
+        }
+
+        .slideshow-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        /* Full-Screen Quiz Slideshow */
+        .quiz-slideshow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, #5b7cfa 0%, #4a5fd9 100%);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .quiz-slideshow-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 102;
+        }
+
+        .quiz-slideshow-progress-bar {
+            height: 100%;
+            background: white;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .quiz-slideshow-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 103;
+        }
+
+        .quiz-slideshow-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-slideshow-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .quiz-slideshow-stats {
+            display: flex;
+            gap: 16px;
+        }
+
+        .quiz-slideshow-stat {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .quiz-slideshow-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px 40px 40px;
+            position: relative;
+            z-index: 101;
+        }
+
+        .quiz-slide {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .quiz-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .quiz-slide.exit-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .quiz-slide-question {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .quiz-slide-counter {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .quiz-slide-options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .quiz-slide-option {
+            background: white;
+            border: none;
+            border-radius: 16px;
+            padding: 20px 24px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            color: #1f2937;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-slide-option:hover:not(.disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .quiz-slide-option:active:not(.disabled) {
+            transform: scale(0.98);
+        }
+
+        .quiz-slide-option.selected {
+            background: #dbeafe;
+            border: 3px solid #3b82f6;
+            padding: 17px 21px;
+        }
+
+        .quiz-slide-option.correct {
+            background: #d1fae5;
+            border: 3px solid #10b981;
+            padding: 17px 21px;
+        }
+
+        .quiz-slide-option.incorrect {
+            background: #fee2e2;
+            border: 3px solid #ef4444;
+            padding: 17px 21px;
+        }
+
+        .quiz-slide-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+
+        .quiz-slide-button {
+            margin-top: 32px;
+            background: white;
+            color: #5b7cfa;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 48px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-slide-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .quiz-slide-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-slideshow-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Post-Quiz Completion Screen */
+        .completion-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .completion-screen.failed {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .completion-icon {
+            font-size: 120px;
+            margin-bottom: 32px;
+            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .completion-title {
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            animation: slideUp 0.4s ease 0.2s backwards;
+        }
+
+        .completion-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            animation: slideUp 0.4s ease 0.3s backwards;
+        }
+
+        .completion-stat {
+            text-align: center;
+        }
+
+        .completion-stat-value {
+            font-size: 56px;
+            font-weight: 700;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .completion-stat-label {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .completion-message {
+            color: white;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 48px;
+            animation: slideUp 0.4s ease 0.4s backwards;
+        }
+
+        .completion-progress-text {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            margin-top: 24px;
+            animation: slideUp 0.4s ease 0.5s backwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .sidebar {
+                max-height: 400px;
+            }
+
+            .main-content {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <button class="back-button" style="width: 100%; margin-bottom: 16px;">
+                ← Back
+            </button>
+            <div class="coin-display">
+                <span class="coin-icon">🪙</span>
+                <span class="coin-amount" id="coinAmount">0</span>
+            </div>
+            <div class="heart-display" onclick="openHeartShop()">
+                <span class="heart-label">Hearts:</span>
+                <div class="hearts-container" id="heartsContainer"></div>
+            </div>
+            <h2>Topics</h2>
+            <div id="topicsList"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div id="contentArea"></div>
+        </div>
+    </div>
+
+    <script>
+        // Utility function to shuffle array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Course Data Structure
+        const courseData = {
+            title: "What Is Personal Finance?",
+            lessons: [
+                {
+                    id: 1,
+                    title: "What Is Personal Finance?",
+                    icon: "🎯",
+                    content: [
+                        "Personal finance 💰 is how you manage your money and financial decisions.\n\nIt includes everything from earning 💼, spending 🛒, saving 🏦, and investing 📈.",
+                        "Think of personal finance as the art 🎨 + science 🧪 of making your money work for you 💪, instead of always working for money 😓.",
+                        "Every day, you make choices about money 🤔\n\nHow much to spend. How much to save. Where to invest.\n\nPersonal finance gives you the tools to make these choices wisely.",
+                        "Here's the thing: everyone's different 👥\n\nWhat works for your friend might not work for you. And that's okay! 👍\n\nUnderstanding the principles matters more than following rigid rules.",
+                        "Good news: personal finance isn't complicated 🎉\n\nYou don't need to be a math genius 🧮 or economics expert 📊\n\nJust learn a few key ideas and build good habits. That's it!"
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                question: "What is the primary focus of personal finance?",
+                                options: [
+                                    "Making as much money as possible",
+                                    "Managing your money and financial decisions",
+                                    "Investing in the stock market",
+                                    "Avoiding spending money completely"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "Why is personal finance considered \"personal\"?",
+                                options: [
+                                    "Because you should never discuss money with others",
+                                    "Because everyone has the same financial goals",
+                                    "Because financial decisions should align with your unique goals and circumstances",
+                                    "Because it only involves your personal expenses"
+                                ],
+                                correct: 2
+                            },
+                            {
+                                question: "What do you need to be good at personal finance?",
+                                options: [
+                                    "A degree in economics",
+                                    "Advanced mathematics skills",
+                                    "Understanding of basic principles and good habits",
+                                    "A high income"
+                                ],
+                                correct: 2
+                            },
+                            {
+                                question: "Personal finance involves making choices about:",
+                                options: [
+                                    "Only your spending habits",
+                                    "Earning, spending, saving, and investing",
+                                    "Just your investment portfolio",
+                                    "Only your career decisions"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "Which statement best describes personal finance?",
+                                options: [
+                                    "It's only for wealthy people",
+                                    "It's too complicated for most people",
+                                    "It's about making your money work for you",
+                                    "It's only about cutting expenses"
+                                ],
+                                correct: 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 2,
+                    title: "Why Personal Finance Matters",
+                    icon: "💪",
+                    content: [
+                        "Money touches almost everything in your life 🏠\n\nWhere you live. What you eat. The opportunities you have.\n\nUnderstanding personal finance gives you control over these choices.",
+                        "Here's the truth: financial stress 😰 is everywhere.\n\nIt's one of the top causes of anxiety in adults.\n\nConstant worry about bills, emergencies, and the future.",
+                        "But here's the good news! 🎉\n\nLearning personal finance gives you a clear plan.\n\nAnd with a plan comes confidence. No more constant worry.",
+                        "Good money skills create freedom ✨\n\nYou're not trapped in jobs you hate.\n\nYou can pursue passions. Take risks. Help others.\n\nYou build a safety net for life's challenges.",
+                        "On the flip side? Ignoring money is dangerous 🚨\n\nPeople get trapped in debt. Can't retire. One emergency from disaster.\n\nMost of this is preventable with basic knowledge!",
+                        "Time is your superpower ⚡\n\nSmall decisions today become huge wins tomorrow.\n\nSaving $50 extra per month? That grows massively over decades.\n\nThe earlier you start, the better. Simple as that!"
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                question: "What is one of the leading causes of anxiety in adults?",
+                                options: ["Work deadlines", "Financial stress", "Social media", "Traffic"],
+                                correct: 1
+                            },
+                            {
+                                question: "What does good personal finance create?",
+                                options: [
+                                    "Guaranteed wealth",
+                                    "Freedom and options",
+                                    "Higher income automatically",
+                                    "Elimination of all financial risk"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "Why does starting personal finance early matter?",
+                                options: [
+                                    "You can spend more money when young",
+                                    "It's easier to learn when you're younger",
+                                    "Time allows for compound growth and bigger results",
+                                    "Older people can't learn personal finance"
+                                ],
+                                correct: 2
+                            },
+                            {
+                                question: "What happens to people who ignore personal finance?",
+                                options: [
+                                    "They always end up wealthy eventually",
+                                    "They often become trapped in debt and financial insecurity",
+                                    "Nothing significant",
+                                    "They automatically learn it later"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "How does personal finance reduce stress?",
+                                options: [
+                                    "By guaranteeing you'll never have problems",
+                                    "By giving you a clear plan and confidence",
+                                    "By helping you avoid thinking about money",
+                                    "By making money less important"
+                                ],
+                                correct: 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 3,
+                    title: "The Core Areas of Personal Finance",
+                    icon: "📊",
+                    content: [
+                        "Personal finance has five core areas 🖐️\n\nThink of them as five pillars holding up your financial life.\n\nLet's break them down one by one.",
+                        "First: Income 💵\n\nThis is money flowing in from your job, investments, side hustles.\n\nMore skills = more income. Simple math!",
+                        "Second: Spending 🛒\n\nHow you use your income. Rent, food, fun stuff.\n\nSmart spending = getting value without waste.",
+                        "Third: Saving 🏦\n\nMoney set aside for later. Emergency funds. Planned purchases.\n\nThis is your safety buffer against disasters!",
+                        "Fourth: Investing 📈\n\nPutting money to work so it grows over time.\n\nYes, there's some risk. But that's how wealth builds.\n\nThink long-term gains, not quick wins.",
+                        "Fifth: Protection 🛡️\n\nInsurance and risk management. Health, life, disability coverage.\n\nProtects everything you've built from unexpected disasters.",
+                        "Here's the key: they're all connected! 🔗\n\nYou can't just focus on one and ignore the rest.\n\nBalance all five = strong financial life."
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                question: "How many core areas does personal finance typically include?",
+                                options: ["Three", "Five", "Seven", "Ten"],
+                                correct: 1
+                            },
+                            {
+                                question: "What is the difference between saving and investing?",
+                                options: [
+                                    "Saving is for emergencies, investing is for any purpose",
+                                    "Saving stores money safely, investing involves risk for potential growth",
+                                    "There is no difference",
+                                    "Investing is only for rich people"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "Which area involves insurance and risk management?",
+                                options: ["Income", "Spending", "Investing", "Protection"],
+                                correct: 3
+                            },
+                            {
+                                question: "Why should you focus on all five core areas?",
+                                options: [
+                                    "They're required by law",
+                                    "They're interconnected and all contribute to financial health",
+                                    "You must master them in order",
+                                    "Each one takes exactly the same amount of time"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "What is the starting point of all personal finance?",
+                                options: ["Protection", "Investing", "Income", "Spending"],
+                                correct: 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 4,
+                    title: "Needs vs Wants",
+                    icon: "🤔",
+                    content: [
+                        "One crucial skill: knowing needs from wants 🎯\n\nThis shapes every spending decision you make.\n\nLet's break it down.",
+                        "Needs = survival essentials 🏠\n\nFood. Shelter. Clothes. Healthcare. Transport to work.\n\nWithout these? You can't survive or earn money.\n\nThese are non-negotiable.",
+                        "Wants = quality of life boosters ✨\n\nRestaurants. Entertainment. New phones. Vacations. Designer stuff.\n\nNice to have, but you'll survive without them.",
+                        "Here's where it gets tricky! 😅\n\nThe line isn't always clear.\n\nYou need food, but do you need fancy restaurants?\n\nYou need clothes, but luxury brands?\n\nYou need transport, but a brand new car?\n\nBe honest with yourself!",
+                        "Many people play a mental trick 🧠\n\nThey say \"I need a new phone\" when theirs works fine.\n\nThey say \"I need this vacation\" when they mean \"I really want it.\"\n\nThis leads to overspending and stress.",
+                        "Try this simple habit 💡\n\nBefore each purchase, ask: \"Need or want?\"\n\nIf it's a want, that's okay! You can still buy it.\n\nJust make sure needs come first. And it fits your budget.\n\nThis one habit transforms your money relationship!"
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                question: "Which of these is a true need?",
+                                options: [
+                                    "Designer clothing",
+                                    "The newest smartphone",
+                                    "Basic shelter",
+                                    "Streaming services"
+                                ],
+                                correct: 2
+                            },
+                            {
+                                question: "What makes the distinction between needs and wants tricky?",
+                                options: [
+                                    "Needs and wants are exactly the same thing",
+                                    "The line isn't always clear, and some needs can be met at different expense levels",
+                                    "Everything is a want",
+                                    "Only wealthy people have wants"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "What mental trick do people use to justify overspending?",
+                                options: [
+                                    "Calling wants \"investments\"",
+                                    "Claiming they need things that are actually wants",
+                                    "Ignoring their budget completely",
+                                    "Blaming others for their purchases"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "What should you do before making a purchase?",
+                                options: [
+                                    "Never buy anything that's a want",
+                                    "Ask if it's a need or want, and make sure needs are covered first",
+                                    "Only buy things on sale",
+                                    "Always buy the cheapest option"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "Which statement is true about wants?",
+                                options: [
+                                    "You should never spend money on wants",
+                                    "Wants are always bad financial decisions",
+                                    "It's okay to buy wants if they fit your budget and needs are covered",
+                                    "Wants are more important than needs"
+                                ],
+                                correct: 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 5,
+                    title: "Time, Money, and Compounding",
+                    icon: "⏰",
+                    content: [
+                        "Time is your financial superpower ⚡\n\nUnderstanding this is key to building wealth.\n\nLet's explore the magic of compound growth.",
+                        "Compound growth 🌱 = returns earning returns\n\nYour money earns returns. Then those returns earn returns!\n\nIt's like planting a tree 🌳\n\nThe tree grows. Makes seeds. Seeds become new trees.\n\nSoon you have a whole forest!",
+                        "Here's a real example 💡\n\nInvest $1,000 at 10% growth.\n\nYear 1: You have $1,100 (+$100)\n\nYear 2: You have $1,210 (+$110)\n\nSee that? You earned $10 more in year 2!\n\nThat's growth earning its own growth 🚀",
+                        "The longer you wait, the more powerful this gets.\n\n40 years of investing beats 20 years by WAY more than 2x.\n\nSomeone starting at 25 can beat someone at 35...\n\n...even if they invest LESS total money! 🤯",
+                        "But wait—there's a dark side ⚠️\n\nTime works against you with debt.\n\nYou pay interest. Then interest on that interest.\n\nThis is how credit cards spiral out of control.\n\nDebt compounds just like investments, but against you!",
+                        "The lesson? Start now! ⏰\n\nEvery year you wait costs you exponentially.\n\nTime is irreplaceable in finance.\n\nThe best time to start was yesterday. The second best time is today."
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                question: "What is compound growth?",
+                                options: [
+                                    "Earning the same amount each year",
+                                    "When your returns earn their own returns",
+                                    "Only investing large amounts",
+                                    "Growth that stops after 10 years"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "Why does starting to invest early matter?",
+                                options: [
+                                    "Younger people have more money",
+                                    "Time allows compound growth to work powerfully in your favor",
+                                    "Investment options expire as you age",
+                                    "It doesn't actually matter when you start"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "How does time affect debt?",
+                                options: [
+                                    "It makes debt disappear",
+                                    "Compound interest works against you, making debt grow",
+                                    "Time has no effect on debt",
+                                    "Debt automatically decreases over time"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "If you invest $1,000 at 10% annual growth, how much will you have after one year?",
+                                options: ["$1,000", "$1,010", "$1,100", "$1,200"],
+                                correct: 2
+                            },
+                            {
+                                question: "Which statement best describes the relationship between time and wealth building?",
+                                options: [
+                                    "Time doesn't matter if you invest enough money",
+                                    "Starting late is easily fixed by investing more",
+                                    "Every year you wait costs exponentially more",
+                                    "Only decades make a difference"
+                                ],
+                                correct: 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 6,
+                    title: "Good vs Bad Money Habits",
+                    icon: "✨",
+                    content: [
+                        "Your habits shape your financial future 🎯\n\nMore than any single decision!\n\nSmall actions repeated = your financial reality.\n\nLet's break down what works and what doesn't.",
+                        "Good habits build wealth 💪\n\nPay yourself first = save before spending on anything else.\n\nTrack spending = see where money actually goes.\n\nLive below your means = create room to save and invest.\n\nKeep learning = make better decisions for life!",
+                        "Bad habits destroy wealth 🚨\n\nImpulse buying = regret and unused stuff.\n\nCredit card debt = massive interest costs.\n\nLifestyle inflation = spending more as you earn more.\n\nIgnoring finances = problems get worse, not better.",
+                        "But here's the good news! 🎉\n\nHabits can change. You don't need to fix everything overnight.\n\nStart with ONE good habit.\n\nMaybe track spending for a month 📊\n\nMaybe auto-save $50 per paycheck 💵\n\nSmall changes compound, just like money!",
+                        "The challenge? Bad habits are comfortable 😅\n\nThey're easy. They're the default path.\n\nYou'll slip up sometimes. That's normal!\n\nThe key: recognize bad habits. Understand their cost.\n\nThen consciously replace them with good ones.",
+                        "You don't need perfection ✨\n\nJust more good habits than bad ones.\n\nFocus on improving that ratio.\n\nYour financial life will transform over time!"
+                    ],
+                    quiz: {
+                        questions: [
+                            {
+                                question: "What does \"paying yourself first\" mean?",
+                                options: [
+                                    "Buying things for yourself before others",
+                                    "Setting aside savings before spending on other things",
+                                    "Taking your paycheck in cash",
+                                    "Paying bills before going to work"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "What is lifestyle inflation?",
+                                options: [
+                                    "The rising cost of living",
+                                    "When prices increase due to government policy",
+                                    "Spending more every time you earn more",
+                                    "Inflation that only affects luxury items"
+                                ],
+                                correct: 2
+                            },
+                            {
+                                question: "Why is tracking your spending valuable?",
+                                options: [
+                                    "It's required by law",
+                                    "It helps you understand where money goes and identify waste",
+                                    "Banks require it",
+                                    "It automatically saves you money"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "What's the best way to change bad money habits?",
+                                options: [
+                                    "Change everything at once",
+                                    "Ignore them and hope they go away",
+                                    "Start with one good habit and build from there",
+                                    "Wait until you have more money"
+                                ],
+                                correct: 2
+                            },
+                            {
+                                question: "What determines your financial future more than any single decision?",
+                                options: [
+                                    "Your starting salary",
+                                    "Where you live",
+                                    "Your habits repeated over time",
+                                    "Market performance"
+                                ],
+                                correct: 2
+                            }
+                        ]
+                    }
+                }
+            ]
+        };
+
+        // State Management - CRITICAL: Separate view states
+        let state = {
+            viewOverview: true,  // Show overview only once
+            currentLessonIndex: 0,
+            viewingQuiz: false,
+            completedLessons: new Set(),
+            attemptedQuizzes: new Set(),  // Track which quizzes have been attempted for currency
+            answeredQuestions: new Set(),  // Track individual questions ever attempted (lessonId-questionIndex)
+            coins: 0,  // Coins serve as tokens (start with 0)
+            hearts: 5,  // Heart system
+            heartLockoutTime: null,  // Timestamp when lockout ends
+            quizState: {
+                currentQuestionIndex: 0,
+                selectedAnswer: null,
+                showingResult: false,
+                answers: [],
+                score: 0,
+                isFirstAttempt: true  // Track if this is the first attempt at this quiz
+            },
+            masteryCheckState: {
+                active: false,
+                targetIndex: null,
+                targetType: null,
+                questions: [],
+                currentQuestionIndex: 0,
+                selectedAnswer: null,
+                score: 0,
+                answers: []
+            },
+            slideshowState: {
+                active: false,
+                currentSlide: 0,
+                slides: []
+            },
+            quizSlideshowActive: false
+        };
+
+        // Load state from localStorage
+        function loadState() {
+            const saved = localStorage.getItem('personalFinanceState');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                state.viewOverview = parsed.viewOverview !== undefined ? parsed.viewOverview : true;
+                state.currentLessonIndex = parsed.currentLessonIndex || 0;
+                state.viewingQuiz = parsed.viewingQuiz || false;
+                state.completedLessons = new Set(parsed.completedLessons || []);
+                state.attemptedQuizzes = new Set(parsed.attemptedQuizzes || []);
+                state.answeredQuestions = new Set(parsed.answeredQuestions || []);
+                state.coins = parsed.coins !== undefined ? parsed.coins : 0;
+                state.hearts = parsed.hearts !== undefined ? parsed.hearts : 5;
+                state.heartLockoutTime = parsed.heartLockoutTime || null;
+                
+                // Check if lockout has expired
+                if (state.heartLockoutTime && Date.now() >= state.heartLockoutTime) {
+                    state.hearts = 5;
+                    state.heartLockoutTime = null;
+                }
+            }
+        }
+
+        // Save state to localStorage
+        function saveState() {
+            localStorage.setItem('personalFinanceState', JSON.stringify({
+                viewOverview: state.viewOverview,
+                currentLessonIndex: state.currentLessonIndex,
+                viewingQuiz: state.viewingQuiz,
+                completedLessons: Array.from(state.completedLessons),
+                attemptedQuizzes: Array.from(state.attemptedQuizzes),
+                answeredQuestions: Array.from(state.answeredQuestions),
+                coins: state.coins,
+                hearts: state.hearts,
+                heartLockoutTime: state.heartLockoutTime
+            }));
+        }
+
+        // Initialize the app
+        function init() {
+            loadState();
+            updateCoinDisplay();
+            updateHeartDisplay();
+            startHeartTimer();
+            renderTopicsList();
+            renderContent();
+            updateProgress();
+        }
+
+        // Update coin display
+        function updateCoinDisplay() {
+            const coinAmountElement = document.getElementById('coinAmount');
+            if (coinAmountElement) {
+                coinAmountElement.textContent = state.coins;
+            }
+        }
+
+        // Update heart display
+        function updateHeartDisplay() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            if (heartsContainer) {
+                heartsContainer.innerHTML = '';
+                for (let i = 0; i < 5; i++) {
+                    const heart = document.createElement('span');
+                    heart.className = 'heart';
+                    if (i >= state.hearts) {
+                        heart.classList.add('lost');
+                    }
+                    heart.textContent = '❤️';
+                    heartsContainer.appendChild(heart);
+                }
+            }
+        }
+
+        // Lose a heart with animation
+        function loseHeart() {
+            if (state.hearts > 0) {
+                state.hearts--;
+                
+                // Shake animation
+                const heartsContainer = document.getElementById('heartsContainer');
+                if (heartsContainer) {
+                    const hearts = heartsContainer.querySelectorAll('.heart');
+                    hearts.forEach(heart => heart.classList.add('shake'));
+                    setTimeout(() => {
+                        hearts.forEach(heart => heart.classList.remove('shake'));
+                    }, 500);
+                }
+                
+                // Update display
+                updateHeartDisplay();
+                
+                // Check for lockout
+                if (state.hearts === 0) {
+                    triggerLockout();
+                }
+                
+                saveState();
+            }
+        }
+
+        // Open heart shop modal
+        function openHeartShop() {
+            const overlay = document.createElement('div');
+            overlay.className = 'heart-shop-overlay';
+            overlay.onclick = closeHeartShop;
+            
+            const modal = document.createElement('div');
+            modal.className = 'heart-shop-modal';
+            modal.id = 'heartShopModal';
+            
+            updateHeartShopContent(modal);
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(modal);
+        }
+
+        function updateHeartShopContent(modal) {
+            const heartsNeeded = 5 - state.hearts;
+            const canBuyAny = state.coins >= 5 && state.hearts < 5;
+            
+            modal.innerHTML = `
+                <div class="heart-shop-header">
+                    <h2>❤️ Heart Shop</h2>
+                    <p>Restore your hearts to keep playing</p>
+                </div>
+                
+                <div class="heart-shop-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Current Hearts</div>
+                        <div class="stat-value hearts">
+                            <span>${state.hearts}</span>
+                            <span>/</span>
+                            <span>5</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Your Coins</div>
+                        <div class="stat-value coins">
+                            <span>🪙</span>
+                            <span>${state.coins}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="heart-shop-pricing">
+                    <div class="price">💰 1 Heart = 5 Coins</div>
+                </div>
+                
+                ${state.hearts >= 5 ? `
+                    <div class="heart-shop-message">
+                        ✅ Your hearts are already full!
+                    </div>
+                ` : `
+                    <div class="heart-purchase-controls">
+                        ${[1, 2, 3, 4, 5].slice(0, heartsNeeded).map(qty => `
+                            <button class="heart-quantity-btn" 
+                                    onclick="selectHeartQuantity(${qty})"
+                                    ${state.coins < qty * 5 ? 'disabled' : ''}>
+                                ${qty} ❤️<br>
+                                <small>${qty * 5} 🪙</small>
+                            </button>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="heart-shop-actions">
+                        <button class="heart-shop-btn cancel" onclick="closeHeartShop()">
+                            Cancel
+                        </button>
+                        <button class="heart-shop-btn buy" 
+                                id="buyHeartBtn"
+                                onclick="buyHeartsFromShop(1)"
+                                ${!canBuyAny ? 'disabled' : ''}>
+                            Buy 1 Heart
+                        </button>
+                    </div>
+                    
+                    ${state.coins < 5 ? `
+                        <div class="heart-shop-message error">
+                            ⚠️ Not enough coins to buy hearts
+                        </div>
+                    ` : ''}
+                `}
+                
+                <div class="heart-shop-actions" style="margin-top: 16px;">
+                    <button class="heart-shop-btn cancel" onclick="closeHeartShop()" style="flex: none; width: 100%;">
+                        Close
+                    </button>
+                </div>
+            `;
+        }
+
+        let selectedHeartQty = 1;
+        function selectHeartQuantity(qty) {
+            selectedHeartQty = qty;
+            const modal = document.getElementById('heartShopModal');
+            if (modal) {
+                // Update button states
+                const buttons = modal.querySelectorAll('.heart-quantity-btn');
+                buttons.forEach((btn, idx) => {
+                    if (idx + 1 === qty) {
+                        btn.classList.add('selected');
+                    } else {
+                        btn.classList.remove('selected');
+                    }
+                });
+                
+                // Update buy button text
+                const buyBtn = document.getElementById('buyHeartBtn');
+                if (buyBtn) {
+                    buyBtn.textContent = `Buy ${qty} Heart${qty > 1 ? 's' : ''} (${qty * 5} 🪙)`;
+                    buyBtn.onclick = () => buyHeartsFromShop(qty);
+                }
+            }
+        }
+
+        function buyHeartsFromShop(quantity) {
+            const cost = quantity * 5;
+            
+            // Validation
+            if (state.coins < cost) {
+                const modal = document.getElementById('heartShopModal');
+                if (modal) {
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = 'heart-shop-message error';
+                    msgDiv.textContent = '⚠️ Not enough coins!';
+                    modal.appendChild(msgDiv);
+                    setTimeout(() => msgDiv.remove(), 2000);
+                }
+                return;
+            }
+            
+            const heartsToAdd = Math.min(quantity, 5 - state.hearts);
+            if (heartsToAdd <= 0) {
+                return;
+            }
+            
+            // Deduct coins and add hearts
+            state.coins -= heartsToAdd * 5;
+            state.hearts += heartsToAdd;
+            
+            // Unlock if was locked out
+            if (state.heartLockoutTime) {
+                state.heartLockoutTime = null;
+            }
+            
+            // Update displays
+            updateCoinDisplay();
+            updateHeartDisplay();
+            saveState();
+            
+            // Show feedback message
+            showFloatingMessage(`−${heartsToAdd * 5} Coins, +${heartsToAdd} Heart${heartsToAdd > 1 ? 's' : ''}`, 'success');
+            
+            // Close shop and refresh UI
+            closeHeartShop();
+            renderTopicsList();
+            renderContent();
+        }
+
+        function closeHeartShop() {
+            const overlay = document.querySelector('.heart-shop-overlay');
+            const modal = document.querySelector('.heart-shop-modal');
+            if (overlay) overlay.remove();
+            if (modal) modal.remove();
+            selectedHeartQty = 1;
+        }
+
+        // Show floating feedback message
+        function showFloatingMessage(message, type = 'success') {
+            const msg = document.createElement('div');
+            msg.className = `heart-shop-message ${type}`;
+            msg.textContent = message;
+            msg.style.position = 'fixed';
+            msg.style.top = '20px';
+            msg.style.left = '50%';
+            msg.style.transform = 'translateX(-50%)';
+            
+            if (type === 'success') {
+                msg.style.background = '#10b981';
+            } else if (type === 'error') {
+                msg.style.background = '#ef4444';
+            } else if (type === 'info') {
+                msg.style.background = '#6b7280';
+            }
+            
+            msg.style.color = 'white';
+            msg.style.padding = '12px 24px';
+            msg.style.borderRadius = '8px';
+            msg.style.fontWeight = '600';
+            msg.style.zIndex = '9999';
+            msg.style.animation = 'fadeIn 0.3s ease';
+            
+            document.body.appendChild(msg);
+            setTimeout(() => {
+                msg.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => msg.remove(), 300);
+            }, 2000);
+        }
+
+        // Buy heart with coins
+        function buyHeart() {
+            const HEART_COST = 5;
+            
+            // Validation
+            if (state.coins < HEART_COST) {
+                alert('Not enough coins! You need 5 coins to restore 1 heart.');
+                return;
+            }
+            
+            if (state.hearts >= 5) {
+                alert('Your hearts are already full!');
+                return;
+            }
+            
+            // Deduct coins
+            state.coins -= HEART_COST;
+            
+            // Add heart
+            state.hearts++;
+            
+            // If was locked out, unlock immediately
+            if (state.heartLockoutTime) {
+                state.heartLockoutTime = null;
+            }
+            
+            // Update displays
+            updateCoinDisplay();
+            updateHeartDisplay();
+            saveState();
+            
+            // Show success message
+            showHeartPurchaseMessage();
+            
+            // Unlock quizzes if needed
+            renderTopicsList();
+            renderContent();
+        }
+
+        // Show heart purchase success
+        function showHeartPurchaseMessage() {
+            const overlay = document.createElement('div');
+            overlay.className = 'coin-popup-overlay';
+            
+            const popup = document.createElement('div');
+            popup.className = 'coin-popup';
+            
+            popup.innerHTML = `
+                <h2>Heart Restored! 💜</h2>
+                <div class="coin-animation-container">
+                    <span style="font-size: 64px;">❤️</span>
+                </div>
+                <p class="coin-popup-message">+1 Heart restored! You can continue playing.</p>
+                <button class="coin-popup-btn" onclick="closeHeartPurchaseMessage()">Continue</button>
+            `;
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+        }
+
+        function closeHeartPurchaseMessage() {
+            const overlay = document.querySelector('.coin-popup-overlay');
+            const popup = document.querySelector('.coin-popup');
+            if (overlay) overlay.remove();
+            if (popup) popup.remove();
+        }
+
+        // Trigger lockout
+        function triggerLockout() {
+            state.heartLockoutTime = Date.now() + (60 * 60 * 1000); // 1 hour from now
+            saveState();
+            startHeartTimer();
+            renderContent();
+            renderTopicsList();
+        }
+
+        // Check if currently locked out
+        function isLockedOut() {
+            if (state.heartLockoutTime && Date.now() < state.heartLockoutTime) {
+                return true;
+            } else if (state.heartLockoutTime && Date.now() >= state.heartLockoutTime) {
+                // Lockout expired - restore to full hearts
+                const wasLessThanFull = state.hearts < 5;
+                state.hearts = 5;
+                state.heartLockoutTime = null;
+                saveState();
+                updateHeartDisplay();
+                
+                // Only show message if hearts were actually restored
+                if (wasLessThanFull) {
+                    showHeartRestoredMessage();
+                }
+                return false;
+            }
+            return state.hearts === 0;
+        }
+
+        // Start heart timer
+        let heartTimerInterval = null;
+        function startHeartTimer() {
+            if (heartTimerInterval) {
+                clearInterval(heartTimerInterval);
+            }
+            
+            if (isLockedOut()) {
+                heartTimerInterval = setInterval(() => {
+                    if (!isLockedOut()) {
+                        clearInterval(heartTimerInterval);
+                        updateHeartDisplay();
+                        renderContent();
+                        renderTopicsList();
+                        // Note: showHeartRestoredMessage() is now called inside isLockedOut()
+                    } else {
+                        updateTimerDisplay();
+                    }
+                }, 1000);
+            }
+        }
+
+        // Update timer display
+        function updateTimerDisplay() {
+            const timerElement = document.getElementById('lockoutTimer');
+            if (timerElement && state.heartLockoutTime) {
+                const remaining = Math.max(0, state.heartLockoutTime - Date.now());
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+        }
+
+        // Show heart restored message
+        function showHeartRestoredMessage() {
+            const overlay = document.createElement('div');
+            overlay.className = 'coin-popup-overlay';
+            
+            const popup = document.createElement('div');
+            popup.className = 'coin-popup';
+            
+            popup.innerHTML = `
+                <h2>Hearts Restored! 💚</h2>
+                <div class="coin-animation-container">
+                    <span style="font-size: 64px;">❤️</span>
+                </div>
+                <p class="coin-popup-message">Your hearts are back to full. You can try again!</p>
+                <button class="coin-popup-btn" onclick="closeHeartMessage()">Continue Learning</button>
+            `;
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+        }
+
+        function closeHeartMessage() {
+            const overlay = document.querySelector('.coin-popup-overlay');
+            const popup = document.querySelector('.coin-popup');
+            if (overlay) overlay.remove();
+            if (popup) popup.remove();
+        }
+
+        // Render topics sidebar
+        function renderTopicsList() {
+            const topicsList = document.getElementById('topicsList');
+            const locked = isLockedOut();
+            let topics = [];
+            
+            courseData.lessons.forEach((lesson, index) => {
+                const lessonCompleted = state.completedLessons.has(lesson.id);
+                const isCurrentLesson = index === state.currentLessonIndex && !state.viewingQuiz;
+                // Only lock if hearts are out AND not completed, or if previous lesson not done
+                const isLocked = (locked && !lessonCompleted) || (index > 0 && !state.completedLessons.has(courseData.lessons[index - 1].id));
+                
+                topics.push({
+                    number: (index * 2) + 1,
+                    title: lesson.title,
+                    type: 'lesson',
+                    lessonIndex: index,
+                    isActive: isCurrentLesson,
+                    isCompleted: lessonCompleted,
+                    isLocked: isLocked
+                });
+                
+                const quizCompleted = state.completedLessons.has(lesson.id);
+                const isCurrentQuiz = index === state.currentLessonIndex && state.viewingQuiz;
+                // Only lock quiz if hearts are out AND not completed, or if lesson not done
+                const quizLocked = (locked && !quizCompleted) || !lessonCompleted;
+                
+                topics.push({
+                    number: (index * 2) + 2,
+                    title: `Quiz: ${lesson.title}`,
+                    type: 'quiz',
+                    lessonIndex: index,
+                    isActive: isCurrentQuiz,
+                    isCompleted: quizCompleted,
+                    isLocked: quizLocked
+                });
+            });
+            
+            topicsList.innerHTML = topics.map(topic => {
+                const clickHandler = topic.isLocked 
+                    ? `showMasteryPopup(${topic.lessonIndex}, '${topic.type}')` 
+                    : (topic.type === 'lesson' ? `goToLesson(${topic.lessonIndex})` : `goToQuiz(${topic.lessonIndex})`);
+                
+                return `
+                    <div class="topic-item ${topic.isActive ? 'active' : ''} ${topic.isCompleted ? 'completed' : ''} ${topic.isLocked ? 'locked' : ''}" 
+                         onclick="${clickHandler}">
+                        <div class="topic-number">${topic.number}</div>
+                        <div class="topic-title">${topic.title}</div>
+                        ${topic.isCompleted ? '<span class="check-icon">✓</span>' : ''}
+                        ${topic.isLocked ? '<span class="lock-icon">🔒</span>' : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render content area - CRITICAL: No repeated overview
+        function renderContent() {
+            const contentArea = document.getElementById('contentArea');
+
+            // Check for lockout first - applies to ALL modes
+            if (isLockedOut()) {
+                contentArea.innerHTML = renderLockoutScreen();
+                updateTimerDisplay();
+                return;
+            }
+
+            // Check for mastery check mode
+            if (state.masteryCheckState.active) {
+                contentArea.innerHTML = renderMasteryCheck();
+                return;
+            }
+
+            // Show overview ONLY ONCE
+            if (state.viewOverview) {
+                contentArea.innerHTML = renderChapterOverview();
+            } 
+            // Show quiz
+            else if (state.viewingQuiz) {
+                contentArea.innerHTML = renderQuiz();
+            } 
+            // If showing lesson but slideshow not active, start slideshow
+            else {
+                if (!state.slideshowState.active) {
+                    startSlideshow(state.currentLessonIndex);
+                }
+            }
+        }
+
+        // Render lockout screen
+        function renderLockoutScreen() {
+            const canBuy = state.coins >= 5 && state.hearts < 5;
+            
+            return `
+                <div class="lockout-screen">
+                    <div class="lockout-icon">💔</div>
+                    <h1 class="lockout-title">You're Out of Hearts</h1>
+                    <p class="lockout-message">
+                        Come back in 1 hour or restore a heart with coins.<br>
+                        Your hearts will be fully restored after the timer ends.
+                    </p>
+                    <div class="lockout-hearts">
+                        ❤️ ❤️ ❤️ ❤️ ❤️
+                    </div>
+                    <div class="lockout-timer">
+                        <div class="timer-label">TIME REMAINING</div>
+                        <div class="timer-value" id="lockoutTimer">00:00</div>
+                    </div>
+                    
+                    <div class="buy-heart-container">
+                        <button class="buy-heart-button" 
+                                onclick="buyHeart()" 
+                                ${!canBuy ? 'disabled' : ''}>
+                            <span>🪙</span>
+                            <span>Buy 1 Heart (5 Coins)</span>
+                        </button>
+                        <div class="buy-heart-info">
+                            You have <span class="token-cost">${state.coins} coins</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render mastery check quiz
+        function renderMasteryCheck() {
+            const mState = state.masteryCheckState;
+            
+            if (mState.currentQuestionIndex >= mState.questions.length) {
+                return renderMasteryCheckResult();
+            }
+            
+            const question = mState.questions[mState.currentQuestionIndex];
+            const answered = mState.selectedAnswer !== null;
+            
+            return `
+                <div class="quiz-container">
+                    <div class="breadcrumb">
+                        <a href="#">Personal Finance</a> → Mastery Check
+                    </div>
+                    <div class="quiz-header">
+                        <div class="content-header">
+                            <span class="icon">🎯</span>
+                            <h1>Mastery Check</h1>
+                        </div>
+                        <p class="quiz-subtitle">Testing knowledge from: ${question.fromLessonTitle}</p>
+                    </div>
+                    <div class="question-counter">Question ${mState.currentQuestionIndex + 1} of ${mState.questions.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="answers">
+                        ${question.options.map((option, index) => {
+                            let className = 'answer-option';
+                            if (answered) {
+                                className += ' disabled';
+                                if (index === mState.selectedAnswer) {
+                                    className += index === question.correct ? ' correct' : ' incorrect';
+                                } else if (index === question.correct) {
+                                    className += ' correct';
+                                }
+                            } else if (index === mState.selectedAnswer) {
+                                className += ' selected';
+                            }
+                            return `
+                                <div class="${className}" onclick="${answered ? '' : `selectMasteryAnswer(${index})`}">
+                                    ${option}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="btn btn-secondary" onclick="cancelMasteryCheck()">
+                            Cancel Check
+                        </button>
+                        <button class="btn btn-primary" 
+                                ${mState.selectedAnswer === null ? 'disabled' : ''}
+                                onclick="submitMasteryAnswer()">
+                            Next Question →
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectMasteryAnswer(index) {
+            if (state.masteryCheckState.selectedAnswer === null) {
+                state.masteryCheckState.selectedAnswer = index;
+                
+                // Check if answer is correct immediately
+                const question = state.masteryCheckState.questions[state.masteryCheckState.currentQuestionIndex];
+                const isCorrect = index === question.correct;
+                
+                if (isCorrect) {
+                    // Just track score, no coins per question
+                    state.masteryCheckState.score++;
+                } else {
+                    // Deduct heart immediately on wrong answer
+                    loseHeart();
+                    saveState();
+                    
+                    // Check if locked out
+                    if (isLockedOut()) {
+                        // Show lockout screen immediately
+                        renderContent();
+                        return;
+                    }
+                }
+                
+                renderContent();
+            }
+        }
+
+        function submitMasteryAnswer() {
+            const mState = state.masteryCheckState;
+            
+            if (mState.selectedAnswer === null) return;
+            
+            // Score was already updated in selectMasteryAnswer
+            // Just move to next question
+            mState.currentQuestionIndex++;
+            mState.selectedAnswer = null;
+            renderContent();
+            scrollToTop();
+        }
+
+        function renderMasteryCheckResult() {
+            const mState = state.masteryCheckState;
+            const percentage = Math.round((mState.score / mState.questions.length) * 100);
+            const passed = percentage >= 80;
+            
+            const targetLesson = courseData.lessons[mState.targetIndex];
+            
+            return `
+                <div class="quiz-result">
+                    <div class="result-header">
+                        <div class="result-icon">${passed ? '🎉' : '💪'}</div>
+                        <h2>${passed ? 'Mastery Demonstrated!' : 'Keep Building Your Skills'}</h2>
+                        <div class="result-score">
+                            <div class="score-circle ${passed ? 'passed' : 'failed'}">
+                                <span class="score-number">${percentage}%</span>
+                                <span class="score-label">${mState.score}/${mState.questions.length} correct</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-content">
+                        ${passed ? `
+                            <p class="result-message success">
+                                Excellent work! You've demonstrated mastery of the prerequisite concepts. 
+                                You've earned the same rewards as completing each section and can now access: <strong>${targetLesson.title}</strong>
+                            </p>
+                        ` : `
+                            <p class="result-message">
+                                You're making progress! Remember, there's no penalty for not passing. 
+                                We recommend working through the prerequisite sections to build a stronger foundation. 
+                                You can try the mastery check again anytime you're ready.
+                            </p>
+                        `}
+                    </div>
+                    
+                    <div class="result-actions">
+                        ${passed ? `
+                            <button class="btn btn-primary" onclick="completeMasteryCheck(true)" style="width: 100%;">
+                                Continue to ${targetLesson.title} →
+                            </button>
+                        ` : `
+                            <button class="btn btn-secondary" onclick="completeMasteryCheck(false)" style="margin-right: 12px;">
+                                Review Prerequisites
+                            </button>
+                            <button class="btn btn-primary" onclick="retryMasteryCheck()">
+                                Try Again
+                            </button>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        function completeMasteryCheck(passed) {
+            const mState = state.masteryCheckState;
+            
+            if (passed) {
+                // Award completion bonus only (not per-question coins)
+                const coinsEarned = (mState.targetIndex - state.currentLessonIndex) * 30; // 30 per skipped quiz
+                state.coins += coinsEarned;
+                
+                // Mark all skipped lessons as completed
+                for (let i = state.currentLessonIndex; i < mState.targetIndex; i++) {
+                    state.completedLessons.add(courseData.lessons[i].id);
+                    state.attemptedQuizzes.add(courseData.lessons[i].id);
+                }
+                
+                // Unlock and navigate to target
+                state.currentLessonIndex = mState.targetIndex;
+                state.viewingQuiz = false;
+                state.viewOverview = false;
+                
+                updateCoinDisplay();
+                showFloatingMessage(`+${coinsEarned} Coins earned!`, 'success');
+            } else {
+                // Return to current progress
+                state.viewingQuiz = false;
+                state.viewOverview = false;
+            }
+            
+            // Reset mastery check state
+            state.masteryCheckState = {
+                active: false,
+                targetIndex: null,
+                targetType: null,
+                questions: [],
+                currentQuestionIndex: 0,
+                selectedAnswer: null,
+                score: 0,
+                answers: []
+            };
+            
+            saveState();
+            renderTopicsList();
+            renderContent();
+            updateProgress();
+            scrollToTop();
+        }
+
+        function retryMasteryCheck() {
+            const targetIndex = state.masteryCheckState.targetIndex;
+            const targetType = state.masteryCheckState.targetType;
+            
+            // Reset and regenerate
+            state.masteryCheckState.active = false;
+            startMasteryCheck(targetIndex, targetType);
+        }
+
+        function cancelMasteryCheck() {
+            if (confirm('Are you sure you want to cancel the mastery check? Your progress will not be saved.')) {
+                state.masteryCheckState = {
+                    active: false,
+                    targetIndex: null,
+                    targetType: null,
+                    questions: [],
+                    currentQuestionIndex: 0,
+                    selectedAnswer: null,
+                    score: 0,
+                    answers: []
+                };
+                renderContent();
+            }
+        }
+
+        // Render chapter overview - SHOWN ONCE ONLY
+        function renderChapterOverview() {
+            return `
+                <div class="lesson-content">
+                    <div class="breadcrumb">
+                        <a href="#">Home</a> → <a href="#">Personal Finance</a> → What Is Personal Finance?
+                    </div>
+                    <div class="content-header">
+                        <span class="icon">🎯</span>
+                        <h1>Chapter Overview: What Is Personal Finance?</h1>
+                    </div>
+                    <p class="intro-text">
+                        Welcome to your first chapter in personal finance! This chapter will introduce you to the fundamental concepts 
+                        that form the foundation of financial literacy. You'll learn what personal finance actually means, why it matters 
+                        for your future, and how to start thinking about money in a way that sets you up for success.
+                    </p>
+                    <div class="section">
+                        <h2>What You'll Learn</h2>
+                        <p>
+                            In this chapter, you'll discover the building blocks of personal finance. We'll explore the core areas you 
+                            need to manage, learn to distinguish between needs and wants, understand how time affects your money, and 
+                            identify habits that either help or hurt your financial future. By the end, you'll have a clear framework 
+                            for making better financial decisions.
+                        </p>
+                    </div>
+                    <div class="tip-box">
+                        <strong>Tip:</strong>
+                        <p>This chapter is designed for complete beginners. No prior knowledge of finance, economics, or budgeting 
+                        is required. All you need is an open mind and a willingness to learn about managing your money effectively.</p>
+                    </div>
+                    <div class="course-structure">
+                        <h3>Course Structure</h3>
+                        ${courseData.lessons.map((lesson, idx) => `
+                            <div class="structure-item">
+                                <strong>${idx + 1}.</strong> ${lesson.title}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="quiz-navigation">
+                        <div></div>
+                        <button class="btn btn-primary" onclick="startLearning()">
+                            Start Learning →
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Slideshow Functions
+        function startSlideshow(lessonIndex) {
+            const lesson = courseData.lessons[lessonIndex];
+            const slides = generateSlidesFromLesson(lesson);
+            
+            state.slideshowState = {
+                active: true,
+                currentSlide: 0,
+                slides: slides
+            };
+            
+            renderSlideshow();
+        }
+
+        function generateSlidesFromLesson(lesson) {
+            const slides = [];
+            
+            // Slide 1: Hook
+            slides.push({
+                type: 'hook',
+                icon: lesson.icon,
+                title: lesson.title,
+                text: 'Let\'s dive in! 🚀'
+            });
+            
+            // Content slides - one sentence per slide for microlearning
+            lesson.content.forEach((sentence) => {
+                slides.push({
+                    type: 'content',
+                    text: sentence
+                });
+            });
+            
+            // Final CTA slide
+            slides.push({
+                type: 'cta',
+                icon: '🎯',
+                title: 'Ready to test what you learned?',
+                lessonIndex: state.currentLessonIndex
+            });
+            
+            return slides;
+        }
+
+        function renderSlideshow() {
+            if (!state.slideshowState.active) return;
+            
+            const { currentSlide, slides } = state.slideshowState;
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            
+            // Generate particles (fewer, more subtle)
+            let particlesHTML = '<div class="slideshow-particles">';
+            for (let i = 0; i < 8; i++) {
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                particlesHTML += `<div class="particle" style="left: ${left}%; animation-delay: ${delay}s;"></div>`;
+            }
+            particlesHTML += '</div>';
+            
+            // Render current slide
+            const slide = slides[currentSlide];
+            let slideHTML = '';
+            
+            if (slide.type === 'hook') {
+                slideHTML = `
+                    <div class="slide active">
+                        <div class="slide-icon">${slide.icon}</div>
+                        <h1 class="slide-title">${slide.title}</h1>
+                        <p class="slide-text">${slide.text}</p>
+                    </div>
+                `;
+            } else if (slide.type === 'content') {
+                slideHTML = `
+                    <div class="slide active">
+                        <p class="slide-text">${slide.text}</p>
+                    </div>
+                `;
+            } else if (slide.type === 'cta') {
+                slideHTML = `
+                    <div class="slide active">
+                        <div class="slide-icon">${slide.icon}</div>
+                        <div class="slide-cta">
+                            <p class="slide-cta-text">${slide.title}</p>
+                            <button class="slide-cta-button" onclick="exitSlideshowToQuiz()">
+                                Take the Quiz →
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            const slideshowHTML = `
+                <div class="slideshow-container">
+                    <div class="slideshow-progress">
+                        <div class="slideshow-progress-bar" style="width: ${progress}%"></div>
+                    </div>
+                    <button class="slideshow-close" onclick="exitSlideshow()">×</button>
+                    ${particlesHTML}
+                    <div class="slideshow-content">
+                        ${slideHTML}
+                    </div>
+                    ${currentSlide > 0 ? '<div class="slideshow-nav left" onclick="previousSlide()"><span class="slideshow-nav-icon">‹</span></div>' : ''}
+                    ${currentSlide < slides.length - 1 ? '<div class="slideshow-nav right" onclick="nextSlide()"><span class="slideshow-nav-icon">›</span></div>' : ''}
+                </div>
+            `;
+            
+            const container = document.getElementById('slideshowContainer');
+            if (container) {
+                container.innerHTML = slideshowHTML;
+            } else {
+                const newContainer = document.createElement('div');
+                newContainer.id = 'slideshowContainer';
+                newContainer.innerHTML = slideshowHTML;
+                document.body.appendChild(newContainer);
+            }
+        }
+
+        function nextSlide() {
+            if (state.slideshowState.currentSlide < state.slideshowState.slides.length - 1) {
+                state.slideshowState.currentSlide++;
+                renderSlideshow();
+            }
+        }
+
+        function previousSlide() {
+            if (state.slideshowState.currentSlide > 0) {
+                state.slideshowState.currentSlide--;
+                renderSlideshow();
+            }
+        }
+
+        function exitSlideshow() {
+            state.slideshowState = {
+                active: false,
+                currentSlide: 0,
+                slides: []
+            };
+            const container = document.getElementById('slideshowContainer');
+            if (container) {
+                container.remove();
+            }
+        }
+
+        function exitSlideshowToQuiz() {
+            exitSlideshow();
+            startQuizSlideshow();
+        }
+
+        // Quiz Slideshow Functions
+        function startQuizSlideshow() {
+            state.quizSlideshowActive = true;
+            state.viewingQuiz = true;
+            
+            // Randomize questions
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            lesson.quiz.questions = shuffleArray(lesson.quiz.questions);
+            
+            saveState();
+            renderQuizSlideshow();
+        }
+
+        function renderQuizSlideshow() {
+            if (!state.quizSlideshowActive) return;
+            
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            const question = lesson.quiz.questions[state.quizState.currentQuestionIndex];
+            const progress = ((state.quizState.currentQuestionIndex + 1) / lesson.quiz.questions.length) * 100;
+            const answered = state.quizState.selectedAnswer !== null;
+            
+            // Generate particles
+            let particlesHTML = '<div class="quiz-slideshow-particles">';
+            for (let i = 0; i < 8; i++) {
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                particlesHTML += `<div class="particle" style="left: ${left}%; animation-delay: ${delay}s;"></div>`;
+            }
+            particlesHTML += '</div>';
+            
+            // Check if question already attempted
+            const questionId = `${lesson.id}-${state.quizState.currentQuestionIndex}`;
+            const alreadyAttempted = state.answeredQuestions.has(questionId);
+            
+            const slideshowHTML = `
+                <div class="quiz-slideshow-container">
+                    <div class="quiz-slideshow-progress">
+                        <div class="quiz-slideshow-progress-bar" style="width: ${progress}%"></div>
+                    </div>
+                    
+                    <div class="quiz-slideshow-header">
+                        <button class="quiz-slideshow-close" onclick="exitQuizSlideshow(true)">×</button>
+                        <div class="quiz-slideshow-stats">
+                            <div class="quiz-slideshow-stat">
+                                <span>🪙</span>
+                                <span>${state.coins}</span>
+                            </div>
+                            <div class="quiz-slideshow-stat">
+                                <span>❤️</span>
+                                <span>${state.hearts}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ${particlesHTML}
+                    
+                    <div class="quiz-slideshow-content">
+                        <div class="quiz-slide active">
+                            <div class="quiz-slide-counter">Question ${state.quizState.currentQuestionIndex + 1} of ${lesson.quiz.questions.length}</div>
+                            <h2 class="quiz-slide-question">${question.question}</h2>
+                            <div class="quiz-slide-options">
+                                ${question.options.map((option, index) => {
+                                    let className = 'quiz-slide-option';
+                                    if (answered) {
+                                        className += ' disabled';
+                                        if (index === state.quizState.selectedAnswer) {
+                                            className += index === question.correct ? ' correct' : ' incorrect';
+                                        } else if (index === question.correct) {
+                                            className += ' correct';
+                                        }
+                                    } else if (index === state.quizState.selectedAnswer) {
+                                        className += ' selected';
+                                    }
+                                    return `
+                                        <button class="${className}" onclick="${answered ? '' : `selectQuizSlideshowAnswer(${index})`}">
+                                            ${option}
+                                        </button>
+                                    `;
+                                }).join('')}
+                            </div>
+                            <button class="quiz-slide-button" 
+                                    ${answered ? '' : 'disabled'}
+                                    onclick="nextQuizSlide()">
+                                ${state.quizState.currentQuestionIndex < lesson.quiz.questions.length - 1 ? 'Next Question →' : 'See Results'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const container = document.getElementById('quizSlideshowContainer');
+            if (container) {
+                container.innerHTML = slideshowHTML;
+            } else {
+                const newContainer = document.createElement('div');
+                newContainer.id = 'quizSlideshowContainer';
+                newContainer.innerHTML = slideshowHTML;
+                document.body.appendChild(newContainer);
+            }
+        }
+
+        function selectQuizSlideshowAnswer(index) {
+            if (state.quizState.selectedAnswer === null) {
+                state.quizState.selectedAnswer = index;
+                
+                const lesson = courseData.lessons[state.currentLessonIndex];
+                const question = lesson.quiz.questions[state.quizState.currentQuestionIndex];
+                const isCorrect = index === question.correct;
+                
+                const questionId = `${lesson.id}-${state.quizState.currentQuestionIndex}`;
+                const alreadyAttempted = state.answeredQuestions.has(questionId);
+                
+                if (!alreadyAttempted) {
+                    state.answeredQuestions.add(questionId);
+                    
+                    if (isCorrect) {
+                        state.quizState.score++;
+                        saveState();
+                    } else {
+                        loseHeart();
+                        saveState();
+                        
+                        if (isLockedOut()) {
+                            exitQuizSlideshow();
+                            renderContent();
+                            return;
+                        }
+                    }
+                } else {
+                    if (isCorrect) {
+                        state.quizState.score++;
+                    }
+                }
+                
+                renderQuizSlideshow();
+            }
+        }
+
+        function nextQuizSlide() {
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            
+            if (state.quizState.currentQuestionIndex < lesson.quiz.questions.length - 1) {
+                state.quizState.currentQuestionIndex++;
+                state.quizState.selectedAnswer = null;
+                saveState();
+                renderQuizSlideshow();
+            } else {
+                // Quiz complete - exit slideshow (don't return to hub yet) and show result screen
+                exitQuizSlideshow(false);
+                state.quizState.showingResult = true;
+                state.viewingQuiz = true;
+                saveState();
+                renderContent();
+            }
+        }
+
+        function exitQuizSlideshow(returnToHub = true) {
+            state.quizSlideshowActive = false;
+            const container = document.getElementById('quizSlideshowContainer');
+            if (container) {
+                container.remove();
+            }
+            
+            // Always return to hub when closing slideshow (except when showing results)
+            if (returnToHub) {
+                state.viewOverview = true;
+                state.viewingQuiz = false;
+                resetQuizState();
+                saveState();
+                renderTopicsList();
+                renderContent();
+                updateProgress();
+                scrollToTop();
+            }
+        }
+
+        // Mastery Check Slideshow Functions
+        function startMasterySlideshow() {
+            state.quizSlideshowActive = true;
+            renderMasterySlideshow();
+        }
+
+        function renderMasterySlideshow() {
+            if (!state.quizSlideshowActive) return;
+            
+            const mState = state.masteryCheckState;
+            const question = mState.questions[mState.currentQuestionIndex];
+            const progress = ((mState.currentQuestionIndex + 1) / mState.questions.length) * 100;
+            const answered = mState.selectedAnswer !== null;
+            
+            // Generate particles
+            let particlesHTML = '<div class="quiz-slideshow-particles">';
+            for (let i = 0; i < 8; i++) {
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                particlesHTML += `<div class="particle" style="left: ${left}%; animation-delay: ${delay}s;"></div>`;
+            }
+            particlesHTML += '</div>';
+            
+            const slideshowHTML = `
+                <div class="quiz-slideshow-container">
+                    <div class="quiz-slideshow-progress">
+                        <div class="quiz-slideshow-progress-bar" style="width: ${progress}%"></div>
+                    </div>
+                    
+                    <div class="quiz-slideshow-header">
+                        <button class="quiz-slideshow-close" onclick="cancelMasterySlideshow()">×</button>
+                        <div class="quiz-slideshow-stats">
+                            <div class="quiz-slideshow-stat">
+                                <span>🪙</span>
+                                <span>${state.coins}</span>
+                            </div>
+                            <div class="quiz-slideshow-stat">
+                                <span>❤️</span>
+                                <span>${state.hearts}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ${particlesHTML}
+                    
+                    <div class="quiz-slideshow-content">
+                        <div class="quiz-slide active">
+                            <div class="quiz-slide-counter">🎯 Mastery Check - Question ${mState.currentQuestionIndex + 1} of ${mState.questions.length}</div>
+                            <div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 16px; font-weight: 500;">
+                                From: ${question.sourceLesson}
+                            </div>
+                            <h2 class="quiz-slide-question">${question.question}</h2>
+                            <div class="quiz-slide-options">
+                                ${question.options.map((option, index) => {
+                                    let className = 'quiz-slide-option';
+                                    if (answered) {
+                                        className += ' disabled';
+                                        if (index === mState.selectedAnswer) {
+                                            className += index === question.correct ? ' correct' : ' incorrect';
+                                        } else if (index === question.correct) {
+                                            className += ' correct';
+                                        }
+                                    } else if (index === mState.selectedAnswer) {
+                                        className += ' selected';
+                                    }
+                                    return `
+                                        <button class="${className}" onclick="${answered ? '' : `selectMasterySlideshowAnswer(${index})`}">
+                                            ${option}
+                                        </button>
+                                    `;
+                                }).join('')}
+                            </div>
+                            <button class="quiz-slide-button" 
+                                    ${answered ? '' : 'disabled'}
+                                    onclick="nextMasterySlide()">
+                                ${mState.currentQuestionIndex < mState.questions.length - 1 ? 'Next Question →' : 'See Results'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const container = document.getElementById('quizSlideshowContainer');
+            if (container) {
+                container.innerHTML = slideshowHTML;
+            } else {
+                const newContainer = document.createElement('div');
+                newContainer.id = 'quizSlideshowContainer';
+                newContainer.innerHTML = slideshowHTML;
+                document.body.appendChild(newContainer);
+            }
+        }
+
+        function selectMasterySlideshowAnswer(index) {
+            if (state.masteryCheckState.selectedAnswer === null) {
+                state.masteryCheckState.selectedAnswer = index;
+                
+                const question = state.masteryCheckState.questions[state.masteryCheckState.currentQuestionIndex];
+                const isCorrect = index === question.correct;
+                
+                if (isCorrect) {
+                    state.masteryCheckState.score++;
+                } else {
+                    loseHeart();
+                    saveState();
+                    
+                    if (isLockedOut()) {
+                        exitMasterySlideshow();
+                        renderContent();
+                        return;
+                    }
+                }
+                
+                renderMasterySlideshow();
+            }
+        }
+
+        function nextMasterySlide() {
+            const mState = state.masteryCheckState;
+            
+            if (mState.currentQuestionIndex < mState.questions.length - 1) {
+                mState.currentQuestionIndex++;
+                mState.selectedAnswer = null;
+                saveState();
+                renderMasterySlideshow();
+            } else {
+                // Mastery check complete - exit slideshow and show result
+                exitMasterySlideshow();
+                
+                // Set currentQuestionIndex past the end to trigger result screen
+                mState.currentQuestionIndex = mState.questions.length;
+                mState.selectedAnswer = null;
+                
+                saveState();
+                renderContent();
+                scrollToTop();
+            }
+        }
+
+        function cancelMasterySlideshow() {
+            if (confirm('Are you sure you want to cancel the mastery check? Your progress will not be saved.')) {
+                exitMasterySlideshow();
+                
+                state.masteryCheckState = {
+                    active: false,
+                    targetIndex: null,
+                    targetType: null,
+                    questions: [],
+                    currentQuestionIndex: 0,
+                    selectedAnswer: null,
+                    score: 0,
+                    answers: []
+                };
+                
+                saveState();
+                renderTopicsList();
+                renderContent();
+                updateProgress();
+                scrollToTop();
+            }
+        }
+
+        function exitMasterySlideshow() {
+            state.quizSlideshowActive = false;
+            const container = document.getElementById('quizSlideshowContainer');
+            if (container) {
+                container.remove();
+            }
+        }
+
+        // Render lesson content - NO OVERVIEW CONTENT
+        function renderLesson() {
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            
+            return `
+                <div class="lesson-content">
+                    <div class="breadcrumb">
+                        <a href="#">Personal Finance</a> → ${lesson.title}
+                    </div>
+                    <div class="content-header">
+                        <span class="icon">${lesson.icon}</span>
+                        <h1>${lesson.title}</h1>
+                    </div>
+                    ${lesson.content.map(paragraph => `
+                        <div class="section">
+                            <p>${paragraph}</p>
+                        </div>
+                    `).join('')}
+                    <div class="quiz-navigation">
+                        ${state.currentLessonIndex > 0 ? `
+                            <button class="btn btn-secondary" onclick="goToPreviousLesson()">
+                                ← Previous Lesson
+                            </button>
+                        ` : '<div></div>'}
+                        <button class="btn btn-primary" onclick="goToCurrentQuiz()">
+                            Take the Quiz →
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render quiz
+        function renderQuiz() {
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            
+            // If showing result, render it
+            if (state.quizState.showingResult) {
+                return renderQuizResult();
+            }
+
+            // If not showing result and slideshow not active, start slideshow
+            // This prevents the old quiz format from ever appearing
+            if (!state.quizSlideshowActive) {
+                startQuizSlideshow();
+                return '<div></div>'; // Return empty div while slideshow loads
+            }
+
+            // Fallback - should never reach here
+            return '<div></div>';
+        }
+
+        // Render quiz result
+        function renderQuizResult() {
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            const percentage = Math.round((state.quizState.score / lesson.quiz.questions.length) * 100);
+            const passed = percentage >= 80;
+
+            return `
+                <div class="quiz-result">
+                    <div class="result-icon">${passed ? '🎉' : '📚'}</div>
+                    <h1 class="result-title">${passed ? 'Excellent Work!' : 'Keep Practicing!'}</h1>
+                    <div class="result-score">${state.quizState.score}/${lesson.quiz.questions.length}</div>
+                    <p class="result-message">
+                        ${passed 
+                            ? 'You passed the quiz! You\'re ready to move on to the next lesson.'
+                            : 'You need at least 80% to pass. Review the lesson and try again!'}
+                    </p>
+                    <div class="quiz-navigation">
+                        ${!passed ? `
+                            <button class="btn btn-secondary" onclick="reviewLesson()">
+                                ← Review Lesson
+                            </button>
+                        ` : '<div></div>'}
+                        <button class="btn btn-primary" onclick="${passed ? 'completeQuizAndContinue()' : 'retryQuiz()'}">
+                            ${passed ? (state.currentLessonIndex < courseData.lessons.length - 1 ? 'Next Lesson →' : 'Complete Chapter →') : 'Try Again'}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show coin reward popup
+        function showCoinReward(coinsEarned, callback) {
+            const overlay = document.createElement('div');
+            overlay.className = 'coin-popup-overlay';
+            
+            const popup = document.createElement('div');
+            popup.className = 'coin-popup';
+            
+            popup.innerHTML = `
+                <h2>Quiz Complete! 🎉</h2>
+                <div class="coin-animation-container" id="coinAnimContainer">
+                    <span class="coin-earned">🪙</span>
+                    <span class="coin-amount-earned">+${coinsEarned}</span>
+                </div>
+                <p class="coin-popup-message">You've earned ${coinsEarned} coins!</p>
+                <button class="coin-popup-btn" onclick="closeCoinPopup()">Continue</button>
+            `;
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+            
+            // Add floating coin particles
+            setTimeout(() => {
+                const container = document.getElementById('coinAnimContainer');
+                if (container) {
+                    for (let i = 0; i < 8; i++) {
+                        setTimeout(() => {
+                            const coin = document.createElement('span');
+                            coin.className = 'floating-coin';
+                            coin.textContent = '🪙';
+                            coin.style.left = `${Math.random() * 100 - 50}px`;
+                            coin.style.animationDelay = `${Math.random() * 0.3}s`;
+                            container.appendChild(coin);
+                            
+                            setTimeout(() => coin.remove(), 2000);
+                        }, i * 100);
+                    }
+                }
+            }, 300);
+            
+            // Store callback for later
+            window.coinPopupCallback = callback;
+            
+            // Update coins with animation
+            const startCoins = state.coins;
+            const endCoins = state.coins + coinsEarned;
+            const duration = 1000;
+            const startTime = Date.now();
+            
+            function animateCoins() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const currentCoins = Math.floor(startCoins + (coinsEarned * progress));
+                
+                state.coins = currentCoins;
+                updateCoinDisplay();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateCoins);
+                } else {
+                    state.coins = endCoins;
+                    updateCoinDisplay();
+                    saveState();
+                }
+            }
+            
+            setTimeout(animateCoins, 300);
+        }
+
+        function closeCoinPopup() {
+            const overlay = document.querySelector('.coin-popup-overlay');
+            const popup = document.querySelector('.coin-popup');
+            
+            if (overlay) overlay.remove();
+            if (popup) popup.remove();
+            
+            if (window.coinPopupCallback) {
+                window.coinPopupCallback();
+                window.coinPopupCallback = null;
+            }
+        }
+
+        // Show mastery check popup for locked content
+        function showMasteryPopup(targetIndex, type) {
+            const currentProgress = state.currentLessonIndex;
+            const jumpDistance = targetIndex - currentProgress;
+            
+            if (jumpDistance <= 0) return; // Not jumping ahead
+            
+            // Build prerequisite list
+            const prerequisites = [];
+            for (let i = currentProgress; i < targetIndex; i++) {
+                prerequisites.push(courseData.lessons[i].title);
+            }
+            
+            // Calculate rewards (30 coins per quiz completion bonus only)
+            const maxReward = jumpDistance * 30; // 30 per skipped quiz completion
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'mastery-popup-overlay';
+            overlay.onclick = closeMasteryPopup;
+            
+            const popup = document.createElement('div');
+            popup.className = 'mastery-popup';
+            popup.id = 'masteryPopup';
+            
+            const unitWord = jumpDistance === 1 ? "section" : "sections";
+            const broaderText = jumpDistance > 2 ? 
+                `<p>Since you're jumping further ahead, this mastery check will cover a broader range of topics to ensure you're ready for what comes next.</p>` : 
+                '';
+            
+            popup.innerHTML = `
+                <h2>Ready to Jump Ahead? 🚀</h2>
+                <div class="mastery-popup-body">
+                    <p>You're about to skip <strong>${jumpDistance} ${unitWord}</strong> ahead in your learning path. To make sure you have the foundation you need, we'll guide you through a quick mastery check covering the key concepts from the sections you're skipping.</p>
+                    
+                    ${broaderText}
+                </div>
+                
+                <div class="mastery-prerequisites">
+                    <h3>What we'll review:</h3>
+                    <ul>
+                        ${prerequisites.map(title => `<li>${title}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="mastery-reward">
+                    <p>Earn up to ${maxReward} coins 🪙</p>
+                </div>
+                
+                <div class="mastery-popup-body">
+                    <p><strong>Here's the good news:</strong> There's no penalty if you decide this isn't the right moment. You can always come back when you're ready. And if you demonstrate mastery now, you'll earn up to <strong>${maxReward} coins</strong> — the same rewards you would have earned completing each section along the way.</p>
+                    
+                    <p style="text-align: center; margin-top: 16px; color: #6b7280;">You've got this! 🌟</p>
+                </div>
+                
+                <div class="mastery-popup-actions">
+                    <button class="mastery-popup-btn secondary" onclick="closeMasteryPopup()">
+                        Not Right Now
+                    </button>
+                    <button class="mastery-popup-btn primary" onclick="startMasteryCheck(${targetIndex}, '${type}')">
+                        Start Mastery Check
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+        }
+
+        function closeMasteryPopup() {
+            const overlay = document.querySelector('.mastery-popup-overlay');
+            const popup = document.querySelector('.mastery-popup');
+            if (overlay) overlay.remove();
+            if (popup) popup.remove();
+        }
+
+        function startMasteryCheck(targetIndex, type) {
+            closeMasteryPopup();
+            
+            const currentProgress = state.currentLessonIndex;
+            const jumpDistance = targetIndex - currentProgress;
+            
+            // Generate mastery check quiz
+            const masteryQuestions = generateMasteryQuiz(currentProgress, targetIndex);
+            
+            // Set up mastery check state
+            state.masteryCheckState = {
+                active: true,
+                targetIndex: targetIndex,
+                targetType: type,
+                questions: masteryQuestions,
+                currentQuestionIndex: 0,
+                selectedAnswer: null,
+                score: 0,
+                answers: []
+            };
+            
+            // Start mastery check slideshow
+            startMasterySlideshow();
+        }
+
+        // Generate mastery check quiz by combining questions from prerequisite sections
+        function generateMasteryQuiz(startIndex, endIndex) {
+            const jumpDistance = endIndex - startIndex;
+            const masteryQuestions = [];
+            
+            // Determine total questions based on jump distance
+            let totalQuestions;
+            if (jumpDistance === 1) {
+                totalQuestions = 5;  // Short mastery check
+            } else if (jumpDistance <= 3) {
+                totalQuestions = Math.min(10, jumpDistance * 4);  // Medium check
+            } else {
+                totalQuestions = Math.min(15, jumpDistance * 3);  // Longer check
+            }
+            
+            // Calculate questions per section with recency weighting
+            const questionCounts = [];
+            let totalWeight = 0;
+            
+            for (let i = startIndex; i < endIndex; i++) {
+                // Recent sections get higher weight (1.5x for most recent, scaling down)
+                const recencyMultiplier = 1 + (0.5 * (i - startIndex) / (endIndex - startIndex));
+                const weight = recencyMultiplier;
+                totalWeight += weight;
+                questionCounts.push({ lessonIndex: i, weight: weight, count: 0 });
+            }
+            
+            // Distribute questions proportionally
+            for (let i = 0; i < questionCounts.length; i++) {
+                questionCounts[i].count = Math.max(1, Math.round((questionCounts[i].weight / totalWeight) * totalQuestions));
+            }
+            
+            // Adjust to match exact total
+            let currentTotal = questionCounts.reduce((sum, q) => sum + q.count, 0);
+            while (currentTotal < totalQuestions) {
+                // Add to most recent section
+                questionCounts[questionCounts.length - 1].count++;
+                currentTotal++;
+            }
+            while (currentTotal > totalQuestions) {
+                // Remove from least recent section with multiple questions
+                for (let i = 0; i < questionCounts.length; i++) {
+                    if (questionCounts[i].count > 1) {
+                        questionCounts[i].count--;
+                        currentTotal--;
+                        break;
+                    }
+                }
+            }
+            
+            // Collect questions from each section
+            for (const { lessonIndex, count } of questionCounts) {
+                const lesson = courseData.lessons[lessonIndex];
+                const availableQuestions = lesson.quiz.questions;
+                
+                // Randomly select questions from this section
+                const selectedIndices = [];
+                while (selectedIndices.length < Math.min(count, availableQuestions.length)) {
+                    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+                    if (!selectedIndices.includes(randomIndex)) {
+                        selectedIndices.push(randomIndex);
+                    }
+                }
+                
+                // Add selected questions with metadata
+                for (const qIndex of selectedIndices) {
+                    masteryQuestions.push({
+                        question: availableQuestions[qIndex].question,
+                        options: availableQuestions[qIndex].options,
+                        correct: availableQuestions[qIndex].correct,
+                        fromLesson: lessonIndex,
+                        fromLessonTitle: lesson.title
+                    });
+                }
+            }
+            
+            // Shuffle questions for better mixing - RANDOMIZES EVERY TIME
+            for (let i = masteryQuestions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [masteryQuestions[i], masteryQuestions[j]] = [masteryQuestions[j], masteryQuestions[i]];
+            }
+            
+            return masteryQuestions;
+        }
+
+        // Navigation Functions - CRITICAL STATE MANAGEMENT
+        
+        function goBack() {
+            if (state.currentLessonIndex === 0) {
+                // First lesson - go back to overview
+                state.viewOverview = true;
+                state.viewingQuiz = false;
+                saveState();
+                renderContent();
+                updateProgress();
+                scrollToTop();
+            } else {
+                // Go to previous lesson
+                goToPreviousLesson();
+            }
+        }
+
+        function startLearning() {
+            state.viewOverview = false;  // NEVER show overview again
+            state.currentLessonIndex = 0;
+            state.viewingQuiz = false;
+            saveState();
+            renderTopicsList();
+            renderContent();
+            updateProgress();
+            scrollToTop();
+        }
+
+        function goToLesson(index) {
+            // Exit mastery check if active
+            if (state.masteryCheckState.active) {
+                state.masteryCheckState = {
+                    active: false,
+                    targetIndex: null,
+                    targetType: null,
+                    questions: [],
+                    currentQuestionIndex: 0,
+                    selectedAnswer: null,
+                    score: 0,
+                    answers: []
+                };
+            }
+            
+            state.viewOverview = false;
+            state.currentLessonIndex = index;
+            state.viewingQuiz = false;
+            resetQuizState();
+            saveState();
+            renderTopicsList();
+            updateProgress();
+            
+            // Start slideshow instead of showing text lesson
+            startSlideshow(index);
+        }
+
+        function goToQuiz(index) {
+            if (isLockedOut()) {
+                return;
+            }
+            
+            // Exit mastery check if active
+            if (state.masteryCheckState.active) {
+                state.masteryCheckState = {
+                    active: false,
+                    targetIndex: null,
+                    targetType: null,
+                    questions: [],
+                    currentQuestionIndex: 0,
+                    selectedAnswer: null,
+                    score: 0,
+                    answers: []
+                };
+            }
+            
+            const lesson = courseData.lessons[index];
+            if (!state.completedLessons.has(lesson.id)) {
+                goToLesson(index);
+                return;
+            }
+            
+            // Check if this quiz was already attempted
+            const wasAttempted = state.attemptedQuizzes.has(lesson.id);
+            
+            state.viewOverview = false;
+            state.currentLessonIndex = index;
+            resetQuizState();
+            
+            // Store whether this is first attempt in quiz state
+            state.quizState.isFirstAttempt = !wasAttempted;
+            
+            saveState();
+            renderTopicsList();
+            updateProgress();
+            
+            // Start quiz slideshow
+            startQuizSlideshow();
+        }
+
+        function goToCurrentQuiz() {
+            if (isLockedOut()) {
+                return;
+            }
+            
+            // Mark quiz as attempted when starting it (for first-time tracking)
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            const wasAttempted = state.attemptedQuizzes.has(lesson.id);
+            
+            resetQuizState();
+            
+            // Store whether this is first attempt in quiz state
+            state.quizState.isFirstAttempt = !wasAttempted;
+            
+            saveState();
+            
+            // Start quiz slideshow
+            startQuizSlideshow();
+        }
+
+        function backToLesson() {
+            state.viewingQuiz = false;
+            resetQuizState();
+            saveState();
+            renderTopicsList();
+            renderContent();
+            scrollToTop();
+        }
+
+        function goToPreviousLesson() {
+            if (state.currentLessonIndex > 0) {
+                state.currentLessonIndex--;
+                state.viewingQuiz = false;
+                resetQuizState();
+                saveState();
+                renderTopicsList();
+                renderContent();
+                updateProgress();
+                scrollToTop();
+            }
+        }
+
+        // Quiz Functions
+        function selectAnswer(index) {
+            if (state.quizState.selectedAnswer === null) {
+                state.quizState.selectedAnswer = index;
+                
+                // Check if answer is correct immediately
+                const lesson = courseData.lessons[state.currentLessonIndex];
+                const question = lesson.quiz.questions[state.quizState.currentQuestionIndex];
+                const isCorrect = index === question.correct;
+                
+                // Create unique ID for this specific question (lessonId-questionIndex)
+                const questionId = `${lesson.id}-${state.quizState.currentQuestionIndex}`;
+                const alreadyAttempted = state.answeredQuestions.has(questionId);
+                
+                // Only process rewards/penalties if NEVER attempted this specific question before
+                if (!alreadyAttempted) {
+                    // Mark question as attempted immediately
+                    state.answeredQuestions.add(questionId);
+                    
+                    if (isCorrect) {
+                        // Just track score, no coins per question
+                        state.quizState.score++;
+                        saveState();
+                    } else {
+                        // Deduct heart immediately on wrong answer (ONLY on first attempt of this question)
+                        loseHeart();
+                        saveState();
+                        
+                        // Check if locked out
+                        if (isLockedOut()) {
+                            renderContent();
+                            return;
+                        }
+                    }
+                } else {
+                    // Question already attempted - no hearts or coins affected
+                    if (isCorrect) {
+                        state.quizState.score++;
+                    }
+                    // Silent practice mode - no visual feedback needed
+                }
+                
+                renderContent();
+            }
+        }
+
+        function submitAnswer() {
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            const question = lesson.quiz.questions[state.quizState.currentQuestionIndex];
+            
+            if (state.quizState.selectedAnswer === null) return;
+
+            // Score was already updated in selectAnswer, just check lockout
+            if (isLockedOut()) {
+                renderContent();
+                return;
+            }
+
+            // INSTANT NAVIGATION - No delay
+            if (state.quizState.currentQuestionIndex < lesson.quiz.questions.length - 1) {
+                state.quizState.currentQuestionIndex++;
+                state.quizState.selectedAnswer = null;
+                renderContent();
+                scrollToTop();
+            } else {
+                state.quizState.showingResult = true;
+                renderContent();
+                scrollToTop();
+            }
+        }
+
+        function completeQuizAndContinue() {
+            const lesson = courseData.lessons[state.currentLessonIndex];
+            const isFirstCompletion = !state.attemptedQuizzes.has(lesson.id);
+            
+            // Mark as completed
+            state.completedLessons.add(lesson.id);
+            
+            // Calculate coins based on score - ONLY on first quiz completion
+            const percentage = Math.round((state.quizState.score / lesson.quiz.questions.length) * 100);
+            let coinsEarned = 0;
+            
+            // Only give completion bonus if this is the first time completing this quiz
+            if (isFirstCompletion) {
+                // Mark quiz as attempted (for completion bonus tracking)
+                state.attemptedQuizzes.add(lesson.id);
+                
+                if (percentage === 100) {
+                    coinsEarned = 50;  // Perfect score bonus
+                } else if (percentage >= 80) {
+                    coinsEarned = 30;  // Pass bonus
+                }
+                
+                // Add coins
+                state.coins += coinsEarned;
+            }
+            
+            saveState();
+            updateCoinDisplay();
+            
+            // Show completion screen
+            showCompletionScreen(true, coinsEarned, percentage);
+        }
+
+        function showCompletionScreen(passed, coinsEarned, percentage) {
+            const icon = passed ? '🎉' : '📚';
+            const title = passed ? 'Great Job!' : 'Keep Practicing!';
+            const message = passed ? 'You crushed it!' : 'Review and try again!';
+            
+            const completionHTML = `
+                <div class="completion-screen ${passed ? '' : 'failed'}">
+                    <div class="completion-icon">${icon}</div>
+                    <h1 class="completion-title">${title}</h1>
+                    <div class="completion-stats">
+                        ${coinsEarned > 0 ? `
+                            <div class="completion-stat">
+                                <span class="completion-stat-value">+${coinsEarned}</span>
+                                <span class="completion-stat-label">Coins Earned</span>
+                            </div>
+                        ` : ''}
+                        <div class="completion-stat">
+                            <span class="completion-stat-value">${state.hearts}</span>
+                            <span class="completion-stat-label">Hearts Left</span>
+                        </div>
+                    </div>
+                    <p class="completion-message">${message}</p>
+                    <p class="completion-progress-text">Returning to lessons...</p>
+                </div>
+            `;
+            
+            // Create and show completion screen
+            const container = document.createElement('div');
+            container.id = 'completionScreen';
+            container.innerHTML = completionHTML;
+            document.body.appendChild(container);
+            
+            // Auto-transition after 2 seconds
+            setTimeout(() => {
+                container.remove();
+                returnToLessonHub();
+            }, 2000);
+        }
+
+        function returnToLessonHub() {
+            // Go back to lesson overview
+            state.viewOverview = true;
+            state.viewingQuiz = false;
+            resetQuizState();
+            saveState();
+            renderTopicsList();
+            renderContent();
+            updateProgress();
+            scrollToTop();
+        }
+
+        function proceedAfterQuiz() {
+            if (state.currentLessonIndex < courseData.lessons.length - 1) {
+                // Move to next lesson
+                state.currentLessonIndex++;
+                state.viewingQuiz = false;
+                resetQuizState();
+                saveState();
+                renderTopicsList();
+                renderContent();
+                updateProgress();
+                scrollToTop();
+            } else {
+                // Show completion
+                showChapterCompletion();
+            }
+        }
+
+        function retryQuiz() {
+            // Reset quiz state
+            resetQuizState();
+            
+            saveState();
+            
+            // Start quiz slideshow
+            startQuizSlideshow();
+        }
+
+        function reviewLesson() {
+            // Exit quiz mode
+            state.viewingQuiz = false;
+            resetQuizState();
+            saveState();
+            renderTopicsList();
+            
+            // Show slideshow for review
+            startSlideshow(state.currentLessonIndex);
+        }
+
+        function resetQuizState() {
+            // Don't reset isFirstAttempt - it's set when entering the quiz
+            const isFirstAttempt = state.quizState.isFirstAttempt;
+            state.quizState = {
+                currentQuestionIndex: 0,
+                selectedAnswer: null,
+                showingResult: false,
+                answers: [],
+                score: 0,
+                isFirstAttempt: isFirstAttempt
+            };
+        }
+
+        // Show chapter completion
+        function showChapterCompletion() {
+            const contentArea = document.getElementById('contentArea');
+            contentArea.innerHTML = `
+                <div class="lesson-content">
+                    <div class="completion-badge">
+                        <div class="result-icon">🏆</div>
+                        <h2>Chapter Complete!</h2>
+                        <p>You've mastered "What Is Personal Finance?"</p>
+                    </div>
+                    <div class="section">
+                        <h2>What You've Accomplished</h2>
+                        <p>
+                            You now understand the fundamentals of managing money, why financial literacy matters, 
+                            the five core areas to focus on, how to distinguish needs from wants, the incredible power 
+                            of time and compounding, and how your daily habits shape your financial future.
+                        </p>
+                    </div>
+                    <div class="section">
+                        <h2>Next Steps</h2>
+                        <p>
+                            These foundational concepts will serve you throughout your financial life. Ready to continue 
+                            building your financial knowledge?
+                        </p>
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="btn btn-secondary" onclick="goToLesson(0)">
+                            ← Review Chapter
+                        </button>
+                        <button class="btn btn-primary" onclick="nextUnit()">
+                            Next Unit: Creating Your Budget →
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function nextUnit() {
+            alert('Next Unit: Creating Your Budget\n\nComing soon! This would transition to the next unit in the course.');
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const totalItems = courseData.lessons.length;
+            const progress = (state.completedLessons.size / totalItems) * 100;
+            progressFill.style.width = progress + '%';
+        }
+
+        // Utility
+        function scrollToTop() {
+            document.querySelector('.main-content').scrollTop = 0;
+        }
+
+        // Initialize
+        init();
+    </script>
+</body>
+</html>
