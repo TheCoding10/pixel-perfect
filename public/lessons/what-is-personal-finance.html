@@ -123,7 +123,29 @@
         }
 
         .coin-icon {
-            font-size: 24px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            border: 2px solid #DAA520;
+        }
+
+        .coin-icon::before {
+            content: '¢';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            font-weight: 900;
+            color: #8B6914;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .coin-amount {
@@ -131,6 +153,34 @@
             font-size: 20px;
             font-weight: 600;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Token icon for inline use */
+        .token-icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            position: relative;
+            vertical-align: middle;
+            box-shadow: 
+                0 1px 2px rgba(0, 0, 0, 0.2),
+                inset 0 0.5px 0 rgba(255, 255, 255, 0.5);
+            border: 1.5px solid #DAA520;
+            margin: 0 2px;
+        }
+
+        .token-icon::before {
+            content: '¢';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.75em;
+            font-weight: 900;
+            color: #8B6914;
+            line-height: 1;
         }
 
         .sidebar h2 {
@@ -248,12 +298,6 @@
             border-radius: 12px 0 0 0;
         }
 
-        .breadcrumb {
-            color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-
         .back-button {
             background: white;
             border: 2px solid #e5e7eb;
@@ -274,15 +318,6 @@
             background: #eff6ff;
             border-color: #3b82f6;
             color: #2563eb;
-        }
-
-        .breadcrumb a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
         }
 
         .content-header {
@@ -634,9 +669,27 @@
 
         .floating-coin {
             position: absolute;
-            font-size: 24px;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 2px solid #DAA520;
             animation: floatUp 2s ease-out forwards;
             pointer-events: none;
+        }
+
+        .floating-coin::before {
+            content: '¢';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            font-weight: 900;
+            color: #8B6914;
         }
 
         @keyframes floatUp {
@@ -651,8 +704,30 @@
         }
 
         .coin-earned {
-            font-size: 48px;
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 
+                0 3px 6px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+            border: 3px solid #DAA520;
             animation: coinBounce 0.6s ease;
+        }
+
+        .coin-earned::before {
+            content: '¢';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            font-weight: 900;
+            color: #8B6914;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         @keyframes coinBounce {
@@ -1725,6 +1800,72 @@
                 padding: 12px 20px;
                 font-size: 14px;
             }
+
+            /* Mastery Popup Mobile Optimization */
+            .mastery-popup {
+                padding: 20px;
+                max-width: 90%;
+                width: 90%;
+                max-height: 85vh;
+                overflow-y: auto;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .mastery-popup h2 {
+                font-size: 22px;
+                margin-bottom: 16px;
+            }
+
+            .mastery-popup-body {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 16px;
+            }
+
+            .mastery-prerequisites {
+                padding: 12px 16px;
+                margin: 16px 0;
+            }
+
+            .mastery-prerequisites h3 {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+
+            .mastery-prerequisites li {
+                font-size: 14px;
+                padding: 4px 0;
+            }
+
+            .mastery-info-box {
+                padding: 12px;
+                margin: 16px 0;
+            }
+
+            .mastery-info-box p {
+                font-size: 13px;
+            }
+
+            .mastery-reward {
+                padding: 12px;
+                margin: 16px 0;
+            }
+
+            .mastery-reward p {
+                font-size: 14px;
+            }
+
+            .mastery-popup-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .mastery-popup-actions button {
+                width: 100%;
+                padding: 14px;
+                font-size: 15px;
+            }
         }
     </style>
 </head>
@@ -1732,11 +1873,11 @@
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
-            <button class="back-button" style="width: 100%; margin-bottom: 16px;">
+            <button class="back-button" style="width: 100%; margin-bottom: 16px;" onclick="window.parent.location.href='/course/personal-finance'">
                 ← Back
             </button>
             <div class="coin-display">
-                <span class="coin-icon">🪙</span>
+                <span class="coin-icon"></span>
                 <span class="coin-amount" id="coinAmount">0</span>
             </div>
             <div class="heart-display" onclick="openHeartShop()">
@@ -2327,14 +2468,14 @@
                     <div class="stat-item">
                         <div class="stat-label">Your Coins</div>
                         <div class="stat-value coins">
-                            <span>🪙</span>
+                            <span class="token-icon"></span>
                             <span>${state.coins}</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="heart-shop-pricing">
-                    <div class="price">💰 1 Heart = 5 Coins</div>
+                    <div class="price"><span class="token-icon"></span> 1 Heart = 5 Coins</div>
                 </div>
                 
                 ${state.hearts >= 5 ? `
@@ -2348,7 +2489,7 @@
                                     onclick="selectHeartQuantity(${qty})"
                                     ${state.coins < qty * 5 ? 'disabled' : ''}>
                                 ${qty} ❤️<br>
-                                <small>${qty * 5} 🪙</small>
+                                <small>${qty * 5} Coins</small>
                             </button>
                         `).join('')}
                     </div>
@@ -2398,7 +2539,7 @@
                 // Update buy button text
                 const buyBtn = document.getElementById('buyHeartBtn');
                 if (buyBtn) {
-                    buyBtn.textContent = `Buy ${qty} Heart${qty > 1 ? 's' : ''} (${qty * 5} 🪙)`;
+                    buyBtn.textContent = `Buy ${qty} Heart${qty > 1 ? 's' : ''} (${qty * 5} Coins)`;
                     buyBtn.onclick = () => buyHeartsFromShop(qty);
                 }
             }
@@ -2557,7 +2698,7 @@
 
         // Trigger lockout
         function triggerLockout() {
-            state.heartLockoutTime = Date.now() + (60 * 60 * 1000); // 1 hour from now
+            state.heartLockoutTime = Date.now() + (15 * 60 * 1000); // 15 minutes from now
             saveState();
             startHeartTimer();
             renderContent();
@@ -2685,9 +2826,23 @@
             });
             
             topicsList.innerHTML = topics.map(topic => {
-                const clickHandler = topic.isLocked 
-                    ? `showMasteryPopup(${topic.lessonIndex}, '${topic.type}')` 
-                    : (topic.type === 'lesson' ? `goToLesson(${topic.lessonIndex})` : `goToQuiz(${topic.lessonIndex})`);
+                let clickHandler;
+                
+                if (topic.isLocked) {
+                    // Check if this is the very next item in sequence or if we're skipping
+                    const isNextInSequence = topic.lessonIndex === state.currentLessonIndex;
+                    
+                    if (isNextInSequence) {
+                        // This is the next natural progression - just block it, no mastery check
+                        clickHandler = `alert('Complete the previous section first!')`;
+                    } else {
+                        // This is a skip - offer mastery check
+                        clickHandler = `showMasteryPopup(${topic.lessonIndex}, '${topic.type}')`;
+                    }
+                } else {
+                    // Unlocked - proceed normally
+                    clickHandler = topic.type === 'lesson' ? `goToLesson(${topic.lessonIndex})` : `goToQuiz(${topic.lessonIndex})`;
+                }
                 
                 return `
                     <div class="topic-item ${topic.isActive ? 'active' : ''} ${topic.isCompleted ? 'completed' : ''} ${topic.isLocked ? 'locked' : ''}" 
@@ -2743,7 +2898,7 @@
                     <div class="lockout-icon">💔</div>
                     <h1 class="lockout-title">You're Out of Hearts</h1>
                     <p class="lockout-message">
-                        Come back in 1 hour or restore a heart with coins.<br>
+                        Come back in 15 minutes or restore a heart with coins.<br>
                         Your hearts will be fully restored after the timer ends.
                     </p>
                     <div class="lockout-hearts">
@@ -2758,7 +2913,7 @@
                         <button class="buy-heart-button" 
                                 onclick="buyHeart()" 
                                 ${!canBuy ? 'disabled' : ''}>
-                            <span>🪙</span>
+                            <span class="token-icon"></span>
                             <span>Buy 1 Heart (5 Coins)</span>
                         </button>
                         <div class="buy-heart-info">
@@ -2926,9 +3081,16 @@
             const mState = state.masteryCheckState;
             
             if (passed) {
-                // Award completion bonus only (not per-question coins)
-                const coinsEarned = (mState.targetIndex - state.currentLessonIndex) * 30; // 30 per skipped quiz
-                state.coins += coinsEarned;
+                // Count only sections that weren't already completed
+                let sectionsSkipped = 0;
+                for (let i = state.currentLessonIndex; i < mState.targetIndex; i++) {
+                    if (!state.completedLessons.has(courseData.lessons[i].id)) {
+                        sectionsSkipped++;
+                    }
+                }
+                
+                // Award completion bonus only for sections actually skipped (30 per skipped quiz)
+                const coinsEarned = sectionsSkipped * 30;
                 
                 // Mark all skipped lessons as completed
                 for (let i = state.currentLessonIndex; i < mState.targetIndex; i++) {
@@ -2937,35 +3099,95 @@
                 }
                 
                 // Unlock and navigate to target
-                state.currentLessonIndex = mState.targetIndex;
-                state.viewingQuiz = false;
-                state.viewOverview = false;
+                const targetIndex = mState.targetIndex;
+                const targetType = mState.targetType;
+                state.currentLessonIndex = targetIndex;
                 
-                updateCoinDisplay();
-                showFloatingMessage(`+${coinsEarned} Coins earned!`, 'success');
+                // Reset mastery check state
+                state.masteryCheckState = {
+                    active: false,
+                    targetIndex: null,
+                    targetType: null,
+                    questions: [],
+                    currentQuestionIndex: 0,
+                    selectedAnswer: null,
+                    score: 0,
+                    answers: []
+                };
+                
+                saveState();
+                renderTopicsList();
+                updateProgress();
+                
+                // Show completion screen with coins and hearts, then coin animation
+                showMasteryCompletionScreen(coinsEarned, () => {
+                    if (coinsEarned > 0) {
+                        showMasteryCheckCoinReward(coinsEarned, () => {
+                            // Navigate to the target lesson/quiz after animations
+                            // Check if this is the last lesson (Complete Chapter case)
+                            if (targetIndex >= courseData.lessons.length - 1 && targetType === 'quiz') {
+                                // Last quiz - show chapter completion
+                                state.viewingQuiz = false;
+                                state.viewOverview = true;
+                                renderContent();
+                                scrollToTop();
+                            } else if (targetType === 'lesson') {
+                                // Navigate to the target lesson
+                                state.viewingQuiz = false;
+                                state.viewOverview = false;
+                                startSlideshow(targetIndex);
+                                scrollToTop();
+                            } else if (targetType === 'quiz') {
+                                // Navigate to the target quiz
+                                state.viewingQuiz = true;
+                                state.viewOverview = false;
+                                startQuizSlideshow();
+                                scrollToTop();
+                            }
+                        });
+                    } else {
+                        // No coins, but still navigate to target
+                        if (targetIndex >= courseData.lessons.length - 1 && targetType === 'quiz') {
+                            state.viewingQuiz = false;
+                            state.viewOverview = true;
+                            renderContent();
+                            scrollToTop();
+                        } else if (targetType === 'lesson') {
+                            state.viewingQuiz = false;
+                            state.viewOverview = false;
+                            startSlideshow(targetIndex);
+                            scrollToTop();
+                        } else if (targetType === 'quiz') {
+                            state.viewingQuiz = true;
+                            state.viewOverview = false;
+                            startQuizSlideshow();
+                            scrollToTop();
+                        }
+                    }
+                });
             } else {
                 // Return to current progress
                 state.viewingQuiz = false;
                 state.viewOverview = false;
+                
+                // Reset mastery check state
+                state.masteryCheckState = {
+                    active: false,
+                    targetIndex: null,
+                    targetType: null,
+                    questions: [],
+                    currentQuestionIndex: 0,
+                    selectedAnswer: null,
+                    score: 0,
+                    answers: []
+                };
+                
+                saveState();
+                renderTopicsList();
+                renderContent();
+                updateProgress();
+                scrollToTop();
             }
-            
-            // Reset mastery check state
-            state.masteryCheckState = {
-                active: false,
-                targetIndex: null,
-                targetType: null,
-                questions: [],
-                currentQuestionIndex: 0,
-                selectedAnswer: null,
-                score: 0,
-                answers: []
-            };
-            
-            saveState();
-            renderTopicsList();
-            renderContent();
-            updateProgress();
-            scrollToTop();
         }
 
         function retryMasteryCheck() {
@@ -2997,9 +3219,6 @@
         function renderChapterOverview() {
             return `
                 <div class="lesson-content">
-                    <div class="breadcrumb">
-                        <a href="#">Home</a> → <a href="#">Personal Finance</a> → What Is Personal Finance?
-                    </div>
                     <div class="content-header">
                         <span class="icon">🎯</span>
                         <h1>Chapter Overview: What Is Personal Finance?</h1>
@@ -3233,7 +3452,7 @@
                         <button class="quiz-slideshow-close" onclick="exitQuizSlideshow(true)">×</button>
                         <div class="quiz-slideshow-stats">
                             <div class="quiz-slideshow-stat">
-                                <span>🪙</span>
+                                <span class="token-icon"></span>
                                 <span>${state.coins}</span>
                             </div>
                             <div class="quiz-slideshow-stat">
@@ -3398,7 +3617,7 @@
                         <button class="quiz-slideshow-close" onclick="cancelMasterySlideshow()">×</button>
                         <div class="quiz-slideshow-stats">
                             <div class="quiz-slideshow-stat">
-                                <span>🪙</span>
+                                <span class="token-icon"></span>
                                 <span>${state.coins}</span>
                             </div>
                             <div class="quiz-slideshow-stat">
@@ -3413,9 +3632,6 @@
                     <div class="quiz-slideshow-content">
                         <div class="quiz-slide active">
                             <div class="quiz-slide-counter">🎯 Mastery Check - Question ${mState.currentQuestionIndex + 1} of ${mState.questions.length}</div>
-                            <div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 16px; font-weight: 500;">
-                                From: ${question.sourceLesson}
-                            </div>
                             <h2 class="quiz-slide-question">${question.question}</h2>
                             <div class="quiz-slide-options">
                                 ${question.options.map((option, index) => {
@@ -3465,9 +3681,13 @@
                 const question = state.masteryCheckState.questions[state.masteryCheckState.currentQuestionIndex];
                 const isCorrect = index === question.correct;
                 
+                // MASTERY CHECK PENALTY: Unlike regular quizzes, mastery checks ALWAYS 
+                // penalize wrong answers with a lost heart, even on retakes.
+                // This is intentional - mastery checks are high-stakes to prevent gaming the system.
                 if (isCorrect) {
                     state.masteryCheckState.score++;
                 } else {
+                    // Always lose heart on wrong answers (no attempt tracking like regular quizzes)
                     loseHeart();
                     saveState();
                     
@@ -3628,7 +3848,7 @@
             popup.innerHTML = `
                 <h2>Quiz Complete! 🎉</h2>
                 <div class="coin-animation-container" id="coinAnimContainer">
-                    <span class="coin-earned">🪙</span>
+                    <span class="coin-earned"></span>
                     <span class="coin-amount-earned">+${coinsEarned}</span>
                 </div>
                 <p class="coin-popup-message">You've earned ${coinsEarned} coins!</p>
@@ -3646,7 +3866,6 @@
                         setTimeout(() => {
                             const coin = document.createElement('span');
                             coin.className = 'floating-coin';
-                            coin.textContent = '🪙';
                             coin.style.left = `${Math.random() * 100 - 50}px`;
                             coin.style.animationDelay = `${Math.random() * 0.3}s`;
                             container.appendChild(coin);
@@ -3686,6 +3905,41 @@
             setTimeout(animateCoins, 300);
         }
 
+        function showMasteryCompletionScreen(coinsEarned, callback) {
+            const completionHTML = `
+                <div class="completion-screen">
+                    <div class="completion-icon">🎉</div>
+                    <h1 class="completion-title">Great Job!</h1>
+                    <div class="completion-stats">
+                        ${coinsEarned > 0 ? `
+                            <div class="completion-stat">
+                                <span class="completion-stat-value">+${coinsEarned}</span>
+                                <span class="completion-stat-label"><span class="token-icon"></span> Coins Earned</span>
+                            </div>
+                        ` : ''}
+                        <div class="completion-stat">
+                            <span class="completion-stat-value">${state.hearts}</span>
+                            <span class="completion-stat-label">❤️ Hearts Left</span>
+                        </div>
+                    </div>
+                    <p class="completion-message">You crushed it!</p>
+                    <p class="completion-progress-text">Returning to lessons...</p>
+                </div>
+            `;
+            
+            // Create and show completion screen
+            const container = document.createElement('div');
+            container.id = 'completionScreen';
+            container.innerHTML = completionHTML;
+            document.body.appendChild(container);
+            
+            // Auto-transition after 2 seconds
+            setTimeout(() => {
+                container.remove();
+                callback();
+            }, 2000);
+        }
+
         function closeCoinPopup() {
             const overlay = document.querySelector('.coin-popup-overlay');
             const popup = document.querySelector('.coin-popup');
@@ -3699,20 +3953,116 @@
             }
         }
 
+        function showMasteryCheckCoinReward(coinsEarned, callback) {
+            const overlay = document.createElement('div');
+            overlay.className = 'coin-popup-overlay';
+            
+            const popup = document.createElement('div');
+            popup.className = 'coin-popup';
+            
+            popup.innerHTML = `
+                <h2>Mastery Check Complete! 🚀</h2>
+                <div class="coin-animation-container" id="coinAnimContainer">
+                    <span class="coin-earned"></span>
+                    <span class="coin-amount-earned">+${coinsEarned}</span>
+                </div>
+                <p class="coin-popup-message">You've earned ${coinsEarned} coins for skipping ahead!</p>
+                <button class="coin-popup-btn" onclick="closeCoinPopup()">Continue</button>
+            `;
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+            
+            // Add floating coin particles
+            setTimeout(() => {
+                const container = document.getElementById('coinAnimContainer');
+                if (container) {
+                    for (let i = 0; i < 8; i++) {
+                        setTimeout(() => {
+                            const coin = document.createElement('span');
+                            coin.className = 'floating-coin';
+                            coin.style.left = `${Math.random() * 100 - 50}px`;
+                            coin.style.animationDelay = `${Math.random() * 0.3}s`;
+                            container.appendChild(coin);
+                            
+                            setTimeout(() => coin.remove(), 2000);
+                        }, i * 100);
+                    }
+                }
+            }, 300);
+            
+            // Store callback for later
+            window.coinPopupCallback = callback;
+            
+            // Update coins with animation
+            const startCoins = state.coins;
+            const endCoins = state.coins + coinsEarned;
+            const duration = 1000;
+            const startTime = Date.now();
+            
+            function animateCoins() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const currentCoins = Math.floor(startCoins + (coinsEarned * progress));
+                
+                state.coins = currentCoins;
+                updateCoinDisplay();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateCoins);
+                } else {
+                    state.coins = endCoins;
+                    updateCoinDisplay();
+                    saveState();
+                }
+            }
+            
+            setTimeout(animateCoins, 300);
+        }
+
         // Show mastery check popup for locked content
         function showMasteryPopup(targetIndex, type) {
+            // Check if locked out - cannot start mastery checks without hearts
+            if (isLockedOut()) {
+                renderContent(); // Show lockout screen
+                return;
+            }
+            
             const currentProgress = state.currentLessonIndex;
-            const jumpDistance = targetIndex - currentProgress;
+            const actualJumpDistance = targetIndex - currentProgress;
             
-            if (jumpDistance <= 0) return; // Not jumping ahead
+            // Don't show mastery check if this is the next sequential item (not a skip)
+            if (actualJumpDistance <= 0) {
+                alert('Complete the previous section first!');
+                return;
+            }
             
-            // Build prerequisite list
+            // Calculate how many sections would actually be skipped (unlocked but not completed)
+            // Only count sections between current position and target that are being skipped
+            let sectionsToSkip = 0;
             const prerequisites = [];
+            
             for (let i = currentProgress; i < targetIndex; i++) {
+                // Count this section if it's not completed
+                if (!state.completedLessons.has(courseData.lessons[i].id)) {
+                    sectionsToSkip++;
+                }
                 prerequisites.push(courseData.lessons[i].title);
             }
             
-            // Calculate rewards (30 coins per quiz completion bonus only)
+            // If no sections to skip (all already completed), just unlock the target
+            if (sectionsToSkip === 0) {
+                alert('You\'ve already completed the prerequisite sections! You can access this now.');
+                state.currentLessonIndex = targetIndex;
+                saveState();
+                renderTopicsList();
+                return;
+            }
+            
+            // Use the actual sections being skipped for rewards
+            const jumpDistance = sectionsToSkip;
+            
+            // Calculate rewards (30 coins per quiz completion bonus only for sections actually skipped)
             const maxReward = jumpDistance * 30; // 30 per skipped quiz completion
             
             const overlay = document.createElement('div');
@@ -3744,12 +4094,15 @@
                 </div>
                 
                 <div class="mastery-reward">
-                    <p>Earn up to ${maxReward} coins 🪙</p>
+                    <p>Earn up to ${maxReward} coins <span class="token-icon"></span></p>
+                </div>
+                
+                <div class="mastery-info-box" style="background: #fee2e2; border-color: #fecaca; margin: 20px 0;">
+                    <p style="color: #991b1b; font-weight: 600; margin-bottom: 8px;">⚠️ Important: High-Stakes Assessment</p>
+                    <p style="color: #991b1b;">Wrong answers will <strong>always cost 1 heart</strong>, even if you retake this mastery check. This is different from regular quizzes where retakes don't penalize you.</p>
                 </div>
                 
                 <div class="mastery-popup-body">
-                    <p><strong>Here's the good news:</strong> There's no penalty if you decide this isn't the right moment. You can always come back when you're ready. And if you demonstrate mastery now, you'll earn up to <strong>${maxReward} coins</strong> — the same rewards you would have earned completing each section along the way.</p>
-                    
                     <p style="text-align: center; margin-top: 16px; color: #6b7280;">You've got this! 🌟</p>
                 </div>
                 
@@ -3776,6 +4129,12 @@
 
         function startMasteryCheck(targetIndex, type) {
             closeMasteryPopup();
+            
+            // Double-check lockout status before starting
+            if (isLockedOut()) {
+                renderContent(); // Show lockout screen
+                return;
+            }
             
             const currentProgress = state.currentLessonIndex;
             const jumpDistance = targetIndex - currentProgress;
@@ -4141,12 +4500,12 @@
                         ${coinsEarned > 0 ? `
                             <div class="completion-stat">
                                 <span class="completion-stat-value">+${coinsEarned}</span>
-                                <span class="completion-stat-label">Coins Earned</span>
+                                <span class="completion-stat-label"><span class="token-icon"></span> Coins Earned</span>
                             </div>
                         ` : ''}
                         <div class="completion-stat">
                             <span class="completion-stat-value">${state.hearts}</span>
-                            <span class="completion-stat-label">Hearts Left</span>
+                            <span class="completion-stat-label">❤️ Hearts Left</span>
                         </div>
                     </div>
                     <p class="completion-message">${message}</p>
