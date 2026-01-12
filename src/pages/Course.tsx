@@ -268,9 +268,18 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 10,
     lessons: [
-      { id: 62, course_id: 14, title: "Classes and Objects", slug: "classes-objects", description: "Creating and using classes", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 63, course_id: 14, title: "Inheritance", slug: "inheritance", description: "Extending classes", video_url: null, duration_seconds: 2700, order_index: 2 },
-      { id: 64, course_id: 14, title: "Polymorphism and Encapsulation", slug: "polymorphism-encapsulation", description: "OOP principles", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 62, course_id: 14, title: "Why Object-Oriented Programming Exists", slug: "why-oop-exists", description: "The history and motivation behind OOP", video_url: null, duration_seconds: 2200, order_index: 1 },
+      { id: 63, course_id: 14, title: "Objects and Classes", slug: "objects-and-classes", description: "Understanding the core building blocks", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 64, course_id: 14, title: "Attributes and Methods", slug: "attributes-and-methods", description: "Data and behavior in objects", video_url: null, duration_seconds: 2300, order_index: 3 },
+      { id: 65, course_id: 14, title: "Creating and Using Objects", slug: "creating-using-objects", description: "Instantiation and object interaction", video_url: null, duration_seconds: 2500, order_index: 4 },
+      { id: 66, course_id: 14, title: "Constructors and Initialization", slug: "constructors-initialization", description: "Setting up objects properly", video_url: null, duration_seconds: 2400, order_index: 5 },
+      { id: 67, course_id: 14, title: "Encapsulation", slug: "encapsulation", description: "Data hiding and access control", video_url: null, duration_seconds: 2300, order_index: 6 },
+      { id: 68, course_id: 14, title: "Inheritance", slug: "inheritance", description: "Extending and reusing classes", video_url: null, duration_seconds: 2600, order_index: 7 },
+      { id: 69, course_id: 14, title: "Polymorphism", slug: "polymorphism", description: "Many forms, one interface", video_url: null, duration_seconds: 2500, order_index: 8 },
+      { id: 70, course_id: 14, title: "Abstraction", slug: "abstraction", description: "Hiding complexity with abstract types", video_url: null, duration_seconds: 2400, order_index: 9 },
+      { id: 71, course_id: 14, title: "Composition vs Inheritance", slug: "composition-vs-inheritance", description: "Choosing the right relationship", video_url: null, duration_seconds: 2500, order_index: 10 },
+      { id: 72, course_id: 14, title: "Common OOP Design Mistakes", slug: "common-oop-design-mistakes", description: "Pitfalls to avoid in OOP", video_url: null, duration_seconds: 2300, order_index: 11 },
+      { id: 73, course_id: 14, title: "OOP in Real Software", slug: "oop-in-real-software", description: "Applying OOP in production code", video_url: null, duration_seconds: 2600, order_index: 12 },
     ]
   },
   "data-structures": {
