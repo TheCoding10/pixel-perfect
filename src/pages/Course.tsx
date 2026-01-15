@@ -302,9 +302,20 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 14,
     lessons: [
-      { id: 65, course_id: 15, title: "Arrays and Linked Lists", slug: "arrays-linked-lists", description: "Linear data structures", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 66, course_id: 15, title: "Stacks and Queues", slug: "stacks-queues", description: "LIFO and FIFO structures", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 67, course_id: 15, title: "Trees and Graphs", slug: "trees-graphs", description: "Non-linear data structures", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 73, course_id: 15, title: "Why Data Structures Matter", slug: "why-data-structures-matter", description: "The importance of organizing data efficiently", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 74, course_id: 15, title: "Abstract Data Types (ADTs)", slug: "abstract-data-types", description: "Conceptual building blocks of data structures", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 75, course_id: 15, title: "Arrays and Dynamic Arrays", slug: "arrays-dynamic-arrays", description: "Contiguous storage and resizing", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 76, course_id: 15, title: "Linked Lists", slug: "linked-lists", description: "Node-based sequential structures", video_url: null, duration_seconds: 2700, order_index: 4 },
+      { id: 77, course_id: 15, title: "Stacks", slug: "stacks", description: "Last-in, first-out data structure", video_url: null, duration_seconds: 2400, order_index: 5 },
+      { id: 78, course_id: 15, title: "Queues", slug: "queues", description: "First-in, first-out data structure", video_url: null, duration_seconds: 2400, order_index: 6 },
+      { id: 79, course_id: 15, title: "Hash Tables", slug: "hash-tables", description: "Fast key-value lookups", video_url: null, duration_seconds: 2700, order_index: 7 },
+      { id: 80, course_id: 15, title: "Trees", slug: "trees", description: "Hierarchical data structures", video_url: null, duration_seconds: 2700, order_index: 8 },
+      { id: 81, course_id: 15, title: "Binary Search Trees", slug: "binary-search-trees", description: "Ordered tree structures for searching", video_url: null, duration_seconds: 2700, order_index: 9 },
+      { id: 82, course_id: 15, title: "Heaps and Priority Queues", slug: "heaps-priority-queues", description: "Efficient min/max access", video_url: null, duration_seconds: 2700, order_index: 10 },
+      { id: 83, course_id: 15, title: "Graphs", slug: "graphs", description: "Networks of connected nodes", video_url: null, duration_seconds: 3000, order_index: 11 },
+      { id: 84, course_id: 15, title: "Tries and Specialized Structures", slug: "tries-specialized-structures", description: "Prefix trees and domain-specific structures", video_url: null, duration_seconds: 2700, order_index: 12 },
+      { id: 85, course_id: 15, title: "Choosing the Right Data Structure", slug: "choosing-right-data-structure", description: "Trade-offs and decision-making", video_url: null, duration_seconds: 2400, order_index: 13 },
+      { id: 86, course_id: 15, title: "Data Structures in Real Systems", slug: "data-structures-real-systems", description: "Practical applications and examples", video_url: null, duration_seconds: 2400, order_index: 14 },
     ]
   },
   "algorithms": {
