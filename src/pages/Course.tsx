@@ -859,10 +859,13 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 135, course_id: 35, title: "Blockchain Basics", slug: "blockchain-basics", description: "How blockchain technology works", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 136, course_id: 35, title: "Bitcoin & Ethereum", slug: "bitcoin-ethereum", description: "Major cryptocurrencies explained", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 137, course_id: 35, title: "DeFi & NFTs", slug: "defi-nfts", description: "Decentralized finance and digital assets", video_url: null, duration_seconds: 2400, order_index: 3 },
-      { id: 138, course_id: 35, title: "Crypto Security", slug: "crypto-security", description: "Wallets, keys, and safe practices", video_url: null, duration_seconds: 2100, order_index: 4 },
+      { id: 135, course_id: 35, title: "What Is Cryptocurrency & Digital Assets", slug: "what-is-cryptocurrency-digital-assets", description: "Introduction to crypto and digital assets", video_url: null, duration_seconds: 2400, order_index: 1 },
+      { id: 136, course_id: 35, title: "Blockchain Basics", slug: "blockchain-basics", description: "How blockchain technology works", video_url: null, duration_seconds: 2700, order_index: 2 },
+      { id: 137, course_id: 35, title: "Bitcoin & Ethereum", slug: "bitcoin-ethereum", description: "Major cryptocurrencies explained", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 138, course_id: 35, title: "Crypto Assets Beyond Coins", slug: "crypto-assets-beyond-coins", description: "Tokens, stablecoins, and other digital assets", video_url: null, duration_seconds: 2100, order_index: 4 },
+      { id: 139, course_id: 35, title: "DeFi, NFTs, and Web3 Concepts", slug: "defi-nfts-web3-concepts", description: "Decentralized finance, digital collectibles, and the future web", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 140, course_id: 35, title: "Crypto Security & Custody", slug: "crypto-security-custody", description: "Wallets, keys, and safe practices", video_url: null, duration_seconds: 2400, order_index: 6 },
+      { id: 141, course_id: 35, title: "Crypto in a Long-Term Investment Strategy", slug: "crypto-long-term-investment-strategy", description: "Incorporating crypto into your portfolio", video_url: null, duration_seconds: 2100, order_index: 7 },
     ]
   },
 };
