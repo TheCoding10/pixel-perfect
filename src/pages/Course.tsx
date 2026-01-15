@@ -254,9 +254,20 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 59, course_id: 13, title: "JavaScript Basics", slug: "js-basics", description: "Variables, types, and operators", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 60, course_id: 13, title: "DOM Manipulation", slug: "dom-manipulation", description: "Interacting with web pages", video_url: null, duration_seconds: 2700, order_index: 2 },
-      { id: 61, course_id: 13, title: "Async JavaScript", slug: "async-js", description: "Promises and async/await", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 59, course_id: 13, title: "Introduction to JavaScript", slug: "introduction-to-javascript", description: "What JavaScript is and why it matters", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 60, course_id: 13, title: "JavaScript Basics & Syntax", slug: "javascript-basics-syntax", description: "Core syntax and structure", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 61, course_id: 13, title: "Variables and Data Types", slug: "variables-data-types", description: "Working with different types of data", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 62, course_id: 13, title: "Operators and Expressions", slug: "operators-expressions", description: "Performing operations and calculations", video_url: null, duration_seconds: 2100, order_index: 4 },
+      { id: 63, course_id: 13, title: "Input, Output, and the Console", slug: "input-output-console", description: "Interacting with users and debugging", video_url: null, duration_seconds: 2100, order_index: 5 },
+      { id: 64, course_id: 13, title: "Control Flow (Conditionals)", slug: "control-flow-conditionals", description: "Making decisions with if/else", video_url: null, duration_seconds: 2400, order_index: 6 },
+      { id: 65, course_id: 13, title: "Loops and Iteration", slug: "loops-iteration", description: "Repeating actions efficiently", video_url: null, duration_seconds: 2400, order_index: 7 },
+      { id: 66, course_id: 13, title: "Functions", slug: "functions", description: "Creating reusable code blocks", video_url: null, duration_seconds: 2700, order_index: 8 },
+      { id: 67, course_id: 13, title: "Arrays", slug: "arrays", description: "Storing and manipulating lists of data", video_url: null, duration_seconds: 2700, order_index: 9 },
+      { id: 68, course_id: 13, title: "Objects", slug: "objects", description: "Structuring data with key-value pairs", video_url: null, duration_seconds: 2700, order_index: 10 },
+      { id: 69, course_id: 13, title: "Strings and Text Processing", slug: "strings-text-processing", description: "Working with text data", video_url: null, duration_seconds: 2400, order_index: 11 },
+      { id: 70, course_id: 13, title: "Errors, Debugging, and Exceptions", slug: "errors-debugging-exceptions", description: "Finding and fixing problems", video_url: null, duration_seconds: 2400, order_index: 12 },
+      { id: 71, course_id: 13, title: "JavaScript in the Browser (DOM Basics)", slug: "javascript-browser-dom-basics", description: "Interacting with web pages", video_url: null, duration_seconds: 2700, order_index: 13 },
+      { id: 72, course_id: 13, title: "Events and User Interaction", slug: "events-user-interaction", description: "Responding to user actions", video_url: null, duration_seconds: 2700, order_index: 14 },
     ]
   },
   "object-oriented-programming": {
