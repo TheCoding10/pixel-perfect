@@ -429,9 +429,20 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 80, course_id: 20, title: "Network Layers", slug: "network-layers", description: "OSI and TCP/IP models", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 81, course_id: 20, title: "Protocols", slug: "protocols", description: "HTTP, TCP, UDP, and more", video_url: null, duration_seconds: 2400, order_index: 2 },
-      { id: 82, course_id: 20, title: "Network Security", slug: "network-security", description: "Encryption and firewalls", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 145, course_id: 20, title: "What Is a Computer Network?", slug: "what-is-computer-network", description: "Introduction to networking concepts", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 146, course_id: 20, title: "Network Models & Layering", slug: "network-models-layering", description: "OSI and TCP/IP reference models", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 147, course_id: 20, title: "Physical Layer", slug: "physical-layer", description: "Transmission media and signals", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 148, course_id: 20, title: "Data Link Layer", slug: "data-link-layer", description: "Framing, error detection, and MAC", video_url: null, duration_seconds: 2700, order_index: 4 },
+      { id: 149, course_id: 20, title: "Network Layer", slug: "network-layer", description: "IP addressing and packet forwarding", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 150, course_id: 20, title: "Transport Layer", slug: "transport-layer", description: "TCP, UDP, and reliable delivery", video_url: null, duration_seconds: 2700, order_index: 6 },
+      { id: 151, course_id: 20, title: "Application Layer", slug: "application-layer", description: "HTTP, DNS, and application protocols", video_url: null, duration_seconds: 2700, order_index: 7 },
+      { id: 152, course_id: 20, title: "Addressing & Naming", slug: "addressing-naming", description: "IP addresses, DNS, and NAT", video_url: null, duration_seconds: 2400, order_index: 8 },
+      { id: 153, course_id: 20, title: "Routing Algorithms", slug: "routing-algorithms", description: "Path finding and routing protocols", video_url: null, duration_seconds: 2700, order_index: 9 },
+      { id: 154, course_id: 20, title: "Network Security Basics", slug: "network-security-basics", description: "Encryption, firewalls, and threats", video_url: null, duration_seconds: 2700, order_index: 10 },
+      { id: 155, course_id: 20, title: "Wireless and Mobile Networks", slug: "wireless-mobile-networks", description: "Wi-Fi, cellular, and mobility", video_url: null, duration_seconds: 2400, order_index: 11 },
+      { id: 156, course_id: 20, title: "Network Performance", slug: "network-performance", description: "Latency, bandwidth, and QoS", video_url: null, duration_seconds: 2400, order_index: 12 },
+      { id: 157, course_id: 20, title: "Distributed Systems (Intro)", slug: "distributed-systems-intro", description: "Fundamentals of distributed computing", video_url: null, duration_seconds: 2400, order_index: 13 },
+      { id: 158, course_id: 20, title: "Networks in Practice", slug: "networks-in-practice", description: "Real-world applications and examples", video_url: null, duration_seconds: 2400, order_index: 14 },
     ]
   },
   "software-engineering": {
