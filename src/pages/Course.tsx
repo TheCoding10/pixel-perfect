@@ -405,9 +405,19 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 77, course_id: 19, title: "Relational Databases", slug: "relational-databases", description: "Tables, keys, and relations", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 78, course_id: 19, title: "SQL Fundamentals", slug: "sql-fundamentals", description: "Queries and commands", video_url: null, duration_seconds: 2700, order_index: 2 },
-      { id: 79, course_id: 19, title: "Database Design", slug: "database-design", description: "Normalization and modeling", video_url: null, duration_seconds: 3000, order_index: 3 },
+      { id: 132, course_id: 19, title: "What Is a Database?", slug: "what-is-database", description: "Introduction to databases and their purpose", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 133, course_id: 19, title: "Database Systems and DBMS", slug: "database-systems-dbms", description: "Database management system architecture", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 134, course_id: 19, title: "Data Models", slug: "data-models", description: "Conceptual, logical, and physical models", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 135, course_id: 19, title: "Relational Databases", slug: "relational-databases", description: "Tables, keys, and relations", video_url: null, duration_seconds: 2700, order_index: 4 },
+      { id: 136, course_id: 19, title: "SQL Fundamentals", slug: "sql-fundamentals", description: "Basic queries and commands", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 137, course_id: 19, title: "Advanced SQL Queries", slug: "advanced-sql-queries", description: "Joins, subqueries, and aggregations", video_url: null, duration_seconds: 2700, order_index: 6 },
+      { id: 138, course_id: 19, title: "Database Design & Schema Modeling", slug: "database-design-schema", description: "Designing effective database schemas", video_url: null, duration_seconds: 2700, order_index: 7 },
+      { id: 139, course_id: 19, title: "Normalization", slug: "normalization", description: "Reducing redundancy and dependencies", video_url: null, duration_seconds: 2400, order_index: 8 },
+      { id: 140, course_id: 19, title: "Indexing and Performance", slug: "indexing-performance", description: "Optimizing query execution", video_url: null, duration_seconds: 2700, order_index: 9 },
+      { id: 141, course_id: 19, title: "Transactions", slug: "transactions", description: "ACID properties and transaction management", video_url: null, duration_seconds: 2400, order_index: 10 },
+      { id: 142, course_id: 19, title: "Concurrency Control", slug: "concurrency-control", description: "Managing simultaneous access", video_url: null, duration_seconds: 2400, order_index: 11 },
+      { id: 143, course_id: 19, title: "Recovery and Fault Tolerance", slug: "recovery-fault-tolerance", description: "Backup and crash recovery strategies", video_url: null, duration_seconds: 2400, order_index: 12 },
+      { id: 144, course_id: 19, title: "NoSQL Databases", slug: "nosql-databases", description: "Document, key-value, and graph databases", video_url: null, duration_seconds: 2700, order_index: 13 },
     ]
   },
   "computer-networks": {
