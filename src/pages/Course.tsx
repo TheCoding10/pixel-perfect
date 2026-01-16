@@ -454,9 +454,20 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 14,
     lessons: [
-      { id: 83, course_id: 21, title: "Software Development Life Cycle", slug: "sdlc", description: "Planning and methodology", video_url: null, duration_seconds: 2400, order_index: 1 },
-      { id: 84, course_id: 21, title: "Version Control", slug: "version-control", description: "Git and collaboration", video_url: null, duration_seconds: 2100, order_index: 2 },
-      { id: 85, course_id: 21, title: "Testing and QA", slug: "testing-qa", description: "Unit and integration testing", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 159, course_id: 21, title: "What Is Software Engineering?", slug: "what-is-software-engineering", description: "Introduction to software engineering principles", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 160, course_id: 21, title: "The Software Development Life Cycle (SDLC)", slug: "sdlc", description: "Phases and methodologies", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 161, course_id: 21, title: "Requirements Engineering", slug: "requirements-engineering", description: "Gathering and analyzing requirements", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 162, course_id: 21, title: "Software Design Principles", slug: "software-design-principles", description: "SOLID, DRY, and clean code", video_url: null, duration_seconds: 2700, order_index: 4 },
+      { id: 163, course_id: 21, title: "Architectural Styles", slug: "architectural-styles", description: "MVC, microservices, and more", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 164, course_id: 21, title: "Object-Oriented Design in Practice", slug: "oo-design-practice", description: "Applying OOP concepts effectively", video_url: null, duration_seconds: 2700, order_index: 6 },
+      { id: 165, course_id: 21, title: "Design Patterns (Intro)", slug: "design-patterns-intro", description: "Common solutions to design problems", video_url: null, duration_seconds: 2700, order_index: 7 },
+      { id: 166, course_id: 21, title: "Version Control Systems", slug: "version-control-systems", description: "Git and collaborative development", video_url: null, duration_seconds: 2400, order_index: 8 },
+      { id: 167, course_id: 21, title: "Testing in Software Engineering", slug: "testing-software-engineering", description: "Unit, integration, and system testing", video_url: null, duration_seconds: 2700, order_index: 9 },
+      { id: 168, course_id: 21, title: "Debugging and Maintenance", slug: "debugging-maintenance", description: "Finding and fixing bugs", video_url: null, duration_seconds: 2400, order_index: 10 },
+      { id: 169, course_id: 21, title: "Documentation", slug: "documentation", description: "Writing effective technical docs", video_url: null, duration_seconds: 2100, order_index: 11 },
+      { id: 170, course_id: 21, title: "Software Project Management", slug: "software-project-management", description: "Planning and tracking projects", video_url: null, duration_seconds: 2400, order_index: 12 },
+      { id: 171, course_id: 21, title: "Agile and Modern Development Practices", slug: "agile-modern-practices", description: "Scrum, Kanban, and DevOps", video_url: null, duration_seconds: 2700, order_index: 13 },
+      { id: 172, course_id: 21, title: "Software Quality, Security, and Ethics", slug: "quality-security-ethics", description: "Building reliable and ethical software", video_url: null, duration_seconds: 2400, order_index: 14 },
     ]
   },
   "programming-languages-compilers": {
