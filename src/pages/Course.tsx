@@ -504,9 +504,20 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 12,
     lessons: [
-      { id: 89, course_id: 23, title: "Automata Theory", slug: "automata-theory", description: "Finite automata and languages", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 90, course_id: 23, title: "Turing Machines", slug: "turing-machines", description: "Computability theory", video_url: null, duration_seconds: 3000, order_index: 2 },
-      { id: 91, course_id: 23, title: "Complexity Theory", slug: "complexity-theory", description: "P vs NP and beyond", video_url: null, duration_seconds: 2700, order_index: 3 },
+      { id: 187, course_id: 23, title: "What Is the Theory of Computation?", slug: "what-is-theory-of-computation", description: "Introduction to computational theory", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 188, course_id: 23, title: "Mathematical Preliminaries", slug: "mathematical-preliminaries", description: "Sets, relations, and proofs", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 189, course_id: 23, title: "Formal Languages", slug: "formal-languages", description: "Alphabets, strings, and languages", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 190, course_id: 23, title: "Finite Automata", slug: "finite-automata", description: "DFAs and NFAs", video_url: null, duration_seconds: 2700, order_index: 4 },
+      { id: 191, course_id: 23, title: "Regular Languages", slug: "regular-languages", description: "Properties and closure", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 192, course_id: 23, title: "Regular Expressions", slug: "regular-expressions", description: "Pattern matching notation", video_url: null, duration_seconds: 2400, order_index: 6 },
+      { id: 193, course_id: 23, title: "Non-Regular Languages", slug: "non-regular-languages", description: "Pumping lemma and beyond", video_url: null, duration_seconds: 2700, order_index: 7 },
+      { id: 194, course_id: 23, title: "Context-Free Grammars (CFGs)", slug: "context-free-grammars", description: "Production rules and derivations", video_url: null, duration_seconds: 3000, order_index: 8 },
+      { id: 195, course_id: 23, title: "Pushdown Automata", slug: "pushdown-automata", description: "Stack-based computation", video_url: null, duration_seconds: 2700, order_index: 9 },
+      { id: 196, course_id: 23, title: "Turing Machines", slug: "turing-machines", description: "Universal computation model", video_url: null, duration_seconds: 3000, order_index: 10 },
+      { id: 197, course_id: 23, title: "Computability", slug: "computability", description: "Decidable and undecidable problems", video_url: null, duration_seconds: 2700, order_index: 11 },
+      { id: 198, course_id: 23, title: "Complexity Theory", slug: "complexity-theory", description: "P, NP, and complexity classes", video_url: null, duration_seconds: 3000, order_index: 12 },
+      { id: 199, course_id: 23, title: "NP-Completeness", slug: "np-completeness", description: "Reductions and hard problems", video_url: null, duration_seconds: 2700, order_index: 13 },
+      { id: 200, course_id: 23, title: "Why Theory of Computation Matters", slug: "why-theory-matters", description: "Practical implications and applications", video_url: null, duration_seconds: 2100, order_index: 14 },
     ]
   },
   "classical-mechanics": {
