@@ -479,9 +479,20 @@ const MOCK_LESSONS: Record<string, any> = {
     thumbnail: null,
     duration_hours: 14,
     lessons: [
-      { id: 86, course_id: 22, title: "Lexical Analysis", slug: "lexical-analysis", description: "Tokenization and scanning", video_url: null, duration_seconds: 2700, order_index: 1 },
-      { id: 87, course_id: 22, title: "Parsing", slug: "parsing", description: "Syntax analysis", video_url: null, duration_seconds: 3000, order_index: 2 },
-      { id: 88, course_id: 22, title: "Code Generation", slug: "code-generation", description: "From AST to machine code", video_url: null, duration_seconds: 3300, order_index: 3 },
+      { id: 173, course_id: 22, title: "What Is a Programming Language?", slug: "what-is-programming-language", description: "Introduction to programming languages", video_url: null, duration_seconds: 2100, order_index: 1 },
+      { id: 174, course_id: 22, title: "Language Paradigms", slug: "language-paradigms", description: "Imperative, functional, and declarative", video_url: null, duration_seconds: 2400, order_index: 2 },
+      { id: 175, course_id: 22, title: "Syntax vs Semantics", slug: "syntax-vs-semantics", description: "Form and meaning in languages", video_url: null, duration_seconds: 2400, order_index: 3 },
+      { id: 176, course_id: 22, title: "Formal Grammars", slug: "formal-grammars", description: "BNF and context-free grammars", video_url: null, duration_seconds: 2700, order_index: 4 },
+      { id: 177, course_id: 22, title: "Lexical Analysis (Lexing)", slug: "lexical-analysis", description: "Tokenization and scanning", video_url: null, duration_seconds: 2700, order_index: 5 },
+      { id: 178, course_id: 22, title: "Parsing", slug: "parsing", description: "Syntax analysis techniques", video_url: null, duration_seconds: 3000, order_index: 6 },
+      { id: 179, course_id: 22, title: "Abstract Syntax Trees (ASTs)", slug: "abstract-syntax-trees", description: "Tree representations of code", video_url: null, duration_seconds: 2700, order_index: 7 },
+      { id: 180, course_id: 22, title: "Semantic Analysis", slug: "semantic-analysis", description: "Meaning and context checking", video_url: null, duration_seconds: 2700, order_index: 8 },
+      { id: 181, course_id: 22, title: "Type Systems", slug: "type-systems", description: "Static and dynamic typing", video_url: null, duration_seconds: 2700, order_index: 9 },
+      { id: 182, course_id: 22, title: "Intermediate Representations (IR)", slug: "intermediate-representations", description: "Bridging source and machine code", video_url: null, duration_seconds: 2700, order_index: 10 },
+      { id: 183, course_id: 22, title: "Code Generation", slug: "code-generation", description: "From IR to machine code", video_url: null, duration_seconds: 3000, order_index: 11 },
+      { id: 184, course_id: 22, title: "Optimization", slug: "optimization", description: "Improving generated code", video_url: null, duration_seconds: 2700, order_index: 12 },
+      { id: 185, course_id: 22, title: "Interpreters and Virtual Machines", slug: "interpreters-virtual-machines", description: "Alternative execution models", video_url: null, duration_seconds: 2700, order_index: 13 },
+      { id: 186, course_id: 22, title: "Runtime Systems", slug: "runtime-systems", description: "Memory management and execution", video_url: null, duration_seconds: 2400, order_index: 14 },
     ]
   },
   "theory-of-computation": {
